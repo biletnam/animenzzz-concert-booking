@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  locate_x: 1
+  locate_y: 1
+  area_id: 
+
+two:
+  locate_x: 1
+  locate_y: 1
+  area_id: 

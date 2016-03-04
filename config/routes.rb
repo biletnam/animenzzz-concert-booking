@@ -7,5 +7,13 @@ Rails.application.routes.draw do
   end
   root to: 'visitors#index'
   devise_for :users
-  resources :users
+  resources :users do 
+  	resources :orders
+  end
+
+  resources :recitals do
+  	resources :areas do
+  	  resources :seats
+  	end
+  end
 end

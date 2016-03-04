@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pay_time: 2016-01-27 21:22:17
+  apply_time: 2016-01-27 21:22:17
+  refund_time: 2016-01-27 21:22:17
+  price: 1
+  user_id: 
+
+two:
+  pay_time: 2016-01-27 21:22:17
+  apply_time: 2016-01-27 21:22:17
+  refund_time: 2016-01-27 21:22:17
+  price: 1
+  user_id: 

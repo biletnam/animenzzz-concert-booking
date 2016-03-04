@@ -1,0 +1,2 @@
+module RecitalsHelper
+end

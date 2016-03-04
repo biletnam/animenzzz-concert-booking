@@ -11,7 +11,64 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160107062755) do
+ActiveRecord::Schema.define(version: 20160127132633) do
+
+  create_table "areas", force: :cascade do |t|
+    t.integer  "price"
+    t.integer  "capacity"
+    t.integer  "recital_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "areas", ["recital_id"], name: "index_areas_on_recital_id"
+
+  create_table "orderitems", force: :cascade do |t|
+    t.integer  "order_id"
+    t.integer  "seat_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "orderitems", ["order_id"], name: "index_orderitems_on_order_id"
+  add_index "orderitems", ["seat_id"], name: "index_orderitems_on_seat_id"
+
+  create_table "orders", force: :cascade do |t|
+    t.datetime "pay_time"
+    t.datetime "apply_time"
+    t.datetime "refund_time"
+    t.integer  "price"
+    t.string   "address"
+    t.string   "name"
+    t.string   "phone"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
+
+  create_table "recitals", force: :cascade do |t|
+    t.string   "name"
+    t.string   "city"
+    t.string   "musician"
+    t.integer  "capacity"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "seats", force: :cascade do |t|
+    t.integer  "locate_x"
+    t.integer  "locate_y"
+    t.boolean  "sold",       default: false
+    t.integer  "area_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "seats", ["area_id"], name: "index_seats_on_area_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

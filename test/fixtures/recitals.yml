@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  city: MyString
+  musician: MyString
+  capacity: 1
+  start_time: 2016-01-27 20:55:31
+  end_time: 2016-01-27 20:55:31
+
+two:
+  name: MyString
+  city: MyString
+  musician: MyString
+  capacity: 1
+  start_time: 2016-01-27 20:55:31
+  end_time: 2016-01-27 20:55:31
