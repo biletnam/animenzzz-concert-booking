@@ -1,21 +1,60 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <title><%= content_for?(:title) ? yield(:title) : "My Application" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "My Application" %>">
+    <%= stylesheet_link_tag 'normalize' %>
+    <%= stylesheet_link_tag 'font-awesome' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
     <%= csrf_meta_tags %>
     <!-- Custom Fonts -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
   </head>
   <body>
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
-    <%= render 'layouts/messages' %>
-    <%= yield %>
-    <%= render 'layouts/footer' %>
+    <div class="outer-container">
+      <div class="page-container">
+          <header>
+            <%= render 'layouts/navigation' %>
+          </header>
+          <%= render 'layouts/messages' %>
+          <%= yield %>
+          <%= render 'layouts/footer' %>
+      </div>
+    </div>
+    <%= javascript_include_tag 'jquery-2.2.0' %>
+    <%= javascript_include_tag 'index' %>
+    <%= javascript_include_tag 'fullslide' %>
+    <script>
+      $(function () {
+          $('.pic-slide-cont').fullSlide({
+              'numberOfSections': 2,
+              'direction': 'horizontal',
+              'cyclic': true,
+              'hasScrollEvent': false,
+              
+              'slideStart': function (start, end) {
+                  $($('.index-pic-bar .index-pic-bar-indicators > *').
+                      removeClass('index-pic-bar-indicator-active').get(end)).
+                  addClass('index-pic-bar-indicator-active');
+              }
+          });
+          // bind events for indicators
+          $('.index-pic-bar .index-pic-bar-indicators > *').on('click', function (e) {
+              $('.pic-slide-cont').trigger('fslide-to', parseInt($(this).data('index')));
+          });
+          $('.index-pic-bar .index-pic-bar-prev').on('click', function () {
+              $('.pic-slide-cont').trigger('fslide-prev'); });
+          $('.index-pic-bar .index-pic-bar-next').on('click', function () {
+              $('.pic-slide-cont').trigger('fslide-next'); });
+          // switch pictures automatically
+          setInterval(function () {
+              $('.pic-slide-cont').trigger('fslide-next'); }, 4000);
+      });
+    </script>
   </body>
 </html>

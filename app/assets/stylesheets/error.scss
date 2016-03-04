@@ -1,0 +1,20 @@
+
+@import "cd";
+
+#error_explanation {
+    background-color: #DC143C;
+    border-radius: 3px;
+    box-shadow: -1px -1px 1px $darken-40 inset;
+    padding: 0.3em;
+    margin: 1em;
+    ul {
+        text-align: left;
+        list-style: none;
+        padding: 0;
+        padding-left: 1em;
+        li {
+            text-shadow: 1px 1px 1px #444;
+            font-weight: bold;
+        }
+    }
+}

@@ -1,0 +1,29 @@
+
+@import 'mqp';
+
+// zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox
+
+@mixin media-mobile {
+    @include mq($until: tablet) {
+        @content;
+    }
+}
+
+@mixin media-desktop {
+    @include mq($from: tablet) {
+        @content;
+    }
+}
+
+@mixin transition($args ...) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    $opacity-ie: $opacity * 100;
+    filter: alpha(opacity=$opacity-ie);
+}

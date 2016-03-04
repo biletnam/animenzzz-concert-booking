@@ -22,5 +22,8 @@ module TicketBooking
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.assets.precompile += [ 'normalize.css', 'font-awesome.css', 'jquery-2.2.0.js', 'index.js', 'fullslide.js' ]
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
   end
 end
