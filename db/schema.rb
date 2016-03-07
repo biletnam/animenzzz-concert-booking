@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20160127132633) do
     t.string   "address"
     t.string   "name"
     t.string   "phone"
+    t.integer  "status"
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

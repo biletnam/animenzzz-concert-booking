@@ -1,13 +1,31 @@
 <% if user_signed_in? %>
-  <li><%= link_to 'Edit account', edit_user_registration_path %></li>
-  <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+<li>
+    <span class="nav-bar-profile-btn hide-mobile">
+		<%= link_to current_user.name, edit_user_registration_path %>
+        <a href="#" class="nav-bar-profile-show-btn"><i class="fa fa-lg nav-bar-profile-arrow"></i></a>
+    </span>
+	<%= link_to '#', :class => 'nav-bar-profile-btn nav-bar-profile-show-btn hide-desktop' do %>
+		<%= current_user.name %>
+		<i class="fa fa-lg nav-bar-profile-arrow"></i>
+	<% end %>
+</li>
+<ul class="nav-bar-profile-menu">
+    <li><%= link_to '个人信息', edit_user_registration_path %></li>
+    <li><a href="#">订单列表</a></li>
+    <li><%= link_to '退出登录', destroy_user_session_path, :method => 'delete' %></li>
+    <% if current_user.try(:admin?) %>
+    	<li><%= link_to 'Admin', '/admin' %></li>
+	    <li><%= link_to 'Users', users_path %></li>
+    <% end %>
+    <li class="hide-desktop">
+        <a href="#" class="align-center nav-bar-profile-show-btn">
+            <i class="fa fa-lg fa-angle-up"></i>
+        </a>
+    </li>
+</ul>
 <% else %>
-  <li><%= link_to 'Sign in', new_user_session_path %></li>
-  <li><%= link_to 'Sign up', new_user_registration_path %></li>
-<% end %>
-<% if user_signed_in? %>
-  <% if current_user.try(:admin?) %>
-    <li><%= link_to 'Admin', '/admin' %></li>
-    <li><%= link_to 'Users', users_path %></li>
-  <% end %>
+<li>
+	<%= link_to '注册', new_user_registration_path, :class => 'nav-bar-profile-btn' %>
+	<%= link_to '登录', new_user_session_path, :class => 'nav-bar-profile-btn' %>
+</li>
 <% end %>

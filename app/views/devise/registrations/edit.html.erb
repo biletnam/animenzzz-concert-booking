@@ -1,41 +1,57 @@
-<div class="authform">
-  <h3>Edit <%= resource_name.to_s.humanize %></h3>
-  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f| %>
-    <%= devise_error_messages! %>
-    <div class="form-group">
-      <%= f.label :name %>
-      <%= f.text_field :name, :autofocus => true, class: 'form-control' %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form', :class => 'profile-form'}) do |f| %>
+
+  <h2>用户信息</h2>
+  <hr />
+
+  <%#= devise_error_messages! %>
+  <% if not resource.errors.empty? %>
+    <div id="error_explanation">
+      <h3 class="error_title">提交过程中发生错误：</h3>
+      <ul>
+        <% resource.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
-    <div class="form-group">
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
-    </div>
-    <fieldset>
-      <p>Leave these fields blank if you don't want to change your password.</p>
-      <div class="form-group">
-        <%= f.label :password %>
-        <%= f.password_field :password, :autocomplete => 'off', class: 'form-control' %>
-      </div>
-      <div class="form-group">
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, class: 'form-control' %>
-      </div>
-    </fieldset>
-    <fieldset>
-      <p>You must enter your current password to make changes.</p>
-      <div class="form-group">
-        <%= f.label :current_password %>
-        <%= f.password_field :current_password, class: 'form-control' %>
-      </div>
-    </fieldset>
-    <%= f.submit 'Update', :class => 'button right' %>
   <% end %>
-</div>
-<div class="authform">
-<h3>Cancel Account</h3>
-<p>Unhappy? We'll be sad to see you go.</p>
-<%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button right' %>
-</div>
+  <div class="form-group">
+    <%= f.label :name, '名称' %>
+    <%= f.text_field :name, :autofocus => true, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email, '电子邮件' %>
+    <%= f.email_field :email, class: 'form-control' %>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+  </div>
+
+  <h3>修改密码</h3>
+  <div>
+    <p>若无需修改密码，请将此处置空。</p>
+    <div class="form-group">
+      <%= f.password_field :password, :autocomplete => 'off', class: 'form-control', :placeholder => '输入新密码' %>
+    </div>
+    <div class="form-group">
+      <%= f.password_field :password_confirmation, class: 'form-control', :placeholder => '确认新密码' %>
+    </div>
+  </div>
+
+  <hr />
+
+  <p><strong>为确保安全，在提交之前请输入您当前的密码：</strong></p>
+  <div class="form-group">
+  <%= f.password_field :current_password, class: 'form-control', :placeholder => '输入密码' %>
+  </div>
+  <br />
+
+  <%= f.submit '保存更改', :class => 'button' %>
+<% end %>
+
+<% if false %>
+  <div class="authform">
+    <h3>Cancel Account</h3>
+    <p>Unhappy? We'll be sad to see you go.</p>
+    <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button right' %>
+  </div>
+<% end %>

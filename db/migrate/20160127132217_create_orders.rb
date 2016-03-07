@@ -8,6 +8,7 @@ class CreateOrders < ActiveRecord::Migration
       t.string   :address
       t.string   :name
       t.string   :phone
+      t.integer  :status
       t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false
