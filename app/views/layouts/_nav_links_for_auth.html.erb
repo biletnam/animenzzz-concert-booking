@@ -10,13 +10,12 @@
 	<% end %>
 </li>
 <ul class="nav-bar-profile-menu">
-    <li><%= link_to '个人信息', edit_user_registration_path %></li>
-    <li><a href="#">订单列表</a></li>
-    <li><%= link_to '退出登录', destroy_user_session_path, :method => 'delete' %></li>
     <% if current_user.try(:admin?) %>
-    	<li><%= link_to 'Admin', '/admin' %></li>
-	    <li><%= link_to 'Users', users_path %></li>
+        <li><%= link_to '管理界面', '/admin' %></li>
     <% end %>
+    <li><%= link_to '个人信息', edit_user_registration_path %></li>
+    <li><%= link_to '订单列表', user_orders_path(current_user) %></li>
+    <li><%= link_to '退出登录', destroy_user_session_path, :method => 'delete' %></li>
     <li class="hide-desktop">
         <a href="#" class="align-center nav-bar-profile-show-btn">
             <i class="fa fa-lg fa-angle-up"></i>

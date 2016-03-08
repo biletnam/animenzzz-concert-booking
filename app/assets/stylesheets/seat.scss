@@ -1,0 +1,119 @@
+
+@import 'mqp';
+@import 'cd';
+@import 'essential';
+
+.seat-main {
+    background-color: #3C3838;
+    padding: 1em;
+    box-shadow: 2px 2px 1em #111, -1px -1px 0 #484848 inset;
+    position: relative;
+    z-index: 1;
+    @include media-mobile {
+        padding: 1em 0;
+    }
+}
+
+.seat-layout-end {
+    border-radius: 0 0 3px 3px;
+    @include media-mobile {
+        border-radius: 0;
+    }
+}
+
+.seat-container {
+    padding: 1em;
+    margin: 1em;
+    background: #282626;
+    border: 2px solid #0a0a0a;
+    $color-border: #8B9089;
+    box-shadow: 0 0 0 2px $color-border, 0 0 1em transparentize($color-border, 0.3),
+                3px 3px 6px #181818 inset;; // 0 0 2px $color-border inset;
+    border-radius: 0.5em;
+    // margin: 2px;
+    @include mq($until: tablet) {
+        border-radius: 1px;
+        margin: 1em 2px;
+    }
+    .seat-row {
+        padding: 2px 0;
+        & + .seat-row {
+            /* border-top: 1px dotted $lighter-10; */
+        }
+    }
+}
+
+.seat {
+    display: inline-block;
+    -webkit-user-select: none;
+    input[type="checkbox"], .seat-checkbox {
+        // visibility: hidden;
+        display: none;
+        
+        &[disabled] + label, &.seat-disabled + label {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        &:checked + label, &.seat-checked + label {
+            background-color: #9ff5e8;
+            box-shadow: 0 0 1em $lighter-50;
+        }
+        
+    }
+    &.seat-hidden label {
+        visibility: hidden;
+    }
+    label {
+        display: inline-block;
+        width: 1.7em;
+        height: 2.3em;
+        line-height: 2.3em;
+        background-color: #ddc;
+        border-radius: 4px 4px 8px 8px;
+        cursor: pointer;
+        border: 1px solid gray;
+        box-shadow: 0 0 2px white inset, 1px 1px 0.5em black;
+        margin: 0 0.2em;
+        transition: all 0.3s ease-in-out;
+        
+        &:after {
+            content: '';
+            display: inline-block;
+            position: relative;
+            width: 1.7em;
+            height: 0.6em;
+            padding: 0 0.3em;
+            right: 0.3em;
+            border-radius: 1px;
+            background-color: inherit;
+            vertical-align: bottom;
+            box-shadow: 0 0 1px 1px $darken-40;
+        }
+    }
+}
+
+.seat-opbar {
+    // margin: 0.5em 0;
+    background-color: #2A2828;
+    padding: 1em;
+    box-shadow: 2px 2px 1em black, -1px -1px 0 #333 inset;
+    @include media-mobile {
+        padding: 0.5em 0; }
+    & > * {
+        display: inline-block;
+        margin: 0.4em 0;
+        
+        @include mq($until: tablet) {
+            display: block; }
+    }
+    
+    .seat-left-bar {
+        float: left; }
+    .seat-right-bar {
+        float: right; }
+    .seat-left-bar, .seat-right-bar {
+        @include mq($until: tablet) {
+            float: none; }
+    }
+}

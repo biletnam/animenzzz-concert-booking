@@ -6,6 +6,7 @@ class CreateOrders < ActiveRecord::Migration
       t.datetime :refund_time
       t.integer  :price
       t.string   :address
+      t.string   :trac_num
       t.string   :name
       t.string   :phone
       t.integer  :status

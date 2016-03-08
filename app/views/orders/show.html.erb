@@ -1,0 +1,44 @@
+ <div class="order-detail-cont">
+    <div class="order-detail">
+        <div class="ribbon">
+            <div class="ribbon-title font-bold">
+                <span class="right-floated font-larger">已完成</span>
+                <div>
+                    <span class="order-dotted">l3UmeTpjFw1qxt9l</span>
+                </div>
+                <div class="font-smaller">
+                    <span class="order-dotted">2015-02-04 16:49</span>
+                </div>
+            </div>
+        </div>
+        <div class="order-address-cont">
+            <div class="order-address">
+                <div class="align-center font-bold">收货人信息</div>
+                <div><strong>姓名：</strong><%= @order.name %></div>
+                <div><strong>物流地址：</strong><%= @order.address %></div>
+                <div><strong>手机号码：</strong><%= @order.phone %></div>
+                <div><strong>电子邮件：</strong><%= current_user.email %></div>
+                <div class="align-center font-bold">物流信息</div>
+                <div><strong>运单号码：</strong><%= @order.trac_num %></div>
+                <div class="align-center"><a href="#">查看跟踪信息</a></div>
+            </div>
+        </div>
+        <hr class="hr-order" />
+        <div class="align-center font-bold">商品清单</div>
+        <hr class="hr-order" />
+        <ul class="order-item-list">
+            <li class="order-item">
+                <span>成都站 一楼一区</span>
+                <span>单价 <span class="order-dotted">￥250</span></span>
+            </li>
+            <li class="order-item">
+                <span>成都站 一楼一区</span>
+                <span>单价 <span class="order-dotted">￥250</span></span>
+            </li>
+        </ul>
+        <hr class="hr-order" />
+        <div class="align-center font-bold">总金额</div>
+        <hr class="hr-order" />
+        <div class="align-center font-bold font-larger order-dotted">￥250</div>
+    </div>
+</div>

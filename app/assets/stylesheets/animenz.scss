@@ -3,6 +3,8 @@
 @import 'cd';
 @import 'essential';
 
+@import 'assets';
+
 .outer-container {
 	max-width: 768px;
 	margin: 0 auto;
@@ -16,19 +18,20 @@ hr {
 a {
     color: #f0f8ff;
     text-decoration: underline;
+    outline: none !important;
     
     &:hover {
         color: #a4dded;
+        outline: none !important;
     }
     &:active {
         color: #eee;
+        outline: none !important;
     }
 }
 
 html {
 	background-color: #ccc;
-    background: url(<%= asset_path 'noise.png' %>) repeat 0 0, 
-        linear-gradient(-180deg, #1B1D20 0%, #0B0B0B 13%, #090909 75%, #0A0A0A 90%, #000 100%);
     // background: url(/static/images/noise.png) repeat 0 0, linear-gradient(-180deg, #354149 0%, #1D252A 18%, #1C1C1C 36%, #111 70%, #000 81%, #000000 100%);
     // background-size: 100%;
 	// background-size: cover;
@@ -39,8 +42,8 @@ html {
 
 .index-main {
 	display: flex;
-	box-shadow: 0 0px 48px $darken-30;
     text-align: left;
+	box-shadow: 0 0px 48px $darken-30;
 
     @include mq($until: tablet) {
         flex-direction: column-reverse;
@@ -60,17 +63,25 @@ html {
             flex-direction: row;
         }
 
+        li {
+            flex-grow: 1;
+            flex-basis: 50%;
+            display: flex;
+        }
+
 		.show {
+            width: 100%;
+            display: block;
             position: relative;
             box-shadow: 0 1px 1px $lighter-30 inset;
             box-sizing: border-box;
             background-image: linear-gradient(180deg, #505057 0%, #313136 100%);
-			flex-grow: 1;
-            flex-basis: 50%;
 			padding: 0.5em;
 			padding-left: 1em;
             text-shadow: 0px 1px 1px black;
-            overflow: hidden;
+            overflow: auto;
+
+            text-decoration: none;
 			.show-title {
 				margin: 0.4em 0;
 			}
@@ -105,13 +116,10 @@ html {
 		background-color: red;
         position: relative;
         overflow: hidden;
+        @include user-select(none);
         
         &:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 100%;
+            @include pseudo-cover-all;
             box-shadow: 0 0 48px $darken-70 inset, 0 0 12px $darken-30;
             // it prevents touch events of slides from triggering 
             pointer-events: none;  
@@ -143,19 +151,17 @@ html {
             text-align: center;
             margin-bottom: 1em;
             text-shadow: 0 0 3px #333;
+            cursor: default;
             
             .index-pic-bar-indicators {
                 & .index-pic-bar-indicator-active {
-                    & > i:before {
-                        content: "\f111";
-                    }
+                    & > i:before { content: "\f111"; }
                 }
             }
         }
 	}
 
 }
-
 
 .footer {
 	margin-top: 2em;
@@ -268,6 +274,17 @@ input[type="password"] {
     }
 }
 
+.dark-panel {
+    background-color: #222;
+    padding: 1em;
+    border-radius: 6px;
+
+    @include media-mobile {
+        padding: 1em 0;
+        border-radius: 0;
+    }
+}
+
 .order-address-cont {
     color: #666;
     padding: 1em;
@@ -282,6 +299,9 @@ input[type="password"] {
         transparent 60px,
         rgba(0, 0, 255, .3) 60px,
         rgba(0, 0, 255, .3) 80px);
+    @include media-mobile {
+        border-radius: 0;
+    }
     // opacity: 0.5;
     .order-address {
         border-radius: 2px;
@@ -290,24 +310,22 @@ input[type="password"] {
     }
 }
 
-hr.hr-header {
-    margin: 0;
-    border: none;
-    background: #444;
-    height: 0.5em;
-    
-    &.hr-header-left { background: linear-gradient(to left, $lighter-20 0, transparent 100%); }
-    &.hr-header-right { background: linear-gradient(to right, $lighter-20 0, transparent 100%); }
+.user-select-none {
+    @include user-select(none);
 }
-
 .float-left { float: left; }
 .float-right { float: right; }
 .font-smaller { font-size: smaller; }
 .font-larger { font-size: larger; }
+.font-x-large { font-size: x-large; }
+.font-bolder { font-weight: bolder; }
 .font-bold { font-weight: bold; }
 .align-center { text-align: center; }
 .align-left { text-align: left; }
+.align-right { text-align: right; }
 .pos-relative { position: relative; }
+.overflow-auto { overflow: auto; }
+.no-padding { padding: 0 !important; }
 .clearfix {
     &:before, &:after {
         content: " ";

@@ -1,15 +1,25 @@
-<h2>注册</h2>
-<hr />
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form', :class => 'form-login' }) do |f| %>
-  <%= devise_error_messages! %>
-  <div class="form-group">
-    <%= f.text_field :name, :autofocus => true, :placeholder => '用户名' %>
-    <%= f.email_field :email, :placeholder => '邮箱' %>
-    <%= f.password_field :password, :placeholder => '密码' %>
-    <%= f.password_field :password_confirmation, :placeholder => '确认密码' %>
-  </div>
-  <div class="form-group">
-    <%= f.submit '注册', :class => 'button' %>
-  </div>
-  <%= link_to '登录', new_user_session_path %>
+<br />
+<div class="dark-panel">
+  <h2>注册</h2>
+  <hr />
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form', :class => 'form-login' }) do |f| %>
+    <%= devise_error_messages! %>
+    <div class="form-group">
+      <%= f.text_field :name, :autofocus => true, :placeholder => '用户名' %>
+      <%= f.email_field :email, :placeholder => '邮箱' %>
+      <%= f.password_field :password, :placeholder => '密码' %>
+      <%= f.password_field :password_confirmation, :placeholder => '确认密码' %>
+    </div>
+    <div class="form-group">
+      <%= f.submit '注册', :class => 'button' %>
+    </div>
+    <%= link_to '登录', new_user_session_path %>
+  <% end %>
+</div>
+
+<% content_for :breadcumb do %>
+<ul class="nav-bar float-left nav-breadcumb">
+    <li><% link_to '首页', '/' %></li>
+    <li>注册</li>
+</ul>
 <% end %>

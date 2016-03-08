@@ -27,3 +27,17 @@
     $opacity-ie: $opacity * 100;
     filter: alpha(opacity=$opacity-ie);
 }
+
+@mixin user-select($select) {
+    user-select: $select;
+    -webkit-user-select: $select;
+}
+
+@mixin pseudo-cover-all {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: '';
+    top: 0;
+    left: 0;
+}

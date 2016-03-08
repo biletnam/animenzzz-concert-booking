@@ -20,6 +20,8 @@ gem 'devise'
 gem 'figaro'
 gem 'high_voltage'
 gem 'pundit'
+gem 'pingpp'
+gem 'paperclip', '~> 4.3'
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'

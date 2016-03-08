@@ -1,0 +1,76 @@
+<ul class="order-list dark-panel">
+    <% @orders.each do |order| %>
+        <li class="order">
+            <table class="order-header order-bar-table">
+                <tr>
+                    <td>下单日期</td>
+                    <td rowspan="2"  class="order-bar-info-status"><strong>已完成</strong></td>
+                    <td>总金额</td>
+                </tr>
+                <tr>
+                    <td><%= order.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+                    <td><strong>￥<%= order.price %></strong></td>
+                </tr>
+            </table>
+            <table class="order-item-table">
+                <tr class="order-item">
+                    <td>成都站 一楼一区</td>
+                    <td>单价 ￥250</td>
+                </tr>
+                <tr class="order-item">
+                    <td>成都站 一楼一区</td>
+                    <td>单价 ￥250</td>
+                </tr>
+            </table>
+            <table class="order-footer order-bar-table">
+                <tr>
+                    <td>
+                        <span class="order-bar-info-id">
+                            <div>订单编号: l3UmeTpjFw1qxt9l</div>
+                        </span>
+                    </td>
+                    <td>
+                        <%= link_to user_order_path(current_user, order) do %>
+                            <button class="button order-bar-detail-button">查看详情</button>
+                        <% end %>
+                    </td>
+                </tr>
+            </table>
+        </li>
+    <% end %>
+</ul>
+<!--     
+    <li class="order">
+        <table class="order-header order-bar-table">
+            <tr>
+                <td>下单日期</td>
+                <td rowspan="2"  class="order-bar-info-status"><strong>已完成</strong></td>
+                <td>总金额</td>
+            </tr>
+            <tr>
+                <td>2015-02-04</td>
+                <td><strong>￥250</strong></td>
+            </tr>
+        </table>
+        <table class="order-item-table">
+            <tr class="order-item">
+                <td>成都站 一楼一区</td>
+                <td>单价 ￥250</td>
+            </tr>
+            <tr class="order-item">
+                <td>成都站 一楼一区</td>
+                <td>单价 ￥250</td>
+            </tr>
+        </table>
+        <table class="order-footer order-bar-table">
+            <tr>
+                <td>
+                    <span class="order-bar-info-id">
+                        <div>订单编号: l3UmeTpjFw1qxt9l</div>
+                    </span>
+                </td>
+                <td><button class="button order-bar-detail-button">查看详情</button></td>
+            </tr>
+        </table>
+    </li>
+</ul> -->

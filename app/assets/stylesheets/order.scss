@@ -1,0 +1,87 @@
+
+@import 'mqp';
+@import 'cd';
+
+.order-detail-cont {
+    // background-color: $color1; 
+    $color1-var: desaturate(darken($color1, 15%), 13%);
+    box-shadow: // -6px -6px 1em #666 inset,
+                1px 1em 1px 1px $lighter-50 inset,
+                1px 1px 3px $darken-30,
+                1px 3px 0 $color1-var, 1px 4px 0 $lighter-50,
+                1px 1px 4px 4px $darken-30,
+                0 8px 0 $color1-var, 0 9px 0 $lighter-50;
+    border-radius: 0 0 3px 3px;
+    color: #666;
+    line-height: 2;
+    padding: 2em 1em 1em 1em;
+    margin: -1em 1em 1em 1em;
+    position: relative;
+    // z-index: -1;
+    
+    a { color: #165c91; }
+    
+    hr.hr-order {
+        margin: 1em 0;
+        border: none;
+        background: #444;
+        background: linear-gradient(to right, transparent 0, $darken-20 50%, transparent 100%);
+        height: 1px;
+    }
+    
+    .order-detail {
+        border-left: 1px solid $darken-5;
+        border-right: 1px solid $darken-5;
+        text-align: left;
+        padding: 0 1em;
+        
+        ul.order-item-list {
+            padding: 0;
+            // list-style: none;
+            margin-left: 1em;
+            li.order-item {
+                
+            }
+        }
+        
+        .order-address-cont {
+            margin: 0 -2em; }
+    }
+}
+
+.order-dotted { font-family: 'Animenz-Dotted'; }
+
+.ribbon {
+    .ribbon-title {
+        display: block;
+        line-height: 1.5;
+        font-size: 1.2rem;
+        width: 100%;
+        margin: 0;
+        padding: 0.3em 2.5em;
+        position: relative;
+        left: -2.5em;
+        color: #cfcfcf;
+        text-shadow: 0 1px 1px #111;
+        border-top: 1px solid #363636;
+        border-bottom: 1px solid #202020;
+        background: #333;
+        background: linear-gradient(to bottom, #444 0%, #333 100%);
+        border-radius: 3px 3px 0 0;
+        box-shadow: 0 2px 0.5em $darken-40, 1px 1px 1px $lighter-10 inset;
+        
+        &::before, &::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            position: absolute;
+            bottom: -11px;
+            z-index: -10;
+            border: 5px solid;
+            border-color: #222 transparent transparent transparent;    
+        }
+        &::before { left: 0; }
+        &::after { right: 0; }
+    }
+}

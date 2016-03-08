@@ -1,24 +1,34 @@
 <div class="index-main">
     <ul class="index-lst-show">
-        <li class="show">
-            <h3 class="show-title">成都</h3>
-            <p>12月1日晚</p>
-            <p>状态: </p>
+        <% @recitals.each do |recital| %>
+            <li>
+                <%= link_to recital, :class => 'show' do %>
+                    <h3 class="show-title"><%= recital.city %></h3>
+                    <p><%= recital.start_time.strftime('%m月%d日晚') unless recital.start_time.nil? %></p>
+                    <p>状态: </p>
+                <% end %>
+            </li>
+        <% end %>
+        <li>
+            <a class="show" href="#">
+                <h3 class="show-title">广州</h3>
+                <p>12月1日晚</p>
+                <p>状态: </p>
+            </a>
         </li>
-        <li class="show">
-            <h3 class="show-title">广州</h3>
-            <p>12月1日晚</p>
-            <p>状态: </p>
+        <li>
+            <a class="show" href="#">
+                <h3 class="show-title">武汉</h3>
+                <p>12月1日晚</p>
+                <p>状态: </p>
+            </a>
         </li>
-        <li class="show">
-            <h3 class="show-title">武汉</h3>
-            <p>12月1日晚</p>
-            <p>状态: </p>
-        </li>
-        <li class="show">
-            <h3 class="show-title">厦门</h3>
-            <p>12月1日晚</p>
-            <p>状态: </p>
+        <li>
+            <a class="show" href="#">
+                <h3 class="show-title">厦门</h3>
+                <p>12月1日晚</p>
+                <p>状态: </p>
+            </a>
         </li>
     </ul>
     <div class="index-pic-cont">
@@ -42,3 +52,9 @@
         </div>
     </div>
 </div>
+
+<% content_for :breadcumb do %>
+<ul class="nav-bar float-left">
+    <li class="nav-bar-left-btn">选择场次</li>
+</ul>
+<% end %>

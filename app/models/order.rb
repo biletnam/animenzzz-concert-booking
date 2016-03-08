@@ -4,7 +4,7 @@ class Order < ActiveRecord::Base
   has_many :orderitems, dependent: :destroy
   has_many :seats, through: :orderitems
 
-  before_save :set_apply_time, :total_price
+  before_save :set_apply_time
 
   def set_default_state
   	self.state ||= :wait
@@ -14,6 +14,7 @@ class Order < ActiveRecord::Base
   	self.apply_time = Time.now + 30.minutes
   end
 
-  def total_price
-  	@total_price ||= self.seats.collect { |s| s.price }.sum 		
+  # def total_price
+  # 	@total_price ||= self.seats.collect { |s| s.price }.sum
+  # end 		
 end

@@ -1,3 +1,65 @@
-// Place all the styles related to the Area controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'mqp';
+@import 'cd';
+
+.area-main {
+    display: flex;
+    
+    .area-list {
+        @include mq($until: tablet) {
+            order: 1;
+            flex-direction: row;
+            flex-wrap: wrap;
+            padding: 0;
+        }
+        display: flex;
+        flex: 0 0 auto;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1em 1em;
+        .area-list-item {
+            @include mq($from: tablet) {
+                &:first-child {
+                    border-radius: 3px 3px 0 0; }
+                &:last-child {
+                    border-radius: 0 0 3px 3px; }
+            }
+            display: inline-block;
+            padding: 1.2em 1.8em;
+            border: 1px solid gray;
+            border-radius: 1px;
+            background: $lighter-20;
+            box-shadow: 1px 1px 5px $lighter-10 inset;
+            text-shadow: 1px 0 0 #000;
+            margin: -1px 0;
+            @include mq($until: tablet) {
+                margin: -1px -1px;
+            }
+            &:hover {
+                background: $lighter-30;
+            }
+        }
+    }
+    
+    .area-preview-cont {
+        .area-preview {
+            max-height: 720px;
+            padding: 3px;
+            img {
+                max-width: 100%;
+                border: 2px solid black;
+                border-radius: 3px;
+                box-shadow: 0 0 5px $lighter-50 inset, 0 0 0px 3px #FC0,
+                            0 0 0px 1px black, 1px 2px 5px $darken-70;
+                box-sizing: border-box;
+            }
+            @include mq($until: tablet) {
+                margin: 0;
+            }
+        }
+    }
+    
+    @include mq($until: tablet) {
+        flex-direction: column;
+    }
+}

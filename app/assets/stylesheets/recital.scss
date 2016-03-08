@@ -1,0 +1,101 @@
+
+@import "essential";
+@import "cd";
+
+.recital-poster-cont {
+	max-width: 40%;
+	position: relative;
+	float: left;
+
+	@include media-mobile {
+		max-width: 100%;
+		width: 100%;
+		float: none;
+	}
+
+	&:after {
+		@include pseudo-cover-all;
+
+		box-shadow: -0.5em 0 1em $darken-50 inset, 1px 0 0 $lighter-10, 0 0 2px $lighter-20;
+		@include media-mobile {
+			box-shadow: 0 -0.5em 1em black inset, 0 1px 0 $lighter-10, 0 0 2px $lighter-20; }
+	}
+
+	.recital-poster {
+		max-width: 100%;
+		max-height: 100%;
+		border-radius: 0 0 0 2px;
+		display: block;
+		@include media-mobile {
+			border-radius: 0;
+		}
+	}
+}
+
+.recital-detail-cont {
+	.recital-title {
+		padding: 1em 1em 0.5em 1em;
+		text-align: left;
+		@include media-mobile {
+			text-align: center; }
+	}
+	.recital-button-cont {
+		text-align: left;
+		padding: 1em;
+		@include media-mobile {
+			padding: 1em 0;
+			& > * { width: 100%; }
+		}
+	}
+}
+
+.recital-description {
+	background-color: #222;
+	padding: 1em;
+	border-radius: 6px;
+}
+
+hr.hr-recital {
+    margin: 0;
+    border: none;
+    background: #444;
+    height: 2px;
+    background: linear-gradient(to right, $lighter-20 0, transparent 120%);
+    margin: 0.5em 0;
+    @include media-mobile {
+    	background: linear-gradient(to right, transparent 0, $lighter-40 50%, transparent 100%);
+    }
+}
+
+// button for "买" "买买买" "立即购买" "不买还是人"
+.btn-buy-buy-buy {
+	border: none;
+	display: inline-block;
+	text-decoration: none;
+	box-sizing: border-box;
+    color: #f0feff;
+    border-radius: 1px;
+    text-shadow: 0 1px 0 #333;
+    background: #ddd;
+    padding: .5em 1.4em;
+    font-size: 1.5em;
+	background-image: linear-gradient(-180deg, #D9534F 0%, #A82622 100%);
+	box-shadow: 0 -1px 1px $lighter-30;
+	@include user-select(none);
+}
+
+dl.dl-horizontal {
+	font-size: 1.1em;
+	dt {
+		float: left;
+		width: 6em;
+		padding: 0.5em;
+		box-sizing: border-box;
+		line-height: 2em;
+	}
+	dd {
+		padding: 0.5em;
+		line-height: 2em;
+		overflow: auto;
+	}
+}

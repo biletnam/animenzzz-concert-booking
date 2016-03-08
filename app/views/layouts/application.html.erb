@@ -6,8 +6,8 @@
     <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <title><%= content_for?(:title) ? yield(:title) : "My Application" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "My Application" %>">
-    <%= stylesheet_link_tag 'normalize' %>
-    <%= stylesheet_link_tag 'font-awesome' %>
+    <%= stylesheet_link_tag 'normalize', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'font-awesome', 'data-turbolinks-track' => true %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 

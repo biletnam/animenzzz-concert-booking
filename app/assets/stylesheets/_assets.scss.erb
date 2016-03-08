@@ -1,0 +1,13 @@
+
+@import "cd";
+
+html {
+	background: url(<%= asset_path 'noise.png' %>) repeat 0 0, 
+        linear-gradient(-180deg, #1B1D20 0%, #0B0B0B 13%, #090909 75%, #0A0A0A 90%, #000 100%);
+}
+
+.order-detail-cont {
+	background: url(<%= asset_path 'beige-paper.png' %>) 0% 0% / 196px 196px repeat, 
+            linear-gradient($darken-10 .1em, transparent .1em) 0% 0% / 100% 2em repeat,
+            linear-gradient($color1 0, desaturate(darken($color1, 10%), 10%) 100%) no-repeat;
+}

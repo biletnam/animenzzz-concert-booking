@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160127132633) do
+ActiveRecord::Schema.define(version: 20160307110012) do
 
   create_table "areas", force: :cascade do |t|
     t.integer  "price"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20160127132633) do
     t.datetime "refund_time"
     t.integer  "price"
     t.string   "address"
+    t.string   "trac_num"
     t.string   "name"
     t.string   "phone"
     t.integer  "status"
@@ -56,8 +57,16 @@ ActiveRecord::Schema.define(version: 20160127132633) do
     t.integer  "capacity"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "poster_file_name"
+    t.string   "poster_content_type"
+    t.integer  "poster_file_size"
+    t.datetime "poster_updated_at"
+    t.string   "venue_image_file_name"
+    t.string   "venue_image_content_type"
+    t.integer  "venue_image_file_size"
+    t.datetime "venue_image_updated_at"
   end
 
   create_table "seats", force: :cascade do |t|

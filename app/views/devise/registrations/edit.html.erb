@@ -48,6 +48,13 @@
   <%= f.submit '保存更改', :class => 'button' %>
 <% end %>
 
+<% content_for :breadcumb do %>
+<ul class="nav-bar float-left nav-breadcumb">
+    <li><% link_to '首页', '/' %></li>
+    <li>用户信息</li>
+</ul>
+<% end %>
+
 <% if false %>
   <div class="authform">
     <h3>Cancel Account</h3>

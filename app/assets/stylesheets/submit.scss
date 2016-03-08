@@ -1,0 +1,112 @@
+
+@import 'mqp';
+@import 'cd';
+@import 'essential';
+
+.addr-input-group {
+    position: relative;
+    margin-top: 1em;
+    input {
+        min-width: 18em;
+        background: transparent;
+        border: none;
+        border-bottom: 1px dashed gray;
+        border-radius: 1px;
+        outline: none;
+        transition: all 0.2s ease-in-out;
+        padding: 0.5em;
+        box-shadow: none;
+        color: #666;
+        box-sizing: border-box;
+        
+        &:focus {
+            border-bottom: 2px solid gray;
+        }
+
+        @include media-mobile {
+            width: 100%;
+        }
+    }
+    
+    label {
+        position: absolute;
+        top: 0.5em;
+        left: 1em;
+        transition: all 0.2s ease-in-out;
+    }
+    
+    input:focus ~ label, input:valid ~ label {
+        top: -1em;
+        left: 0;
+        font-weight: bold;
+        font-size: smaller;
+    }
+}
+
+.submit-items-cont {
+    // background-image: repeating-linear-gradient(45deg,
+    //         transparent,
+    //         transparent 4px,
+    //         #444 4px,
+    //         #444 6px);
+    // padding: 0.2em;
+    
+    .submit-items {
+        background-color: #3C3838;
+        width: 100%;
+        text-align: left;
+        
+        thead {
+            background: linear-gradient(to top, $darken-20, transparent);
+            th {
+                border-bottom: 2px solid #555;
+            }
+        }
+        
+        tbody td, tbody th {
+            border-bottom: 1px solid #484848;
+        }
+        
+        tbody > tr:nth-of-type(odd) {
+            background: $darken-5;
+        }
+        tbody > tr:nth-of-type(even) {
+            background: $lighter-5;
+        }
+        
+        td, th {
+            padding: 0.8em 0.5em;
+        }
+    }
+}
+
+.submit-lastinfo {
+    position: relative;
+    display: table;
+    width: 100%;
+    
+    & > * {
+        display: table-cell;
+    }
+    
+    .submit-address {
+        width: 70%;
+    }
+    
+    @include media-mobile {
+        display: block;
+        & > * { display: block; }
+        .submit-address {
+            width: 100%; }
+    }
+    
+    .submit-subtotal {
+        padding: 1em;
+        vertical-align: middle;
+        .submit-total {
+            font-size: xx-large;
+            font-weight: bold;
+            text-shadow: 1px 1px 1px #222;
+        }
+    }
+}
