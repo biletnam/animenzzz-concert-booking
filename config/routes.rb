@@ -13,12 +13,12 @@ Rails.application.routes.draw do
   devise_for :users
   
   resources :users, only: [:show] do 
-  	resources :orders, only: [:index, :show]
+  	resources :orders
   end
 
   resources :recitals, only: [:show] do
-  	resources :areas, only: [:show] do
-  	  resources :seats, only: []
+  	resources :areas, only: [:index, :show] do
+  	  resources :seats, only: [:index]
   	end
   end
 end

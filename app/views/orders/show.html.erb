@@ -42,3 +42,11 @@
         <div class="align-center font-bold font-larger order-dotted">￥250</div>
     </div>
 </div>
+
+<% content_for :breadcumb do %>
+<ul class="nav-bar float-left nav-breadcumb">
+    <li><%= link_to '用户信息', edit_user_registration_path %></li>
+    <li><%= link_to '订单列表', user_orders_path(current_user) %></li>
+    <li>订单详情</li>
+</ul>
+<% end %>

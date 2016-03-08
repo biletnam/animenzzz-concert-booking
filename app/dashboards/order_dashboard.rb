@@ -17,6 +17,7 @@ class OrderDashboard < Administrate::BaseDashboard
     refund_time: Field::DateTime,
     price: Field::Number,
     address: Field::String,
+    trac_num: Field::String,
     name: Field::String,
     phone: Field::String,
     created_at: Field::DateTime,
@@ -32,6 +33,7 @@ class OrderDashboard < Administrate::BaseDashboard
     :user,
     #:orderitems,
     :seats,
+    :trac_num,
     :id,
   ]
 
@@ -46,6 +48,7 @@ class OrderDashboard < Administrate::BaseDashboard
     :user,
     #:orderitems,
     :seats,
+    :trac_num,
     :pay_time,
     :apply_time,
     :refund_time,

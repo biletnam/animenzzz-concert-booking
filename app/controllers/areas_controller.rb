@@ -1,10 +1,12 @@
 class AreasController < ApplicationController
 
-  # def index
-  # 	@areas = Recital.find(params[:recital_id]).areas
-  # end
+  def index
+  	@recital = Recital.find params[:recital_id]
+  	@areas = @recital.areas
+  end
 
   def show
-  	@area = Recital.find(params[:recital_id]).areas.find(params[:id])
+  	@recital = Recital.find params[:recital_id]
+  	@area = @recital.areas.find(params[:id])
   end
 end

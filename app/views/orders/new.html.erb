@@ -1,0 +1,71 @@
+<div class="seat-main">
+    <h3>订单结算</h3>
+    <div class="submit-items-cont">
+        <table class="submit-items">
+            <colgroup>
+                <col span="1" style="width: 5%;" />
+                <col span="1" style="width: 40%;" />
+                <col span="1" style="width: 30%;" />
+                <col span="1" style="width: 15%;" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>场次</th>
+                    <th>区域</th>
+                    <th>价格</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @order.seats.each do |seat| %>
+                <tr>
+                    <th>1</th>
+                    <td><%= seat.area.recital.city %>站</td>
+                    <td><%= seat.area.name %></td>
+                    <th>￥<%= seat.area.price %></th>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+    
+    <br />
+    
+    <div class="submit-lastinfo">
+        <div class="submit-address">
+        <div class="order-address-cont align-left">
+            <div class="order-address">
+                <div class="align-center font-bold">收货人信息</div>
+                <div class="addr-input-group">
+                    <input type="text" id="submit-input-name" required />
+                    <label for="submit-input-name">姓名</label>
+                </div>
+                <div class="addr-input-group">
+                    <input type="text" id="submit-input-addr" required />
+                    <label for="submit-input-addr">物流地址</label>
+                </div>
+                <div class="addr-input-group">
+                    <input type="text" id="submit-input-phone" required />
+                    <label for="submit-input-phone">手机号码</label>
+                </div>
+                <div class="addr-input-group">
+                    <input type="email" id="submit-input-email" required />
+                    <label for="submit-input-email">电子邮件</label>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="submit-subtotal">
+            应付总金额：<span class="submit-total">￥233.00</span>
+        </div>
+   </div>
+</div>
+<div class="seat-opbar">
+    <span class="seat-left-bar">
+    </span>
+    <span>
+        <button class="button">提交</button>
+    </span>
+    <span class="seat-right-bar">
+    </span>
+</div>

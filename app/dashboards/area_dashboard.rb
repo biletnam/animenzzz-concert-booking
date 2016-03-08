@@ -10,6 +10,7 @@ class AreaDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     recital: Field::BelongsTo,
     seats: Field::HasMany,
+    name: Field::String,
     id: Field::Number,
     price: Field::Number,
     capacity: Field::Number,
@@ -24,6 +25,7 @@ class AreaDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :recital,
+    :name,
     :seats,
     :id,
     :price,
@@ -38,6 +40,7 @@ class AreaDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :recital,
+    :name,
     :seats,
     :price,
     :capacity,

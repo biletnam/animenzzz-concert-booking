@@ -11,6 +11,9 @@ class OrdersController < ApplicationController
 
   def new
   	@order = Order.new
+    params[:area][:seat_ids].pop
+    @seats = Seat.find(params[:area][:seat_ids])
+    @order.seats << @seats
   end
 
   def create
@@ -31,6 +34,6 @@ class OrdersController < ApplicationController
   private
 
   def secure_params
-  	params.require(:order).permit(:address, :phone, :name)
+  	params.require(:order).permit(:address, :phone, :name, :seat_ids => [])
   end
 end

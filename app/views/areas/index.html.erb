@@ -1,0 +1,30 @@
+<div class="area-main">
+    <ul class="area-list">
+<!--         <li class="area-list-item">一楼一区</li>
+        <li class="area-list-item">一楼二区</li>
+        <li class="area-list-item">一楼三区</li>
+        <li class="area-list-item">二楼一区</li>
+        <li class="area-list-item">二楼二区</li>
+        <li class="area-list-item">二楼三区</li> -->
+        <% @areas.each_with_index do |area, index| %>
+            <%= link_to recital_area_path(@recital, area) do %>
+                <li class="area-list-item"><%= index + 1 %>区</li>
+            <% end %>
+        <% end %>
+    </ul>
+    <div class="area-preview-cont">
+        <div class="title-secondary">
+            <h3>区域示意图</h3>
+        </div>
+        <div class="area-preview">
+            <%= image_tag 'area-map.jpg' %>
+        </div>
+    </div>
+</div>
+
+<% content_for :breadcumb do %>
+<ul class="nav-bar float-left nav-breadcumb">
+    <li><%= link_to '首页', '/' %></li>
+    <li>选择区域</li>
+</ul>
+<% end %>

@@ -39,6 +39,13 @@
         </li>
     <% end %>
 </ul>
+
+<% content_for :breadcumb do %>
+<ul class="nav-bar float-left nav-breadcumb">
+    <li><%= link_to '首页', root_path %></li>
+    <li>订单列表</li>
+</ul>
+<% end %>
 <!--     
     <li class="order">
         <table class="order-header order-bar-table">

@@ -31,6 +31,8 @@
 @mixin user-select($select) {
     user-select: $select;
     -webkit-user-select: $select;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 @mixin pseudo-cover-all {

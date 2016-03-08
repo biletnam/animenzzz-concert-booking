@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20160307110012) do
 
   create_table "areas", force: :cascade do |t|
+    t.string   "name"
     t.integer  "price"
     t.integer  "capacity"
     t.integer  "recital_id"

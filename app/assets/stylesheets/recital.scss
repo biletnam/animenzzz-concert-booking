@@ -50,9 +50,9 @@
 }
 
 .recital-description {
-	background-color: #222;
-	padding: 1em;
-	border-radius: 6px;
+	@include media-mobile {
+		padding: 1em 0.5em;
+	}
 }
 
 hr.hr-recital {

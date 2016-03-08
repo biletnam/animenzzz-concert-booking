@@ -1,6 +1,7 @@
 class CreateAreas < ActiveRecord::Migration
   def change
     create_table :areas do |t|
+      t.string  :name
       t.integer :price
       t.integer :capacity
       t.references :recital, index: true, foreign_key: true
