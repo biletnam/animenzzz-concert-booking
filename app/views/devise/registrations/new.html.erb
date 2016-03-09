@@ -2,8 +2,8 @@
 <div class="dark-panel">
   <h2>注册</h2>
   <hr />
+  <%= devise_error_messages! %>
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form', :class => 'form-login' }) do |f| %>
-    <%= devise_error_messages! %>
     <div class="form-group">
       <%= f.text_field :name, :autofocus => true, :placeholder => '用户名' %>
       <%= f.email_field :email, :placeholder => '邮箱' %>

@@ -1,5 +1,5 @@
 <ul class="order-list dark-panel">
-    <% @orders.each do |order| %>
+    <% if @orders.each do |order| %>
         <li class="order">
             <table class="order-header order-bar-table">
                 <tr>
@@ -35,6 +35,8 @@
                 </tr>
             </table>
         </li>
+    <% end.empty? %>
+        <h2>目前没有订单。</h2>
     <% end %>
 </ul>
 

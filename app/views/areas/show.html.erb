@@ -9,7 +9,7 @@
                 </span>
             <% end %>
         </div>
-    <!--<div class="title-secondary">-->
+    </div>
     <div>
         目前已选择 <span class="seat-count">0</span> 个座位
     </div>
@@ -33,8 +33,7 @@
         </span>
     </span>
     <span>
-        <button class="button">清空</button>
-        <!-- <button class="button">提交</button> -->
+        <button class="button seat-btn-clear" type="button">清空</button>
         <%= f.submit '提交', class: 'button' %>
     </span>
     <span class="seat-right-bar">
@@ -42,7 +41,7 @@
 </div>
 <% end %>
 
-
+<% content_for :header_class do %>continuous<% end %>
 <% content_for :breadcumb do %>
 <ul class="nav-bar float-left nav-breadcumb">
     <li><%= link_to '首页', '/' %></li>
@@ -52,9 +51,28 @@
 <% end %>
 
 <script>
-    $('label.seat-label').on('click', function(e) {
+    $('label.seat-label').on('click', function (e) {
         var e = $(e.target).parent().children('input[type="checkbox"]');
-        e.prop('checked', !e.prop('checked'));
+        e.prop('checked', !e.prop('checked')).change();
         return false;
+    });
+    
+    $(function () {
+        $('.seat-btn-clear').on('click', function () {
+            $('.seat input[type="checkbox"]').prop('checked', false).change();
+        });
+    });
+    
+    $(function () {
+        var MAX_SEAT_COUNT = 4;
+        var seatCount = 0;
+        $('.seat > input[type="checkbox"]').on('change', function (e) {
+            if (e.target.checked) { seatCount++; } else { if (seatCount > 0) { seatCount--; } }
+            if (seatCount >= MAX_SEAT_COUNT) {
+                $('.seat > input[type="checkbox"]:not(:checked)').addClass('seat-disabled');
+            } else { $('.seat > input[type="checkbox"]').removeClass('seat-disabled'); }
+            
+            $('.seat-count').text(seatCount.toString());
+        });
     });
 </script>

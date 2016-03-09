@@ -1,15 +1,11 @@
 <div class="area-main">
     <ul class="area-list">
-<!--         <li class="area-list-item">一楼一区</li>
-        <li class="area-list-item">一楼二区</li>
-        <li class="area-list-item">一楼三区</li>
-        <li class="area-list-item">二楼一区</li>
-        <li class="area-list-item">二楼二区</li>
-        <li class="area-list-item">二楼三区</li> -->
         <% @areas.each_with_index do |area, index| %>
-            <%= link_to recital_area_path(@recital, area) do %>
-                <li class="area-list-item"><%= index + 1 %>区</li>
-            <% end %>
+            <li>
+                <%= link_to recital_area_path(@recital, area), :class => "area-list-item" do %>
+                    <%= index + 1 %>区
+                <% end %>
+            </li>
         <% end %>
     </ul>
     <div class="area-preview-cont">

@@ -33,6 +33,10 @@ ul.nav-bar.nav-breadcumb {
         padding: 0.6em 0.8em;
         position: relative;
         z-index: 1;
+
+        a {
+            text-decoration: none;
+        }
         
         $grad-colors: #3b4145, #333438, #2d2f30, #3a3e40;
         &:first-child {
@@ -166,4 +170,12 @@ ul.nav-bar-profile-menu {
     }
     .nav-bar-profile-arrow:before {
         content: "\f106"; }
+}
+
+// dirty hack to expand the clickable
+//  area of menu 'DOWN' button in PC
+.hide-mobile .nav-bar-profile-show-btn {
+    display: inline-block;
+    margin: -0.4em;
+    padding: 0.4em 0.6em;
 }

@@ -72,7 +72,7 @@
 </div>
 <% end %>
 
-
+<% content_for :header_class do %>continuous<% end %>
 <% content_for :breadcumb do %>
 <ul class="nav-bar float-left nav-breadcumb">
     <li><%= link_to '首页', root_path %></li>
