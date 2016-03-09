@@ -22,6 +22,7 @@ gem 'high_voltage'
 gem 'pundit'
 gem 'pingpp'
 gem 'paperclip', '~> 4.3'
+gem 'wicked'
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'

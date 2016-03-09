@@ -1,3 +1,4 @@
+<%= form_for @order do |f| %>
 <div class="seat-main">
     <h3>订单结算</h3>
     <div class="submit-items-cont">
@@ -37,26 +38,26 @@
             <div class="order-address">
                 <div class="align-center font-bold">收货人信息</div>
                 <div class="addr-input-group">
-                    <input type="text" id="submit-input-name" required />
-                    <label for="submit-input-name">姓名</label>
+                    <%= f.text_field :name, { :id => 'submit-input-name', :required => true  } %>
+                    <%= f.label '姓名', for: 'submit-input-name' %>
                 </div>
                 <div class="addr-input-group">
-                    <input type="text" id="submit-input-addr" required />
-                    <label for="submit-input-addr">物流地址</label>
+                    <%= f.text_field :address, {:id => 'submit-input-addr', :required => true } %>
+                    <%= f.label '物流地址', for: 'submit-input-addr' %>
                 </div>
                 <div class="addr-input-group">
-                    <input type="text" id="submit-input-phone" required />
-                    <label for="submit-input-phone">手机号码</label>
+                    <%= f.text_field :phone, { :id => 'submit-input-phone', :required => true } %>
+                    <%= f.label '手机号码', for: 'submit-input-phone' %>
                 </div>
-                <div class="addr-input-group">
+<!--                 <div class="addr-input-group">
                     <input type="email" id="submit-input-email" required />
                     <label for="submit-input-email">电子邮件</label>
-                </div>
+                </div> -->
             </div>
         </div>
         </div>
         <div class="submit-subtotal">
-            应付总金额：<span class="submit-total">￥233.00</span>
+            应付总金额：<span class="submit-total">￥<%= @order.price %></span>
         </div>
    </div>
 </div>
@@ -64,8 +65,17 @@
     <span class="seat-left-bar">
     </span>
     <span>
-        <button class="button">提交</button>
+        <%= f.submit '提交', class: 'button' %>
     </span>
     <span class="seat-right-bar">
     </span>
 </div>
+<% end %>
+
+
+<% content_for :breadcumb do %>
+<ul class="nav-bar float-left nav-breadcumb">
+    <li><%= link_to '首页', root_path %></li>
+    <li><%= link_to '订单' %></li>
+</ul>
+<% end %>

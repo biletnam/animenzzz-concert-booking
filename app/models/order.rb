@@ -1,20 +1,34 @@
 class Order < ActiveRecord::Base
-  enum state: [:wait, :paid, :deliveried, :received]
+  enum status: [:wait, :paid, :deliveried, :received]
+
   belongs_to :user
   has_many :orderitems, dependent: :destroy
   has_many :seats, through: :orderitems
 
-  before_save :set_apply_time
+  before_save :set_default_state, :set_apply_time, :total_price
 
   def set_default_state
-  	self.state ||= :wait
+  	self.status ||= :wait
   end
 
   def set_apply_time
   	self.apply_time = Time.now + 30.minutes
   end
 
-  # def total_price
-  # 	@total_price ||= self.seats.collect { |s| s.price }.sum
-  # end 		
+  def total_price
+    self.price ||= self.seats.collect {|p| p.area.price }.sum
+  end
+
+  def get_status
+    case self.status
+    when 'wait'
+      '待付款'
+    when 'paid'
+      '已付款'
+    when 'deliveried' 
+      '已寄送'
+    else
+      '已签收'
+    end
+  end	
 end

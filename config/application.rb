@@ -27,6 +27,7 @@ module TicketBooking
     config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
 
     Pingpp.api_key = 'sk_test_1KWPy5KqPGaDyjvvPGjDerv1'
+    Pingpp.private_key_path = '/home/jeffery/rails/ticket-booking/rsa_private_key.pem'
 
     config.time_zone = 'Beijing'
 

@@ -2,12 +2,12 @@
     <div class="order-detail">
         <div class="ribbon">
             <div class="ribbon-title font-bold">
-                <span class="right-floated font-larger">已完成</span>
+                <span class="right-floated font-larger"><%= @order.get_status %></span>
                 <div>
                     <span class="order-dotted">l3UmeTpjFw1qxt9l</span>
                 </div>
                 <div class="font-smaller">
-                    <span class="order-dotted">2015-02-04 16:49</span>
+                    <span class="order-dotted"><%= @order.created_at.strftime('%Y-%m-%d %H:%M:%S') %></span>
                 </div>
             </div>
         </div>
@@ -27,26 +27,24 @@
         <div class="align-center font-bold">商品清单</div>
         <hr class="hr-order" />
         <ul class="order-item-list">
+            <% @order.seats.each do |seat| %>
             <li class="order-item">
-                <span>成都站 一楼一区</span>
-                <span>单价 <span class="order-dotted">￥250</span></span>
+                <span><%= seat.area.recital.city %>站 <%= seat.area.name %></span>
+                <span>单价 <span class="order-dotted">￥<%= seat.area.price %></span></span>
             </li>
-            <li class="order-item">
-                <span>成都站 一楼一区</span>
-                <span>单价 <span class="order-dotted">￥250</span></span>
-            </li>
+            <% end %>
         </ul>
         <hr class="hr-order" />
         <div class="align-center font-bold">总金额</div>
         <hr class="hr-order" />
-        <div class="align-center font-bold font-larger order-dotted">￥250</div>
+        <div class="align-center font-bold font-larger order-dotted">￥<%= @order.price %></div>
     </div>
 </div>
 
 <% content_for :breadcumb do %>
 <ul class="nav-bar float-left nav-breadcumb">
     <li><%= link_to '用户信息', edit_user_registration_path %></li>
-    <li><%= link_to '订单列表', user_orders_path(current_user) %></li>
+    <li><%= link_to '订单列表', orders_path %></li>
     <li>订单详情</li>
 </ul>
 <% end %>

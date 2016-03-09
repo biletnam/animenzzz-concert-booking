@@ -20,6 +20,7 @@ class OrderDashboard < Administrate::BaseDashboard
     trac_num: Field::String,
     name: Field::String,
     phone: Field::String,
+    status: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }

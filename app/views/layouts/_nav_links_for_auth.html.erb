@@ -14,7 +14,7 @@
         <li><%= link_to '管理界面', '/admin' %></li>
     <% end %>
     <li><%= link_to '个人信息', edit_user_registration_path %></li>
-    <li><%= link_to '订单列表', user_orders_path(current_user) %></li>
+    <li><%= link_to '订单列表', orders_path %></li>
     <li><%= link_to '退出登录', destroy_user_session_path, :method => 'delete' %></li>
     <li class="hide-desktop">
         <a href="#" class="align-center nav-bar-profile-show-btn">

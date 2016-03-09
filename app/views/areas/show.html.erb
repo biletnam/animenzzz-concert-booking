@@ -1,4 +1,4 @@
-<%= form_for [@recital, @area], url: new_user_order_path(current_user), method: :get do |f| %>
+<%= form_for [@recital, @area], url: new_order_path, method: :get do |f| %>
 <div class="seat-main">
     <div class="seat-container">
         <div class="seat-row">
@@ -8,54 +8,7 @@
                     <label class="seat-label"></label>
                 </span>
             <% end %>
-<!--             <span class="seat">
-                <input type="checkbox" disabled id="seat00-01" />
-                <label for="seat00-01"></label>
-            </span>
-            <span class="seat">
-                <input type="checkbox" id="seat00-02" />
-                <label for="seat00-02"></label>
-            </span>
-            <span class="seat">
-                <input type="checkbox" id="seat00-03" />
-                <label for="seat00-03"></label>
-            </span>
-            <span class="seat">
-                <input type="checkbox" disabled id="seat00-04" />
-                <label for="seat00-04"></label>
-            </span>
-            <span class="seat">
-                <input type="checkbox" id="seat00-05" />
-                <label for="seat00-05"></label>
-            </span>
         </div>
-        <div class="seat-row">
-            <span class="seat">
-                <input type="checkbox" disabled id="seat01-00" />
-                <label for="seat01-00"></label>
-            </span>
-            <span class="seat seat-hidden">
-                <input type="checkbox" id="seat01-01" />
-                <label for="seat01-01"></label>
-            </span>
-            <span class="seat">
-                <input type="checkbox" id="seat01-02" />
-                <label for="seat01-02"></label>
-            </span>
-            <span class="seat">
-                <input type="checkbox" disabled id="seat01-03" />
-                <label for="seat01-03"></label>
-            </span>
-            <span class="seat">
-                <input type="checkbox" id="seat01-04" />
-                <label for="seat01-04"></label>
-            </span>
-            <span class="seat">
-                <input type="checkbox" id="seat01-05" />
-                <label for="seat01-05"></label>
-            </span>
-        </div> -->
-    </div>
     <!--<div class="title-secondary">-->
     <div>
         目前已选择 <span class="seat-count">0</span> 个座位
