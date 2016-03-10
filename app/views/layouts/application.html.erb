@@ -9,7 +9,6 @@
     <%= stylesheet_link_tag 'normalize', 'data-turbolinks-track' => true %>
     <%= stylesheet_link_tag 'font-awesome', 'data-turbolinks-track' => true %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
     <%= csrf_meta_tags %>
     <!-- Custom Fonts -->
@@ -25,35 +24,7 @@
           <%= render 'layouts/footer' %>
       </div>
     </div>
-    <%= javascript_include_tag 'jquery-2.2.0' %>
-    <%= javascript_include_tag 'index' %>
-    <%= javascript_include_tag 'fullslide' %>
-    <script>
-      $(function () {
-          $('.pic-slide-cont').fullSlide({
-              'numberOfSections': 2,
-              'direction': 'horizontal',
-              'cyclic': true,
-              'hasScrollEvent': false,
-              
-              'slideStart': function (start, end) {
-                  $($('.index-pic-bar .index-pic-bar-indicators > *').
-                      removeClass('index-pic-bar-indicator-active').get(end)).
-                  addClass('index-pic-bar-indicator-active');
-              }
-          });
-          // bind events for indicators
-          $('.index-pic-bar .index-pic-bar-indicators > *').on('click', function (e) {
-              $('.pic-slide-cont').trigger('fslide-to', parseInt($(this).data('index')));
-          });
-          $('.index-pic-bar .index-pic-bar-prev').on('click', function () {
-              $('.pic-slide-cont').trigger('fslide-prev'); });
-          $('.index-pic-bar .index-pic-bar-next').on('click', function () {
-              $('.pic-slide-cont').trigger('fslide-next'); });
-          // switch pictures automatically
-          setInterval(function () {
-              $('.pic-slide-cont').trigger('fslide-next'); }, 4000);
-      });
-    </script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= yield(:script) %>
   </body>
 </html>
