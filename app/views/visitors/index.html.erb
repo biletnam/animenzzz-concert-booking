@@ -59,3 +59,33 @@
     <li class="nav-bar-left-btn">选择场次</li>
 </ul>
 <% end %>
+
+<% content_for(:script) do %>
+<script>
+      $(function () {
+          $('.pic-slide-cont').fullSlide({
+              'numberOfSections': 2,
+              'direction': 'horizontal',
+              'cyclic': true,
+              'hasScrollEvent': false,
+              
+              'slideStart': function (start, end) {
+                  $($('.index-pic-bar .index-pic-bar-indicators > *').
+                      removeClass('index-pic-bar-indicator-active').get(end)).
+                  addClass('index-pic-bar-indicator-active');
+              }
+          });
+          // bind events for indicators
+          $('.index-pic-bar .index-pic-bar-indicators > *').on('click', function (e) {
+              $('.pic-slide-cont').trigger('fslide-to', parseInt($(this).data('index')));
+          });
+          $('.index-pic-bar .index-pic-bar-prev').on('click', function () {
+              $('.pic-slide-cont').trigger('fslide-prev'); });
+          $('.index-pic-bar .index-pic-bar-next').on('click', function () {
+              $('.pic-slide-cont').trigger('fslide-next'); });
+          // switch pictures automatically
+          setInterval(function () {
+              $('.pic-slide-cont').trigger('fslide-next'); }, 4000);
+      });
+</script>
+<% end %>

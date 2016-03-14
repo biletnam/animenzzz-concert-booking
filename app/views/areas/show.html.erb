@@ -50,6 +50,7 @@
 </ul>
 <% end %>
 
+<% content_for :script do %>
 <script>
     $('label.seat-label').on('click', function (e) {
         var e = $(e.target).parent().children('input[type="checkbox"]');
@@ -76,3 +77,4 @@
         });
     });
 </script>
+<% end %>
