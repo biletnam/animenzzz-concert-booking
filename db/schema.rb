@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20160307110012) do
     t.string   "city"
     t.string   "musician"
     t.integer  "capacity"
+    t.string   "music_hall"
     t.datetime "start_time"
     t.datetime "end_time"
     t.datetime "created_at",               null: false
