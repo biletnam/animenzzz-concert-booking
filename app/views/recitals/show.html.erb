@@ -4,18 +4,18 @@
     </div>
     <div class="recital-detail-cont overflow-auto">
         <div class="recital-title font-bolder font-x-large">
-            成都场
+            <%= @recital.city %>场
         </div>
         <hr class="hr-recital" />
         <dl class="dl-horizontal">
             <dt class="font-bold align-right">演出日期</dt>
-            <dd class="align-left">2016.05.19</dd>
+            <dd class="align-left"><%= @recital.start_time.strftime('%m月%d日晚') unless @recital.start_time.nil? %></dd>
 
             <dt class="font-bold align-right">开场时间</dt>
-            <dd class="align-left">18:30</dd>
+            <dd class="align-left"><%= @recital.start_time.strftime('%H:%M') %></dd>
 
             <dt class="font-bold align-right">场馆地点</dt>
-            <dd class="align-left">四川省成都市郫县大禹东路 66 号</dd>
+            <dd class="align-left"><%= @recital.address + ' ' + @recital.music_hall %></dd>
             
         </dl>
         <hr class="hr-recital" />
@@ -31,14 +31,14 @@
 <br />
 
 <div class="recital-description dark-panel">
-    Onda/昂达 V820w 双系统 WIFI 32GB 8寸 WIN8 WIN10平板电脑
-    再降50元 还抢20点券 截至目前爆售 三万台
+    <img src="http://api.map.baidu.com/staticimage/v2?ak=dkkklKNbixhyjNldgXPfyaDi">
+    详细说明
 </div>
 
 <% content_for :header_class do %>continuous<% end %>
 <% content_for :breadcumb do %>
 <ul class="nav-bar float-left nav-breadcumb">
     <li><%= link_to '首页', '/' %></li>
-    <li>成都场</li>
+    <li><%= @recital.city %>场</li>
 </ul>
 <% end %>

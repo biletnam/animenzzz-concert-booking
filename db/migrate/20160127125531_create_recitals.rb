@@ -6,6 +6,7 @@ class CreateRecitals < ActiveRecord::Migration
       t.string :musician
       t.integer :capacity
       t.string :music_hall
+      t.string :address
       t.datetime :start_time
       t.datetime :end_time
 

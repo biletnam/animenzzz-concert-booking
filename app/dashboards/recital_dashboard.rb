@@ -15,6 +15,7 @@ class RecitalDashboard < Administrate::BaseDashboard
     musician: Field::String,
     capacity: Field::Number,
     music_hall: Field::String,
+    address: Field::String,
     start_time: Field::DateTime,
     end_time: Field::DateTime,
     created_at: Field::DateTime,
@@ -32,6 +33,7 @@ class RecitalDashboard < Administrate::BaseDashboard
     :name,
     :city,
     :music_hall,
+    :address,
   ]
 
   # SHOW_PAGE_ATTRIBUTES
@@ -48,6 +50,7 @@ class RecitalDashboard < Administrate::BaseDashboard
     :musician,
     :capacity,
     :music_hall,
+    :address,
     :start_time,
     :end_time,
   ]
