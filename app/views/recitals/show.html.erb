@@ -46,6 +46,11 @@
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=byjr8PEVSXNaCz9PgYzEPfLR"></script>   
 
 <script type="text/javascript"> 
+    $(document).ready(function () {
+        $.get("http://api.map.baidu.com/geocoder/v2/?ak=E4805d16520de693a3fe707cdc962045&callback=renderOption&output=json&address=成都市娇子音乐厅", function(result) {
+            console.log(result);
+        });
+    });
     var map = new BMap.Map("container");  
     map.centerAndZoom(new BMap.Point(104.103301,30.65503), 13);  
     map.enableScrollWheelZoom();  
