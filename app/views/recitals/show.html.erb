@@ -54,11 +54,11 @@
     var licontent="<b><%= @recital.music_hall %></b><br>";  
         licontent+="<span><strong>地址：</strong><%= @recital.address + @recital.music_hall %></span><br>";  
         licontent+="<span><strong>电话：</strong>(010)63095718,(010)63095630</span><br>";  
-        licontent+="<span class=\"input\"><strong></strong><input class=\"outset\" type=\"text\" name=\"origin\" value=\"<%= @recital.city %>站\"/><input class=\"outset-but\" type=\"button\" value=\"公交\" onclick=\"gotoLocation(1)\" /><input class=\"outset-but\" type=\"button\" value=\"驾车\"  onclick=\"gotoLocation(2)\"/><a class=\"gotob\" href=\"url=\"http://api.map.baidu.com/direction?destination=latlng:"+marker.getPosition().lat+","+marker.getPosition().lng+"|name:<%= @recital.music_hall %>"+"®ion=<%= @recital.city %>"+"&output=html\" target=\"_blank\"></a></span>";
+        licontent+="<span class=\"input\"><strong></strong><input class=\"outset\" type=\"text\" name=\"origin\" value=\"<%= @recital.city %>站\"/><input class=\"outset-but\" type=\"button\" value=\"公交\" onclick=\"gotobaidu(1)\" /><input class=\"outset-but\" type=\"button\" value=\"驾车\"  onclick=\"gotobaidu(2)\"/><a class=\"gotob\" href=\"url=\"http://api.map.baidu.com/direction?destination=latlng:"+marker.getPosition().lat+","+marker.getPosition().lng+"|name:<%= @recital.music_hall %>"+"®ion=<%= @recital.city %>"+"&output=html\" target=\"_blank\"></a></span>";
  
     var hiddeninput="<input type=\"hidden\" value=\""+'<%= @recital.city %>'+"\" name=\"region\" /><input type=\"hidden\" value=\"html\" name=\"output\" /><input type=\"hidden\" value=\"driving\" name=\"mode\" /><input type=\"hidden\" value=\"latlng:"+marker.getPosition().lat+","+marker.getPosition().lng+"|name:<%= @recital.music_hall %>"+"\" name=\"destination\" />";
  
-    var content1 ="<form id=\"gotoLocationform\" action=\"http://api.map.baidu.com/direction\" target=\"_blank\" method=\"get\">" + licontent +hiddeninput+"</form>";
+    var content1 ="<form id=\"gotobaiduform\" action=\"http://api.map.baidu.com/direction\" target=\"_blank\" method=\"get\">" + licontent +hiddeninput+"</form>";
    
     var opts1 = { width: 300 };  
        
@@ -68,7 +68,7 @@
         marker.openInfoWindow(infoWindow);
     });  
      
-    function gotoLocation(type)  
+    function gotobaidu(type)  
     {  
         if($.trim($("input[name=origin]").val())=="")  
         {  
@@ -78,11 +78,11 @@
             if(type==1)  
             {  
                 $("input[name=mode]").val("transit");  
-                $("#gotoLocationform")[0].submit();  
+                $("#gotobaiduform")[0].submit();  
             }else if(type==2)  
             {      
                 $("input[name=mode]").val("driving");          
-                $("#gotoLocationform")[0].submit();  
+                $("#gotobaiduform")[0].submit();  
             }  
         }  
     }    
