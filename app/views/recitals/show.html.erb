@@ -45,21 +45,11 @@
 
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=byjr8PEVSXNaCz9PgYzEPfLR"></script>   
 
-<script type="text/javascript">
-    var lng;
-    var lat;
-    $(document).ready(function() {
-        $.get("http://api.map.baidu.com/geocoder/v2/?address=成都市娇子音乐厅&output=json&ak=byjr8PEVSXNaCz9PgYzEPfLR", function (result) {
-            $.each(result.comments, function (i, item) {
-                lng = item.result.location.lng;
-                lat = item.result.location.lat;
-            });
-        });
-    });  
+<script type="text/javascript"> 
     var map = new BMap.Map("container");  
     map.centerAndZoom(new BMap.Point(104.103301,30.65503), 13);  
     map.enableScrollWheelZoom();  
-    var marker=new BMap.Marker(new BMap.Point(lng, lat));  
+    var marker=new BMap.Marker(new BMap.Point(104.103301,30.65503));  
     map.addOverlay(marker);  
     var licontent="<b><%= @recital.music_hall %></b><br>";  
         licontent+="<span><strong>地址：</strong><%= @recital.address + @recital.music_hall %></span><br>";  
