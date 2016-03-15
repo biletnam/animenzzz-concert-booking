@@ -1,0 +1,72 @@
+
+@import "cd";
+
+.coverflow-cont {
+	overflow: hidden;
+	padding: 1em 0;
+	/*-webkit-box-reflect: below -2em linear-gradient(to top, rgba(255, 255, 255, 0.2) 0%, transparent 30%);*/
+}
+
+.coverflow {
+	width: 24em;
+	position: relative;
+	margin: 0 auto;
+
+	/*transform-style: preserve-3d;*/
+	perspective: 600px;
+}
+
+.coverflow-item {
+	
+    &:first-child {
+        position: relative;
+    }
+    
+	width: 100%;
+    top: 0;
+	position: absolute;
+    text-align: center;
+
+	transition: transform 0.25s ease-in-out;
+
+    .coverflow-card {
+        background-color: #111;
+        box-shadow: 0 1px 1em 0 black, 1px 1px 1px #333 inset;
+        overflow: hidden;
+        position: relative;
+    }
+}
+
+.coverflow-item .coverflow-card-image {
+    height: 100%; 
+    img {
+        max-width: 100%;
+        // max-height: 100%;
+    }
+}
+
+.coverflow-overlay-text {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent, black);
+    padding: 0.5em;
+    box-sizing: border-box;
+    text-shadow: 1px 0 1px black;
+}
+
+.coverflow-card {
+    // height: 32em;
+}
+
+button.recital-detail-btn {
+    color: rgba(51, 254, 255, 0.5);
+    background-color: $darken-70;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 1.5em;
+    text-shadow: 0 1px 0 black;
+    border: 1px solid $lighter-30;
+    margin-bottom: 1em;
+    box-shadow: 0 0 1em $lighter-30;
+}

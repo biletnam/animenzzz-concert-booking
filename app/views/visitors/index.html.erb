@@ -1,3 +1,61 @@
+
+<div class="section-recitals">
+    <div class="coverflow-cont">
+        <div class="coverflow">
+            <div class="coverflow-item">
+                <div class="coverflow-content">
+                    <div class="coverflow-card">
+                        <div class="coverflow-card-image">
+                            <%= image_tag 'poster.png' %>
+                        </div>
+                    </div>
+                    <div class="coverflow-overlay-text">
+                        <button class="recital-detail-btn">查看详情</button>
+                        <div>成都站</div>
+                        <div>2016 年 2 月 30 日</div>
+                    </div>
+                </div>
+            </div>
+            <div class="coverflow-item">
+                <div class="coverflow-content">
+                    <div class="coverflow-card">
+                        <div class="coverflow-card-image">
+                            <%= image_tag 'poster.png' %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="coverflow-item">
+                <div class="coverflow-content">
+                    <div class="coverflow-card">
+                        <div class="coverflow-card-image">
+                            <%= image_tag 'poster.png' %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="coverflow-item">
+                <div class="coverflow-content">
+                    <div class="coverflow-card">
+                        <div class="coverflow-card-image">
+                            <%= image_tag 'poster.png' %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="coverflow-item">
+                <div class="coverflow-content">
+                    <div class="coverflow-card">
+                        <div class="coverflow-card-image">
+                            <%= image_tag 'poster.png' %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="index-main">
     <ul class="index-lst-show">
         <% @recitals.each do |recital| %>
@@ -45,6 +103,7 @@
 
 <% content_for(:script) do %>
 <script>
+    $('.coverflow').cardFlow();
       $(function () {
           $('.pic-slide-cont').fullSlide({
               'numberOfSections': 2,

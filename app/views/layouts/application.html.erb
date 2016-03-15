@@ -15,15 +15,9 @@
 <!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
   </head>
   <body>
-    <div class="outer-container">
-      <div class="page-container">
-          <header class="<%= yield(:header_class) %>">
-            <%= render 'layouts/navigation' %>
-          </header>
-          <%= yield %>
-          <%= render 'layouts/footer' %>
-      </div>
-    </div>
+    <%= render 'layouts/navigation' %>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= yield(:script) %>
   </body>
