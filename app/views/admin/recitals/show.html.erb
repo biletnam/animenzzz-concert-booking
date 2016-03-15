@@ -44,6 +44,14 @@ as well as a link to its edit page.
       <%= f.submit %>
     <% end %>
   </dd>
+  <dt class="attribute-label">POSTER</dt>
+  <dd class="attribute-data">
+    <%= image_tag page.resource.poster.url, width: '300' %>
+    <%= form_for [Administrate::NAMESPACE, page.resource] do |f| %>
+      <%= f.file_field :poster %>
+      <%= f.submit %>
+    <% end %>
+  </dd>
 </dl>
 
 
