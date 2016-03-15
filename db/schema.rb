@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20160307110012) do
     t.integer  "capacity"
     t.string   "music_hall"
     t.string   "address"
+    t.float    "lat"
+    t.float    "lng"
     t.datetime "start_time"
     t.datetime "end_time"
     t.datetime "created_at",               null: false

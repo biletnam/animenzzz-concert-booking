@@ -16,6 +16,8 @@ class RecitalDashboard < Administrate::BaseDashboard
     capacity: Field::Number,
     music_hall: Field::String,
     address: Field::String,
+    lat: Field::String,
+    lng: Field::String,
     start_time: Field::DateTime,
     end_time: Field::DateTime,
     created_at: Field::DateTime,
@@ -51,6 +53,8 @@ class RecitalDashboard < Administrate::BaseDashboard
     :capacity,
     :music_hall,
     :address,
+    :lat,
+    :lng,
     :start_time,
     :end_time,
   ]

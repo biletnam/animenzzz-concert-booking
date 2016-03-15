@@ -43,16 +43,10 @@
 </ul>
 <% end %>
 
-<%= javascript_include_tag 'jquery-2.2.0', 'data-turbolinks-track' => true %>
 
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=byjr8PEVSXNaCz9PgYzEPfLR"></script>   
 
 <script type="text/javascript"> 
-    $(document).ready(function () {
-        $.get("http://api.map.baidu.com/geocoder/v2/?ak=byjr8PEVSXNaCz9PgYzEPfLR&output=json&address=成都市娇子音乐厅", function(result) {
-            console.log(result);
-        });
-    });
     var map = new BMap.Map("container");  
     map.centerAndZoom(new BMap.Point(104.103301,30.65503), 13);  
     map.enableScrollWheelZoom();  
@@ -60,7 +54,6 @@
     map.addOverlay(marker);  
     var licontent="<b><%= @recital.music_hall %></b><br>";  
         licontent+="<span><strong>地址：</strong><%= @recital.address + @recital.music_hall %></span><br>";  
-        licontent+="<span><strong>电话：</strong>(010)63095718,(010)63095630</span><br>";  
         licontent+="<span class=\"input\"><strong></strong><input class=\"outset\" type=\"text\" name=\"origin\" value=\"<%= @recital.city %>站\"/><input class=\"outset-but\" type=\"button\" value=\"公交\" onclick=\"gotobaidu(1)\" /><input class=\"outset-but\" type=\"button\" value=\"驾车\"  onclick=\"gotobaidu(2)\"/><a class=\"gotob\" href=\"url=\"http://api.map.baidu.com/direction?destination=latlng:"+marker.getPosition().lat+","+marker.getPosition().lng+"|name:<%= @recital.music_hall %>"+"®ion=<%= @recital.city %>"+"&output=html\" target=\"_blank\"></a></span>";
  
     var hiddeninput="<input type=\"hidden\" value=\""+'<%= @recital.city %>'+"\" name=\"region\" /><input type=\"hidden\" value=\"html\" name=\"output\" /><input type=\"hidden\" value=\"driving\" name=\"mode\" /><input type=\"hidden\" value=\"latlng:"+marker.getPosition().lat+","+marker.getPosition().lng+"|name:<%= @recital.music_hall %>"+"\" name=\"destination\" />";
