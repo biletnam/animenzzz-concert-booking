@@ -15,5 +15,21 @@ module Admin
 
     # See https://administrate-docs.herokuapp.com/customizing_controller_actions
     # for more information
+
+    def update
+      recital = Recital.find(params[:id])
+      if params[:venue_image] then
+        recital.venue_image = nil
+        recital.save
+      end
+      recital.update(recital_params)
+      redirect_to admin_recital_path(recital)
+    end
+
+    private
+
+    def recital_params
+      params.require(:recital).permit!
+    end
   end
 end
