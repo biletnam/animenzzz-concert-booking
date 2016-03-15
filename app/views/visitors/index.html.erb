@@ -5,7 +5,11 @@
                 <%= link_to recital, :class => 'show' do %>
                     <h3 class="show-title"><%= recital.city %></h3>
                     <p><%= recital.start_time.strftime('%m月%d日晚') unless recital.start_time.nil? %></p>
-                    <p>状态: </p>
+                    <% if recital.sold_out? %>
+                      <p>状态: 已售完</p>
+                    <% else %>
+                      <p>状态: 售卖中</p>
+                    <% end %>
                 <% end %>
             </li>
         <% end %>
