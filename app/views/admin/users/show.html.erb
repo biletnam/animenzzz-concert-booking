@@ -36,4 +36,13 @@ as well as a link to its edit page.
     <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
         ><%= render_field attribute %></dd>
   <% end %>
+
+  <dt class="attribute-label">Thumb</dt>
+  <dd class="attribute-data">
+    <%= image_tag page.resource.avatar.url(:medium), width: '300' %>
+    <%= form_for [Administrate::NAMESPACE, page.resource] do |f| %>
+      <%= f.file_field :avatar %>
+      <%= f.submit value: 'Update Avatar' %>
+    <% end %>
+  </dd>
 </dl>
