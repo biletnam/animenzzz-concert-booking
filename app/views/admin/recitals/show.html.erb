@@ -39,12 +39,11 @@ as well as a link to its edit page.
   <dt class="attribute-label">VENUE IMAGE</dt>
   <dd class="attribute-data">
     <%= image_tag page.resource.venue_image.url, width: '300' %>
+    <%= form_for [Administrate::NAMESPACE, page.resource] do |f| %>
+      <%= f.file_field :venue_image %>
+      <%= f.submit %>
+    <% end %>
   </dd>
 </dl>
-
-<%= form_for [Administrate::NAMESPACE, page.resource] do |f| %>
-  <%= f.file_field :venue_image %>
-  <%= f.submit %>
-<% end %>
 
 
