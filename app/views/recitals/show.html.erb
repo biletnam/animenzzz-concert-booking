@@ -1,12 +1,15 @@
- <div class="seat-main seat-layout-end clearfix no-padding">
+ <div class="outer-container">
+ <div class="clearfix no-padding">
+ 
     <div class="recital-poster-cont">
         <%= image_tag @recital.poster.url, :class => 'recital-poster' %>
     </div>
+    
     <div class="recital-detail-cont overflow-auto">
         <div class="recital-title font-bolder font-x-large">
             <%= @recital.city %>场
         </div>
-        <hr class="hr-recital" />
+        <!--<hr class="hr-recital" />-->
         <dl class="dl-horizontal">
             <dt class="font-bold align-right">演出日期</dt>
             <dd class="align-left"><%= @recital.start_time.strftime('%m月%d日晚') unless @recital.start_time.nil? %></dd>
@@ -18,7 +21,7 @@
             <dd class="align-left"><%= @recital.address + ' ' + @recital.music_hall %></dd>
             
         </dl>
-        <hr class="hr-recital" />
+        <!--<hr class="hr-recital" />-->
         <div class="recital-button-cont">
 <!--             <a href="#" class="btn-buy-buy-buy align-center">
                 立即购买
@@ -31,21 +34,16 @@
         </div>
     </div>
 </div>
+</div>
 
 <br />
 
-<div class="recital-description dark-panel">
+<div class="outer-container">
+    <div class="recital-description dark-panel">
 <!--     <img src="http://api.map.baidu.com/staticimage/v2?ak=dkkklKNbixhyjNldgXPfyaDi"> -->
-    <div style="width:400px;height:300px;border:1px solid gray" id="container"</div>  
+        <div class="recital-location-baidu" id="container"></div>  
+    </div>
 </div>
-
-<% content_for :header_class do %>continuous<% end %>
-<% content_for :breadcumb do %>
-<ul class="nav-bar float-left nav-breadcumb">
-    <li><%= link_to '首页', '/' %></li>
-    <li><%= @recital.city %>场</li>
-</ul>
-<% end %>
 
 
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>   

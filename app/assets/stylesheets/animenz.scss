@@ -12,7 +12,9 @@
 
 hr {
     border: none;
-    border-top: 1px dashed gray;
+    // border-top: 1px dashed gray;
+    border-top: 1px solid #444;
+    box-shadow: 0 -1px 0 #111, 0 0 1em black;
 }
 
 a {
@@ -178,17 +180,17 @@ input[type="text"],
 input[type="email"],
 input[type="password"] {
     border-radius: 2px;
-    box-shadow: inset 1px 1px 4px $darken-20;
+    // box-shadow: inset 1px 1px 4px $darken-20;
     padding: .5em;
     border: 1px solid #CCC;
     color: #333;
 }
 
 .button {
-    border: 1px solid #aaa;
-    color: #666;
+    border: none;
+    color: white;
     border-radius: 1px;
-    background: #ddd;
+    background: #12B2B2;
     padding: .5em 1.4em;
 }
 
@@ -276,6 +278,17 @@ input[type="password"] {
 
 .dark-panel {
     background-color: #222;
+    padding: 1em;
+    border-radius: 6px;
+
+    @include media-mobile {
+        padding: 1em 0;
+        border-radius: 0;
+    }
+}
+
+.light-panel {
+    background-color: #666B6F;
     padding: 1em;
     border-radius: 6px;
 

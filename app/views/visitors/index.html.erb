@@ -12,12 +12,12 @@
                     <div class="coverflow-overlay-text">
                         <button class="recital-detail-btn">查看详情</button>
                         <div class="recital-info-bottom">
-                            <div class="recital-title">成都站 - 已售完</div>
+                            <div class="coverflow-recital-title">成都站 - 已售完</div>
                             <div>2016 年 2 月 30 日</div>
                         </div>
                     </div>
                     <div class="coverflow-overlay-right recital-info-right">
-                        <div class="recital-title">
+                        <div class="coverflow-recital-title">
                             成
                             <br />
                             都
@@ -40,12 +40,12 @@
                     <div class="coverflow-overlay-text">
                         <button class="recital-detail-btn">查看详情</button>
                         <div class="recital-info-bottom">
-                            <div class="recital-title">武汉站 - 已售完</div>
+                            <div class="coverflow-recital-title">武汉站 - 已售完</div>
                             <div>2016 年 2 月 30 日</div>
                         </div>
                     </div>
                     <div class="coverflow-overlay-right recital-info-right">
-                        <div class="recital-title">
+                        <div class="coverflow-recital-title">
                             武
                             <br />
                             汉
@@ -68,12 +68,12 @@
                     <div class="coverflow-overlay-text">
                         <button class="recital-detail-btn">查看详情</button>
                         <div class="recital-info-bottom">
-                            <div class="recital-title">广州站 - 已售完</div>
+                            <div class="coverflow-recital-title">广州站 - 已售完</div>
                             <div>2016 年 2 月 30 日</div>
                         </div>
                     </div>
                     <div class="coverflow-overlay-right recital-info-right">
-                        <div class="recital-title">
+                        <div class="coverflow-recital-title">
                             广
                             <br />
                             州
@@ -96,12 +96,12 @@
                     <div class="coverflow-overlay-text">
                         <button class="recital-detail-btn">查看详情</button>
                         <div class="recital-info-bottom">
-                            <div class="recital-title">厦门站 - 已售完</div>
+                            <div class="coverflow-recital-title">厦门站 - 已售完</div>
                             <div>2016 年 2 月 30 日</div>
                         </div>
                     </div>
                     <div class="coverflow-overlay-right recital-info-right">
-                        <div class="recital-title">
+                        <div class="coverflow-recital-title">
                             厦
                             <br />
                             门
@@ -124,12 +124,12 @@
                     <div class="coverflow-overlay-text">
                         <button class="recital-detail-btn">查看详情</button>
                         <div class="recital-info-bottom">
-                            <div class="recital-title">长沙站 - 已售完</div>
+                            <div class="coverflow-recital-title">长沙站 - 已售完</div>
                             <div>2016 年 2 月 30 日</div>
                         </div>
                     </div>
                     <div class="coverflow-overlay-right recital-info-right">
-                        <div class="recital-title">
+                        <div class="coverflow-recital-title">
                             长
                             <br />
                             沙
@@ -146,23 +146,23 @@
     </div>
 </div>
 
-<div class="index-main">
-    <ul class="index-lst-show">
-        <% @recitals.each do |recital| %>
-            <li>
-                <%= link_to recital, :class => 'show' do %>
-                    <h3 class="show-title"><%= recital.city %></h3>
-                    <p><%= recital.start_time.strftime('%m月%d日晚') unless recital.start_time.nil? %></p>
-                    <% if recital.sold_out? %>
-                      <p>状态: 已售完</p>
-                    <% else %>
-                      <p>状态: 售卖中</p>
-                    <% end %>
+<br />
+
+<ul>
+    <% @recitals.each do |recital| %>
+        <li>
+            <%= link_to recital, :class => 'show' do %>
+                <h3><%= recital.city %></h3>
+                <p><%= recital.start_time.strftime('%m月%d日晚') unless recital.start_time.nil? %></p>
+                <% if recital.sold_out? %>
+                    <p>状态: 已售完</p>
+                <% else %>
+                    <p>状态: 售卖中</p>
                 <% end %>
-            </li>
-        <% end %>
-    </ul>
-</div>
+            <% end %>
+        </li>
+    <% end %>
+</ul>
 
 <% content_for(:script) do %>
 <script>

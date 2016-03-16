@@ -1,5 +1,4 @@
-<br />
-<div class="dark-panel">
+<div class="outer-container align-center">
   <h2>注册</h2>
   <hr />
   <%= devise_error_messages! %>
@@ -16,10 +15,3 @@
     <%= link_to '登录', new_user_session_path %>
   <% end %>
 </div>
-
-<% content_for :breadcumb do %>
-<ul class="nav-bar float-left nav-breadcumb">
-    <li><%= link_to '首页', '/' %></li>
-    <li>注册</li>
-</ul>
-<% end %>
