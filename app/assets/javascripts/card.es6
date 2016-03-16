@@ -1,3 +1,6 @@
+
+"use strict";
+
 (function ($) {
 
 	function debounce(func, threshold) {
@@ -30,78 +33,85 @@
 		this.numElements = $(element).children('.coverflow-item').length;
 
 		this._bindClick();
-		this._bindScroll();
+		// this._bindScroll();
 		this._bindTouch();
-		this.switchTo(0);
+        
+        this.dataArray = [ ];
+        for (var i = 0; i < this.numElements; i++) {
+            this.dataArray.push(i); }
+        
+        this.updateStyle();
 	}
+    
+    CardFlow.prototype.updateStyle = function () {
+        var indexElement = idx => $(this.element).children('.coverflow-item').get(idx);
+        
+        this.dataArray.forEach((elementIndex, index) => {
+            if (!index) {
+                $(indexElement(elementIndex)).css({
+					'transform': 'none',
+					'z-index': this.numElements
+				}).addClass('coverflow-item-active');;
+            } else {
+                var scale = getScale(index);
+				var offsetTranslate = index * 30;
+                var transformTranslate = 'translate3d(' + offsetTranslate + '%, 0, ' + -index * 20 + 'px)',
+					translateScale = 'scale3d(' + scale + ', ' + scale + ', 1)',
+					translateRotate = `rotateY(${-index * 3}deg)`;
+                $(indexElement(elementIndex)).css({
+					'transform': `${transformTranslate} ${translateRotate} ${translateScale}`,
+					'z-index':  (this.numElements - index)
+				}).removeClass('coverflow-item-active');
+            }
+        });
+    };
 
 	CardFlow.prototype.slideOffset = function(offset) {
-		var offseted = this.currentIndex + offset;
-		if (offseted < 0) {
-			offseted += this.numElements;
-		} else if (offseted >= this.numElements) {
-			offseted -= this.numElements;
-		}
-		this.switchTo(offseted);
+        var currentIdx = this.dataArray[0];
+		var idx = this.dataArray[offset];
+        
+        if (currentIdx !== idx) {
+            this.dataArray.splice(offset, 1);
+            this.dataArray.splice(0, 1);
+            this.dataArray.unshift(idx);
+            this.dataArray.push(currentIdx);
+            this.updateStyle();
+        }
+	};
+    
+    CardFlow.prototype.slideTo = function(index) {
+        return this.slideOffset(this.dataArray.indexOf(index));
 	};
 
 	CardFlow.prototype.slidePrev = function () {
-		this.slideOffset(-1);
+        var offset = this.dataArray.length-1;
+		var idx = this.dataArray[offset];
+        this.dataArray.splice(offset, 1);
+        this.dataArray.unshift(idx);
+        this.updateStyle();
 	};
 
 	CardFlow.prototype.slideNext = function () {
 		this.slideOffset(1);
 	};
 
-	CardFlow.prototype.switchTo = function(to) {
-		var that = this;
-		$(this.element).children('.coverflow-item').each(function (index, element) {
-			if (index !== to) {
-				var offsetRaw = index - to, offsetAbs = Math.abs(offsetRaw);
-				var sign = (offsetRaw > 0) ? '' : '-';
-
-				var scale = getScale(offsetAbs);
-				var offsetTranslate = offsetAbs * 30;
-				// we do need template string
-				var transformTranslate = 'translate3d(' + sign + offsetTranslate + '%, 0, ' + -offsetAbs * 20 + 'px)',
-					translateScale = 'scale3d(' + scale + ', ' + scale + ', 1)',
-					translateRotate = 'rotateY(' + -offsetRaw * 3 + 'deg)';
-
-				$(element).css({
-					'transform': `${transformTranslate} ${translateRotate} ${translateScale}`,
-					// 'transform': transformTranslate + ' ' + translateScale + ' ' + translateRotate,
-					'z-index':  (that.numElements - Math.abs(offsetRaw))
-				}).removeClass('coverflow-item-active');
-			} else {
-				$(element).css({
-					'transform': 'none',
-					'z-index': that.numElements
-				}).addClass('coverflow-item-active');;
-			}
-		});
-		this.currentIndex = to;
-	};
-
 	CardFlow.prototype._bindClick = function () {
-		var that = this;
-		$(this.element).children('.coverflow-item').children('.coverflow-content').each(function (index, element) {
-			$(element).click(function () {
-				that.switchTo(index); });
-		});
+		$(this.element).children('.coverflow-item').children('.coverflow-content').each((index, element) =>
+			$(element).click(() => this.slideTo(index))
+        );
 	};
 
 	CardFlow.prototype._bindScroll = function () {
-		var that = this;
 		$(this.element).on('wheel',
-			debounce(function (e) {
+			debounce(e => {
 				var delta = e.originalEvent.wheelDelta || -e.originalEvent.detail;
 
 				if (delta < -10 && delta < 3) {
 					return;
 				} else if (delta < 0) {
-					that.slideNext();
+					this.slideNext();
 				} else if (delta > 0) {
-					that.slidePrev();
+					this.slidePrev();
 				}
 			}, 20)
 		);
