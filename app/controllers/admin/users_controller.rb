@@ -15,5 +15,21 @@ module Admin
 
     # See https://administrate-docs.herokuapp.com/customizing_controller_actions
     # for more information
+
+    def update
+      user = User.find(params[:id])
+      if params[:avatar] then
+        recital.avatar = nil
+        recital.save
+      end
+      user.update(user_params)
+      redirect_to admin_user_path(user)
+    end
+
+    private
+
+    def user_params
+      params.require(:user).permit!
+    end
   end
 end

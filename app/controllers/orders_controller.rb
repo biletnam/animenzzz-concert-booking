@@ -30,17 +30,7 @@ class OrdersController < ApplicationController
 
     current_user.orders << @order
 
-    Pingpp::Charge.create(
-      :subject  => "ticket-booking",
-      :body     => "Some things",
-      :amount   => 100,
-      :order_no => @order.id,
-      :channel  => "alipay_pc_direct",
-      :currency => "cny",
-      :client_ip=> '127.0.0.1',
-      :app => {'id' => "app_aH08OSaLmzP89Sin"},
-      :extra => {'success_url' => '127.0.0.1' }
-    )
+    send_pingpp @order.id
 
   	redirect_to orders_path
   end
@@ -51,21 +41,26 @@ class OrdersController < ApplicationController
   end
 
   def post_order
-    Pingpp::Charge.create(
-      :subject  => "ticket-booking",
-      :body     => "Some things",
-      :amount   => 100,
-      :order_no => params[:order].id,
-      :channel  => "upacp",
-      :currency => "cny",
-      :client_ip=> '127.0.0.1',
-      :app => {'id' => "app_1Gqj58ynP0mHeX1q"}
-    )
+    send_pingpp params[:order].id
   end
 
   private
 
   def secure_params
   	params.require(:order).permit(:address, :phone, :name, :seat_ids => [])
+  end
+
+  def send_pingpp(order_id)
+    Pingpp::Charge.create(
+      :subject  => "ticket-booking",
+      :body     => "Some things",
+      :amount   => 100,
+      :order_no => order_id,
+      :channel  => "alipay_pc_direct",
+      :currency => "cny",
+      :client_ip=> '127.0.0.1',
+      :app => {'id' => "app_aH08OSaLmzP89Sin"},
+      :extra => {'success_url' => '127.0.0.1' }
+    )
   end
 end
