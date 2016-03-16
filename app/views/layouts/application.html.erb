@@ -15,8 +15,11 @@
 <!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
   </head>
   <body>
-    <%= render 'layouts/navigation' %>
-    <%= yield %>
+    <div class="page-wrapper">
+        <%= render 'layouts/navigation' %>
+        <%= yield %>
+        <div class="footer-push"></div>
+    </div>
     <%= render 'layouts/footer' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= yield(:script) %>
