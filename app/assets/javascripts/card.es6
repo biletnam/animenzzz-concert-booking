@@ -54,7 +54,7 @@
 				}).addClass('coverflow-item-active');;
             } else {
                 var scale = getScale(index);
-				var offsetTranslate = index * 30;
+				var offsetTranslate = index * 20;
                 var transformTranslate = 'translate3d(' + offsetTranslate + '%, 0, ' + -index * 20 + 'px)',
 					translateScale = 'scale3d(' + scale + ', ' + scale + ', 1)',
 					translateRotate = `rotateY(${-index * 3}deg)`;

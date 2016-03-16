@@ -6,7 +6,7 @@
                 <div class="coverflow-content">
                     <div class="coverflow-card">
                         <div class="coverflow-card-image">
-                            <%= image_tag 'poster.png' %>
+                            <%= image_tag 'chengdu.png' %>
                         </div>
                     </div>
                     <div class="coverflow-overlay-text">
@@ -34,7 +34,7 @@
                 <div class="coverflow-content">
                     <div class="coverflow-card">
                         <div class="coverflow-card-image">
-                            <%= image_tag 'poster.png' %>
+                            <%= image_tag 'wuhan.png' %>
                         </div>
                     </div>
                     <div class="coverflow-overlay-text">
@@ -62,7 +62,7 @@
                 <div class="coverflow-content">
                     <div class="coverflow-card">
                         <div class="coverflow-card-image">
-                            <%= image_tag 'poster.png' %>
+                            <%= image_tag 'guangzhou.jpg' %>
                         </div>
                     </div>
                     <div class="coverflow-overlay-text">
@@ -90,7 +90,7 @@
                 <div class="coverflow-content">
                     <div class="coverflow-card">
                         <div class="coverflow-card-image">
-                            <%= image_tag 'poster.png' %>
+                            <%= image_tag 'xiamen.jpg' %>
                         </div>
                     </div>
                     <div class="coverflow-overlay-text">
@@ -118,7 +118,7 @@
                 <div class="coverflow-content">
                     <div class="coverflow-card">
                         <div class="coverflow-card-image">
-                            <%= image_tag 'poster.png' %>
+                            <%= image_tag 'changsha.jpg' %>
                         </div>
                     </div>
                     <div class="coverflow-overlay-text">
@@ -162,62 +162,10 @@
             </li>
         <% end %>
     </ul>
-    <div class="index-pic-cont">
-        <div class="pic-slide-cont">
-            <div class="pic-slide-section">
-<!--                 <img src="static/images/img2.png" />
- -->                <%= image_tag 'img2.png' %>
-            </div>
-            <div class="pic-slide-section">
-                <!-- <img src="static/images/bg.png" /> -->
-                <%= image_tag 'bg.png' %>
-            </div>
-        </div>
-        <div class="index-pic-bar">
-            <a href="#" class="index-pic-bar-prev"><i class="fa fa-arrow-circle-o-left fa-lg"></i></a>
-            <span class="index-pic-bar-indicators">
-                <a href="#" data-index="0" class="index-pic-bar-indicator-active"><i class="fa fa-circle-o fa-lg"></i></a>
-                <a href="#" data-index="1"><i class="fa fa-circle-o fa-lg"></i></a>
-            </span>
-            <a href="#" class="index-pic-bar-next"><i class="fa fa-arrow-circle-o-right fa-lg"></i></a>
-        </div>
-    </div>
 </div>
-
-<% content_for :header_class do %>continuous<% end %>
-<% content_for :breadcumb do %>
-<ul class="nav-bar float-left">
-    <li class="nav-bar-left-btn">选择场次</li>
-</ul>
-<% end %>
 
 <% content_for(:script) do %>
 <script>
     $('.coverflow').cardFlow();
-      $(function () {
-          $('.pic-slide-cont').fullSlide({
-              'numberOfSections': 2,
-              'direction': 'horizontal',
-              'cyclic': true,
-              'hasScrollEvent': false,
-              
-              'slideStart': function (start, end) {
-                  $($('.index-pic-bar .index-pic-bar-indicators > *').
-                      removeClass('index-pic-bar-indicator-active').get(end)).
-                  addClass('index-pic-bar-indicator-active');
-              }
-          });
-          // bind events for indicators
-          $('.index-pic-bar .index-pic-bar-indicators > *').on('click', function (e) {
-              $('.pic-slide-cont').trigger('fslide-to', parseInt($(this).data('index')));
-          });
-          $('.index-pic-bar .index-pic-bar-prev').on('click', function () {
-              $('.pic-slide-cont').trigger('fslide-prev'); });
-          $('.index-pic-bar .index-pic-bar-next').on('click', function () {
-              $('.pic-slide-cont').trigger('fslide-next'); });
-          // switch pictures automatically
-          setInterval(function () {
-              $('.pic-slide-cont').trigger('fslide-next'); }, 4000);
-      });
 </script>
 <% end %>
