@@ -11,4 +11,5 @@
 // about supported directives.
 //
 //= require 'jquery-2.2.0.js'
+//= require jquery_ujs
 //= require_tree .
