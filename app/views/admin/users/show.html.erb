@@ -39,7 +39,7 @@ as well as a link to its edit page.
 
   <dt class="attribute-label">Thumb</dt>
   <dd class="attribute-data">
-    <%= image_tag page.resource.avatar.url(:medium), width: '300' %>
+    <%= image_tag page.resource.avatar.url(:medium) %>
     <%= form_for [Administrate::NAMESPACE, page.resource] do |f| %>
       <%= f.file_field :avatar %>
       <%= f.submit value: 'Update Avatar' %>
