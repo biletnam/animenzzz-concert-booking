@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315082241) do
+ActiveRecord::Schema.define(version: 20160316110645) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "areas", force: :cascade do |t|
     t.string   "name"
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 20160315082241) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "areas", ["recital_id"], name: "index_areas_on_recital_id"
+  add_index "areas", ["recital_id"], name: "index_areas_on_recital_id", using: :btree
 
   create_table "orderitems", force: :cascade do |t|
     t.integer  "order_id"
@@ -31,8 +34,8 @@ ActiveRecord::Schema.define(version: 20160315082241) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "orderitems", ["order_id"], name: "index_orderitems_on_order_id"
-  add_index "orderitems", ["seat_id"], name: "index_orderitems_on_seat_id"
+  add_index "orderitems", ["order_id"], name: "index_orderitems_on_order_id", using: :btree
+  add_index "orderitems", ["seat_id"], name: "index_orderitems_on_seat_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.datetime "pay_time"
@@ -49,7 +52,7 @@ ActiveRecord::Schema.define(version: 20160315082241) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "recitals", force: :cascade do |t|
     t.string   "name"
@@ -83,7 +86,7 @@ ActiveRecord::Schema.define(version: 20160315082241) do
     t.datetime "updated_at",                 null: false
   end
 
-  add_index "seats", ["area_id"], name: "index_seats_on_area_id"
+  add_index "seats", ["area_id"], name: "index_seats_on_area_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -106,7 +109,24 @@ ActiveRecord::Schema.define(version: 20160315082241) do
     t.datetime "avatar_updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "videos", force: :cascade do |t|
+    t.string   "name"
+    t.string   "link"
+    t.string   "length"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "screenshot_file_name"
+    t.string   "screenshot_content_type"
+    t.integer  "screenshot_file_size"
+    t.datetime "screenshot_updated_at"
+  end
+
+  add_foreign_key "areas", "recitals"
+  add_foreign_key "orderitems", "orders"
+  add_foreign_key "orderitems", "seats"
+  add_foreign_key "orders", "users"
+  add_foreign_key "seats", "areas"
 end

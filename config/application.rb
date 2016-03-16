@@ -30,6 +30,7 @@ module TicketBooking
     Pingpp.private_key_path = 'rsa_private_key.pem'
 
     config.time_zone = 'Beijing'
+    config.i18n.default_locale = :zh-CN
 
   end
 end
