@@ -1,9 +1,12 @@
 <%# Rails flash messages styled for Bootstrap 3.0 %>
+<div class="top-msgs">
 <% flash.each do |name, msg| %>
   <% if msg.is_a?(String) %>
-    <div class="nav-msg nav-msg-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
+    <!--<div class="nav-msg nav-msg-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">-->
+    <div class="top-msg top-msg-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <button type="button" class="button" data-dismiss="alert" aria-hidden="true"><i class="fa fa-times"></i></button>
     </div>
   <% end %>
 <% end %>
+</div>

@@ -1,0 +1,126 @@
+
+@import "cd";
+@import "essential";
+
+.index-main {
+	display: flex;
+    text-align: left;
+	box-shadow: 0 0px 48px $darken-30;
+
+    @include mq($until: tablet) {
+        flex-direction: column-reverse;
+    }
+
+	.index-lst-show {
+		list-style: none;
+        flex-grow: 1;
+		min-width: 16rem;
+		padding: 0;
+		margin: 0;
+		display: flex;
+        flex-wrap: nowrap;
+		flex-direction: column;
+        @include mq($until: tablet) {
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+        li {
+            flex-grow: 1;
+            flex-basis: 50%;
+            display: flex;
+        }
+
+		.show {
+            width: 100%;
+            display: block;
+            position: relative;
+            box-shadow: 0 1px 1px $lighter-30 inset;
+            box-sizing: border-box;
+            background-image: linear-gradient(180deg, #505057 0%, #313136 100%);
+			padding: 0.5em;
+			padding-left: 1em;
+            text-shadow: 0px 1px 1px black;
+            overflow: auto;
+
+            text-decoration: none;
+			.show-title {
+				margin: 0.4em 0;
+			}
+			p {
+				margin: 0.3em 0;
+			}
+			border-top: solid 1px black;
+            
+            @include mq($until: tablet) {
+                min-width: 50%; }
+            
+            &:hover {
+                
+                box-shadow: 0 8px 18px $darken-30 inset, 0 -1px 1px $lighter-30 inset;
+                border-top: solid 1px gray;
+            
+                &:after {
+                    top: 0%;
+                    left: -50%;
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    background: radial-gradient(ellipse, $lighter-30, transparent 60%);
+                }
+            }
+		}
+	}
+
+	.index-pic-cont {
+		// background-color: red;
+        position: relative;
+        overflow: hidden;
+        @include user-select(none);
+        
+        &:after {
+            @include pseudo-cover-all;
+            box-shadow: 0 0 48px $darken-70 inset, 0 0 12px $darken-30;
+            // it prevents touch events of slides from triggering 
+            pointer-events: none;  
+        }
+
+        .pic-slide-cont {
+            // make the pictures layout in one row
+            //  and eliminate the space between inline-blocks
+            white-space: nowrap;
+            font-size: 0;
+            .pic-slide-section {
+                // float: left;
+                position: relative;
+                display: inline-block;
+            }
+        }
+
+		img {
+            vertical-align: middle;
+            z-index: -4;
+            width: 100%;
+			// max-width: 100%;
+		}
+        
+        .index-pic-bar {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 1em;
+            text-shadow: 0 0 3px #333;
+            cursor: default;
+            
+            .index-pic-bar-indicators {
+                & .index-pic-bar-indicator-active {
+                    & > i:before { content: "\f111"; }
+                }
+            }
+        }
+	}
+
+}

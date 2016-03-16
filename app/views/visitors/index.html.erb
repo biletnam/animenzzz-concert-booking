@@ -146,11 +146,10 @@
     </div>
 </div>
 
-<br />
-
-<ul>
+<% if false %>
+<ul class="clearfix">
     <% @recitals.each do |recital| %>
-        <li>
+        <li style="float: left; display: block;">
             <%= link_to recital, :class => 'show' do %>
                 <h3><%= recital.city %></h3>
                 <p><%= recital.start_time.strftime('%m月%d日晚') unless recital.start_time.nil? %></p>
@@ -163,6 +162,84 @@
         </li>
     <% end %>
 </ul>
+<% end %>
+
+<div class="section-intro">
+    <div class="outer-container clearfix">
+        <div class="index-intro-video-cont">
+            <div class="index-intro-video">
+                <%= link_to '#' do %><%= image_tag 'video_areuok.jpg' %><% end %>
+            </div>
+        </div>
+        <div class="index-intro-text">
+由于Lambda表达式构造URL的速度不佳，我最近对于性能上的细节问题进行了一些探索和尝试。对于很多问题，以前由于不会形成性能瓶颈，因此并没有进行太多关注。还有一些问题可以“推断”出大致的结论，也趁这个机会进行更详细的试验，希望可以得到更为确切的结论和理性的认识。这次我打算做的实验，是关于对象的缓存与创建的性能比较。在某些情况下，我们会将创建好的对象缓存起来，以便今后进行复用。但是不同的缓存方式会有不同的性能，因此……我们现在便来试试看。
+
+值得注意的是，我们这里的“缓存”，只是为了复用而保存而已，并没有一些过期机制等复杂的要求——甚至来删除操作也没有，我们这里只关心“读”操作。
+        </div>
+    </div>
+</div>
+
+<div class="section-videos">
+    <div class="outer-container">
+        <div class="index-videos clearfix">
+            <div class="index-video-item-cont">
+                <div class="index-video-item">
+                    <%= link_to '#' do %><%= image_tag 'video_areuok.jpg' %><% end %>
+                    <div class="index-video-title">
+                        Are you OK?
+                        <div class="index-video-time">
+                            66:66
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="index-video-item-cont">
+                <div class="index-video-item">
+                    <%= link_to '#' do %><%= image_tag 'video_areuok.jpg' %><% end %>
+                    <div class="index-video-title">
+                        I'm fine thank you
+                    </div>
+                    <div class="index-video-time">
+                        3:20
+                    </div>
+                </div>
+            </div>
+            <div class="index-video-item-cont">
+                <div class="index-video-item">
+                    <%= link_to '#' do %><%= image_tag 'video_mc.jpg' %><% end %>
+                    <div class="index-video-title">
+                        Indian Mi fans
+                    </div>
+                    <div class="index-video-time">
+                        3:20
+                    </div>
+                </div>
+            </div>
+            <div class="index-video-item-cont">
+                <div class="index-video-item">
+                    <%= link_to '#' do %><%= image_tag 'video_areuok.jpg' %><% end %>
+                    <div class="index-video-title">
+                        China Mi fans
+                    </div>
+                    <div class="index-video-time">
+                        3:20
+                    </div>
+                </div>
+            </div>
+            <div class="index-video-item-cont">
+                <div class="index-video-item">
+                    <%= link_to '#' do %><%= image_tag 'video_areuok.jpg' %><% end %>
+                    <div class="index-video-title">
+                        Everyone a Mi band
+                    </div>
+                    <div class="index-video-time">
+                        3:20
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <% content_for(:script) do %>
 <script>

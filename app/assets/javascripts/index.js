@@ -5,12 +5,12 @@ $(function () {
 });
 
 $(function () {
-	if ($('.nav-msg').length) {
+	if ($('.top-msg').length) {
 		setTimeout(function () {
-			$('.nav-msg').fadeOut('slow');
+			$('.top-msg').fadeOut('slow');
 		}, 1000 * 10);
 
-		$('.nav-msg button').on('click', function (e) {
-			$(e.currentTarget).parent('.nav-msg').fadeOut('slow'); });
+		$('.top-msg button').on('click', function (e) {
+			$(e.currentTarget).parent('.top-msg').fadeOut('slow'); });
 	}
 });
