@@ -46,6 +46,19 @@ zh-CN:
         price: "总金额"
         address: "寄送地址"
         trac_num: "运单号"
+        express: "快递公司"
+        name: "收件人"
+        phone: "电话号码"
+        status: "订单状态"
+        created_at: "创建时间"
+        updated_at: "更新时间"
+
+      seat:
+        locate_x: "排数"
+        locate_y: "列数"
+        sold: "是否售出"
+        created_at: "创建时间"
+        updated_at: "更新时间"
 
     models:
       user: "用户"
