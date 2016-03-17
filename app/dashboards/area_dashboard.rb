@@ -14,6 +14,7 @@ class AreaDashboard < Administrate::BaseDashboard
     id: Field::Number,
     klass: Field::String,
     capacity: Field::Number,
+    floor: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }
@@ -29,6 +30,7 @@ class AreaDashboard < Administrate::BaseDashboard
     :seats,
     :id,
     :capacity,
+    :floor,
   ]
 
   # SHOW_PAGE_ATTRIBUTES
@@ -44,6 +46,7 @@ class AreaDashboard < Administrate::BaseDashboard
     :seats,
     :klass,
     :capacity,
+    :floor,
   ]
 
   # Overwrite this method to customize how areas are displayed
