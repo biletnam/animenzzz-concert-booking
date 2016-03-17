@@ -24,11 +24,23 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(secure_params)
     seats = Seat.find(session[:ids])
-    @order.seats << seats
 
-    @order.save
+    # if @order.already_sold? then
+    # end
 
-    current_user.orders << @order
+    Seat.transaction do
+      seats.each do |seat|
+        seat.lock!
+        seat.set_sold
+        seat.save
+      end
+
+      @order.seats << seats
+
+      @order.save 
+
+      current_user.orders << @order
+    end
 
     send_pingpp @order.id
 

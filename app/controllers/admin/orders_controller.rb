@@ -15,5 +15,12 @@ module Admin
 
     # See https://administrate-docs.herokuapp.com/customizing_controller_actions
     # for more information
+    def destroy
+      order = Order.find params[:id]
+      order.return_seats
+
+      order.destroy
+      redirect_to admin_orders_path
+    end
   end
 end

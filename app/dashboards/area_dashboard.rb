@@ -28,6 +28,7 @@ class AreaDashboard < Administrate::BaseDashboard
     :name,
     :seats,
     :id,
+    :capacity,
   ]
 
   # SHOW_PAGE_ATTRIBUTES

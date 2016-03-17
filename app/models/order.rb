@@ -30,5 +30,18 @@ class Order < ActiveRecord::Base
     else
       '已签收'
     end
+  end
+
+  def already_sold?
+    self.seats.each do |seat|
+      return true if seat.sold
+    end
+  end
+
+  def return_seats
+    self.seats.each do |seat|
+      seat.sold = false
+      seat.save
+    end
   end	
 end
