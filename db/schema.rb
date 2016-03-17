@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20160316110645) do
     t.integer  "price"
     t.string   "address"
     t.string   "trac_num"
+    t.string   "express"
     t.string   "name"
     t.string   "phone"
     t.integer  "status"

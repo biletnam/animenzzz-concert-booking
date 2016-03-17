@@ -23,7 +23,29 @@ zh-CN:
         capacity: "人数"
         klass: "编号"
         created_at: "创建时间"
-        updated_at: "更新时间"        
+        updated_at: "更新时间"
+
+      recital:
+        name: "名称"
+        city: "城市"
+        musician: "音乐家"
+        capacity: "人数"
+        music_hall: "音乐厅"
+        address: "地址"
+        lat: "经度"
+        lng: "纬度"
+        start_time: "开始时间"
+        end_time: "结束时间"
+        created_at: "创建时间"
+        updated_at: "更新时间"
+
+      order:
+        pay_time: "支付时间"
+        apply_time: "付款截止"
+        refund_time: "退款时间"
+        price: "总金额"
+        address: "寄送地址"
+        trac_num: "运单号"
 
     models:
       user: "用户"
