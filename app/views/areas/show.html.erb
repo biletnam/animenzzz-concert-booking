@@ -15,33 +15,32 @@
                         </span>
                     <% end %>
                 </div>
+                <br />
+                <div>
+                    <span class="seat">
+                        <div class="seat-checkbox" id="seat-example-available"></div>
+                        <label for="seat-example-available"></label>
+                        <span>可选座位</span>
+                    </span>
+                    <span class="seat">
+                        <div class="seat-checkbox seat-disabled" id="seat-example-unavailable"></div>
+                        <label for="seat-example-unavailable"></label>
+                        <span>不可选座位</span>
+                    </span>
+                    <span class="seat">
+                        <div class="seat-checkbox seat-checked" id="seat-example-selected"></div>
+                        <label for="seat-example-selected"></label>
+                        <span>已选座位</span>
+                    </span>
+                </div>
             </div>
-            <div>
-                目前已选择 <span class="seat-count">0</span> 个座位
+            <div class="seat-info">
+                <div class="seat-count-cont">
+                    <button class="button seat-btn-clear" type="button">清空</button>
+                    目前已选择 <span class="seat-count">0</span> 个座位
+                    <%= f.submit '提交', class: 'button' %>
+                </div>
             </div>
-            <span class="seat-left-bar">
-                <span class="seat">
-                    <div class="seat-checkbox" id="seat-example-available"></div>
-                    <label for="seat-example-available"></label>
-                    <span>可选座位</span>
-                </span>
-                <span class="seat">
-                    <div class="seat-checkbox seat-disabled" id="seat-example-unavailable"></div>
-                    <label for="seat-example-unavailable"></label>
-                    <span>不可选座位</span>
-                </span>
-                <span class="seat">
-                    <div class="seat-checkbox seat-checked" id="seat-example-selected"></div>
-                    <label for="seat-example-selected"></label>
-                    <span>已选座位</span>
-                </span>
-            </span>
-            <span>
-                <button class="button seat-btn-clear" type="button">清空</button>
-                <%= f.submit '提交', class: 'button' %>
-            </span>
-            <span class="seat-right-bar">
-            </span>
         <% end %>
     </div>
 </div>
