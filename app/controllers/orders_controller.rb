@@ -15,16 +15,16 @@ class OrdersController < ApplicationController
     params[:area][:seat_ids].pop
     session[:ids] = params[:area][:seat_ids]
 
-    @seats = Seat.find(session[:ids])
-    @order.seats << @seats
+    seats = Seat.find(session[:ids])
+    @order.seats << seats
 
     @order.total_price
   end
 
   def create
     @order = Order.new(secure_params)
-    @seats = Seat.find(session[:ids])
-    @order.seats << @seats
+    seats = Seat.find(session[:ids])
+    @order.seats << seats
 
     @order.save
 

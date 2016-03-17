@@ -60,12 +60,16 @@ zh-CN:
         created_at: "创建时间"
         updated_at: "更新时间"
 
+      price:
+        price: "价格"
+
     models:
       user: "用户"
       order: "订单"
       recital: "音乐会"
       area: "区域"
       seat: "座位"
+      price: "价位"
 
   administrate:
     actions:
