@@ -13,9 +13,10 @@ class DashboardManifest
     :users,
     :areas,
     :orders,
-    #:orderitems,
     :recitals,
     :seats,
+    :prices,
+    :videos,
   ]
 
   # `ROOT_DASHBOARD`
