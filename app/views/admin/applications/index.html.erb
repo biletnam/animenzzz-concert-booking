@@ -47,7 +47,7 @@ It renders the `_table` partial to display details about the resources.
   <h1 class="header-heading"><%= content_for(:title) %></h1>
   <div class="header-actions">
     <%= link_to(
-      "New #{page.resource_name.titleize.downcase}",
+      "新增 #{page.resource_name.titleize.downcase}",
       [:new, Administrate::NAMESPACE, page.resource_name],
       class: "button",
     ) %>

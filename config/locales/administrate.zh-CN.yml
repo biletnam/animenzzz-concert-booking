@@ -1,0 +1,54 @@
+---
+zh-CN:
+  activerecord:
+    attributes:
+      user:
+        email: "电子邮箱"
+        encrypted_password: "密码"
+        remember_created_at: "记住用户创建时间"
+        sign_in_count: "登录次数"
+        reset_password_token: "密码重置标签"
+        reset_password_sent_at: "重置的密码"
+        current_sign_in_at: "本次登录日期"
+        last_sign_in_at: "上次登录日期"
+        current_sign_in_ip: "当前登录IP"
+        last_sign_in_ip: "上次登录IP"
+        created_at: "创建时间"
+        updated_at: "更新时间"
+        name: "姓名"
+
+      area:
+        name: "区域名"
+        price: "价格"
+        capacity: "人数"
+        created_at: "创建时间"
+        updated_at: "更新时间"        
+
+    models:
+      user: "用户"
+      order: "订单"
+      recital: "音乐会"
+      area: "区域"
+      seat: "座位"
+
+  administrate:
+    actions:
+      confirm: 确定?
+      destroy: 删除
+      edit: 编辑
+      show: 查看
+    controller:
+      create:
+        success: "%{resource} 创建成功."
+      destroy:
+        success: "%{resource} 删除成功."
+      update:
+        success: "%{resource} 更新成功."
+    fields:
+      has_many:
+        more: 显示所有 %{total_count} 中 %{count} 条
+        none: 无
+      polymorphic:
+        not_supported: Polymorphic 关系暂不支持
+      has_one:
+        not_supported: HasOne 关系暂不支持.

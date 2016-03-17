@@ -22,7 +22,7 @@ as well as a link to its edit page.
   <h1 class="header-heading"><%= content_for(:title) %></h1>
   <div class="header-actions">
     <%= link_to(
-      "Edit",
+      "编辑",
       [:edit, Administrate::NAMESPACE, page.resource],
       class: "button",
     ) %>
@@ -42,7 +42,7 @@ as well as a link to its edit page.
     <%= image_tag page.resource.avatar.url(:medium) %>
     <%= form_for [Administrate::NAMESPACE, page.resource] do |f| %>
       <%= f.file_field :avatar %>
-      <%= f.submit value: 'Update Avatar' %>
+      <%= f.submit value: '更新头像' %>
     <% end %>
   </dd>
 </dl>
