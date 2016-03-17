@@ -7,4 +7,8 @@ class Seat < ActiveRecord::Base
   def name_with_initial
     # "#{locate_x}. #{locate_y}"
   end
+
+  def set_sold
+  	self.sold = true
+  end
 end

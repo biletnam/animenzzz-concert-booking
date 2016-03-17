@@ -2,8 +2,8 @@ class Area < ActiveRecord::Base
   belongs_to :recital
   has_many :seats, dependent: :destroy
 
-  validates :username, presence: true
-  validates :username, uniqueness: true
+  validates :klass, presence: true
+  validates :klass, uniqueness: true
 
   def seat_ids
   	[]

@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class AreaDashboard < Administrate::BaseDashboard
+class VideoDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,15 +8,16 @@ class AreaDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    recital: Field::BelongsTo,
-    seats: Field::HasMany,
-    name: Field::String,
     id: Field::Number,
-    klass: Field::String,
-    capacity: Field::Number,
-    floor: Field::Number,
+    name: Field::String,
+    link: Field::String,
+    length: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    screenshot_file_name: Field::String,
+    screenshot_content_type: Field::String,
+    screenshot_file_size: Field::Number,
+    screenshot_updated_at: Field::DateTime,
   }
 
   # COLLECTION_ATTRIBUTES
@@ -25,12 +26,10 @@ class AreaDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :recital,
-    :name,
-    :seats,
     :id,
-    :capacity,
-    :floor,
+    :name,
+    :link,
+    :length,
   ]
 
   # SHOW_PAGE_ATTRIBUTES
@@ -41,18 +40,19 @@ class AreaDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :recital,
     :name,
-    :seats,
-    :klass,
-    :capacity,
-    :floor,
+    :link,
+    :length,
+    :screenshot_file_name,
+    :screenshot_content_type,
+    :screenshot_file_size,
+    :screenshot_updated_at,
   ]
 
-  # Overwrite this method to customize how areas are displayed
+  # Overwrite this method to customize how videos are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(area)
-  #   "Area ##{area.id}"
+  # def display_resource(video)
+  #   "Video ##{video.id}"
   # end
 end

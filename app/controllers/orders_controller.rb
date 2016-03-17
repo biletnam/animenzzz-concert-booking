@@ -15,20 +15,32 @@ class OrdersController < ApplicationController
     params[:area][:seat_ids].pop
     session[:ids] = params[:area][:seat_ids]
 
-    @seats = Seat.find(session[:ids])
-    @order.seats << @seats
+    seats = Seat.find(session[:ids])
+    @order.seats << seats
 
     @order.total_price
   end
 
   def create
     @order = Order.new(secure_params)
-    @seats = Seat.find(session[:ids])
-    @order.seats << @seats
+    seats = Seat.find(session[:ids])
 
-    @order.save
+    # if @order.already_sold? then
+    # end
 
-    current_user.orders << @order
+    Seat.transaction do
+      seats.each do |seat|
+        seat.lock!
+        seat.set_sold
+        seat.save
+      end
+
+      @order.seats << seats
+
+      @order.save 
+
+      current_user.orders << @order
+    end
 
     send_pingpp @order.id
 

@@ -16,7 +16,7 @@
                 <% order.seats.each do |seat| %>
                 <tr class="order-item">
                     <td><%= seat.area.recital.city %>站 <%= seat.area.name %></td>
-                    <td>单价 ￥<%= seat.area.price %></td>
+                    <td>单价 ￥<%= seat.price.price %></td>
                 </tr>
                 <% end %>
             </table>

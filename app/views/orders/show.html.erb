@@ -30,7 +30,7 @@
             <% @order.seats.each do |seat| %>
             <li class="order-item">
                 <span><%= seat.area.recital.city %>站 <%= seat.area.name %></span>
-                <span>单价 <span class="order-dotted">￥<%= seat.area.price %></span></span>
+                <span>单价 <span class="order-dotted">￥<%= seat.price.price %></span></span>
             </li>
             <% end %>
         </ul>

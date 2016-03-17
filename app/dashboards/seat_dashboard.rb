@@ -9,7 +9,6 @@ class SeatDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     area: Field::BelongsTo,
-    #orderitems: Field::HasMany,
     orders: Field::HasMany,
     id: Field::Number,
     locate_x: Field::Number,
@@ -26,9 +25,9 @@ class SeatDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :area,
-    #:orderitems,
     :orders,
     :id,
+    :sold,
   ]
 
   # SHOW_PAGE_ATTRIBUTES
@@ -40,7 +39,6 @@ class SeatDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :area,
-    #:orderitems,
     :orders,
     :locate_x,
     :locate_y,
