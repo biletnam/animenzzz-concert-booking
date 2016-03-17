@@ -89,10 +89,12 @@ pickle-email-*.html
 /config/application.yml
 
 # Ignore RSA keys
-rsa_private_key.pem 
+rsa_private_key.pem
 rsa_public_key.pem
 
 # Ignore test folder
 /test/*
 app/assets/images/*
 
+public/halldata/*
+vendor/assets/javascripts/*

@@ -12,4 +12,9 @@
 //
 //= require 'jquery-2.2.0.js'
 //= require jquery_ujs
-//= require_tree .
+//= require react
+//= require react_ujs
+//= require 'classnames.js'
+//= require components
+//= require 'index.js'
+// require_tree .

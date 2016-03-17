@@ -1,0 +1,44 @@
+.rx-seatchooser-floor-cont {
+    
+    overflow: auto;
+    
+    &.rx-seatchooser-floor-cont-hide {
+        display: none;
+    }
+    
+    .rx-seatchooser-floor {
+        white-space: nowrap;
+    }
+}
+
+ul.rx-tabs {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    border: 1px solid white;
+    
+    li {
+        float: left;
+        a {
+            padding: 1em 2.5em;
+            display: block;
+            text-decoration: none;
+            border: 1px solid white;
+            
+            &.rx-tabs-active {
+                background-color: white;
+                color: black;
+            }
+        }
+    }
+}
+
+.rx-tabc {
+    .rx-tabc-wrap {
+        display: none;
+        &.rx-tabc-active {
+            display: block;
+        }
+    }
+}
