@@ -12,7 +12,7 @@ class AreaDashboard < Administrate::BaseDashboard
     seats: Field::HasMany,
     name: Field::String,
     id: Field::Number,
-    price: Field::Number,
+    klass: Field::String,
     capacity: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -28,7 +28,6 @@ class AreaDashboard < Administrate::BaseDashboard
     :name,
     :seats,
     :id,
-    :price,
   ]
 
   # SHOW_PAGE_ATTRIBUTES
@@ -42,7 +41,7 @@ class AreaDashboard < Administrate::BaseDashboard
     :recital,
     :name,
     :seats,
-    :price,
+    :klass,
     :capacity,
   ]
 

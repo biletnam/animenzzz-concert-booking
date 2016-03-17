@@ -18,8 +18,9 @@ ActiveRecord::Schema.define(version: 20160316110645) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "name"
-    t.integer  "price"
+    t.string   "klass"
     t.integer  "capacity"
+    t.integer  "floor"
     t.integer  "recital_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -54,6 +55,12 @@ ActiveRecord::Schema.define(version: 20160316110645) do
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
+  create_table "prices", force: :cascade do |t|
+    t.integer  "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "recitals", force: :cascade do |t|
     t.string   "name"
     t.string   "city"
@@ -82,11 +89,13 @@ ActiveRecord::Schema.define(version: 20160316110645) do
     t.integer  "locate_y"
     t.boolean  "sold",       default: false
     t.integer  "area_id"
+    t.integer  "price_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
 
   add_index "seats", ["area_id"], name: "index_seats_on_area_id", using: :btree
+  add_index "seats", ["price_id"], name: "index_seats_on_price_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -129,4 +138,5 @@ ActiveRecord::Schema.define(version: 20160316110645) do
   add_foreign_key "orderitems", "seats"
   add_foreign_key "orders", "users"
   add_foreign_key "seats", "areas"
+  add_foreign_key "seats", "prices"
 end

@@ -16,7 +16,7 @@ class Order < ActiveRecord::Base
   end
 
   def total_price
-    self.price ||= self.seats.collect {|p| p.area.price }.sum
+    self.price ||= self.seats.collect {|p| p.price.price }.sum
   end
 
   def get_status

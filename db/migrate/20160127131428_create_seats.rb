@@ -5,6 +5,7 @@ class CreateSeats < ActiveRecord::Migration
       t.integer :locate_y
       t.boolean :sold, default: false
       t.references :area, index: true, foreign_key: true
+      t.references :price, index: true, foreign_key: true
 
       t.timestamps null: false
     end

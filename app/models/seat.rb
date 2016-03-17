@@ -1,5 +1,6 @@
 class Seat < ActiveRecord::Base
   belongs_to :area
+  belongs_to :price
   has_many :orderitems, dependent: :destroy
   has_many :orders, through: :orderitems
 
