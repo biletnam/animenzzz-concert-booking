@@ -1,54 +1,50 @@
-<%= form_for [@recital, @area], url: new_order_path, method: :get do |f| %>
-<div class="seat-main">
-    <div class="seat-container">
-        <div class="seat-row">
-            <%= f.collection_check_boxes :seat_ids, @area.seats, :id, :sold do |b| %>
+<div class="outer-container">
+    <div class="nwui-main clearfix">
+        <%= form_for [@recital, @area], url: new_order_path, method: :get do |f| %>
+            <div class="nwui-header align-center clearfix">
+                <button class="button nwui-back-btn float-left">返回</button>
+                <button class="button nwui-submit-btn float-right">提交</button>
+                <div class="nwui-header-title">选择座位</div>
+            </div>
+            <div class="seat-container">
+                <div class="seat-row">
+                    <%= f.collection_check_boxes :seat_ids, @area.seats, :id, :sold do |b| %>
+                        <span class="seat">
+                            <%= b.check_box 'disabled': b.text %>
+                            <label class="seat-label"></label>
+                        </span>
+                    <% end %>
+                </div>
+            </div>
+            <div>
+                目前已选择 <span class="seat-count">0</span> 个座位
+            </div>
+            <span class="seat-left-bar">
                 <span class="seat">
-                    <%= b.check_box 'disabled': b.text %>
-                    <label class="seat-label"></label>
+                    <div class="seat-checkbox" id="seat-example-available"></div>
+                    <label for="seat-example-available"></label>
+                    <span>可选座位</span>
                 </span>
-            <% end %>
-        </div>
-    </div>
-    <div>
-        目前已选择 <span class="seat-count">0</span> 个座位
+                <span class="seat">
+                    <div class="seat-checkbox seat-disabled" id="seat-example-unavailable"></div>
+                    <label for="seat-example-unavailable"></label>
+                    <span>不可选座位</span>
+                </span>
+                <span class="seat">
+                    <div class="seat-checkbox seat-checked" id="seat-example-selected"></div>
+                    <label for="seat-example-selected"></label>
+                    <span>已选座位</span>
+                </span>
+            </span>
+            <span>
+                <button class="button seat-btn-clear" type="button">清空</button>
+                <%= f.submit '提交', class: 'button' %>
+            </span>
+            <span class="seat-right-bar">
+            </span>
+        <% end %>
     </div>
 </div>
-<div class="seat-opbar seat-layout-end">
-    <span class="seat-left-bar">
-        <span class="seat">
-            <div class="seat-checkbox" id="seat-example-available"></div>
-            <label for="seat-example-available"></label>
-            <span>可选座位</span>
-        </span>
-        <span class="seat">
-            <div class="seat-checkbox seat-disabled" id="seat-example-unavailable"></div>
-            <label for="seat-example-unavailable"></label>
-            <span>不可选座位</span>
-        </span>
-        <span class="seat">
-            <div class="seat-checkbox seat-checked" id="seat-example-selected"></div>
-            <label for="seat-example-selected"></label>
-            <span>已选座位</span>
-        </span>
-    </span>
-    <span>
-        <button class="button seat-btn-clear" type="button">清空</button>
-        <%= f.submit '提交', class: 'button' %>
-    </span>
-    <span class="seat-right-bar">
-    </span>
-</div>
-<% end %>
-
-<% content_for :header_class do %>continuous<% end %>
-<% content_for :breadcumb do %>
-<ul class="nav-bar float-left nav-breadcumb">
-    <li><%= link_to '首页', '/' %></li>
-    <li><%= link_to @area.name, recital_areas_path() %></li>
-    <li>选择座位</li>
-</ul>
-<% end %>
 
 <% content_for :script do %>
 <script>

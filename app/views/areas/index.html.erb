@@ -1,26 +1,24 @@
-<div class="area-main">
-    <ul class="area-list">
-        <% @areas.each_with_index do |area, index| %>
-            <li>
-                <%= link_to recital_area_path(@recital, area), :class => "area-list-item" do %>
-                    <%= index + 1 %>区
-                <% end %>
-            </li>
-        <% end %>
-    </ul>
-    <div class="area-preview-cont">
-        <div class="title-secondary">
-            <h3>区域示意图</h3>
+<div class="outer-container">
+    <div class="nwui-main clearfix">
+        <div class="nwui-header align-center clearfix">
+            <button class="button nwui-back-btn float-left">返回</button>
+            <div class="nwui-header-title">选择区域</div>
         </div>
-        <div class="area-preview">
-            <%= image_tag @recital.venue_image %>
+        <div class="area-preview-cont">
+            <div class="area-preview">
+                <%= image_tag @recital.venue_image %>
+            </div>
+        </div>
+        <div class="area-list-cont">
+            <ul class="area-list">
+                <% @areas.each_with_index do |area, index| %>
+                    <li>
+                        <%= link_to recital_area_path(@recital, area), :class => "area-list-item" do %>
+                            <div class="area-title"><%= index + 1 %>区</div>
+                        <% end %>
+                    </li>
+                <% end %>
+            </ul>
         </div>
     </div>
 </div>
-
-<% content_for :breadcumb do %>
-<ul class="nav-bar float-left nav-breadcumb">
-    <li><%= link_to '首页', '/' %></li>
-    <li>选择区域</li>
-</ul>
-<% end %>

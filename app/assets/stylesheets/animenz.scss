@@ -71,9 +71,10 @@ input[type="email"],
 input[type="password"] {
     border-radius: 1px;
     // box-shadow: inset 1px 1px 4px $darken-20;
-    box-shadow: inset 0 1px 1px $darken-20;
-    padding: .5em;
-    border: 1px solid #CCC;
+    box-shadow: inset 0 1px 1px $darken-30;
+    padding: .7em;
+    border: 1px solid #bbb;
+    background-color: #F0F0F0;
     color: #666;
 }
 
@@ -189,26 +190,27 @@ input[type="password"] {
 
 .order-address-cont {
     color: #666;
-    padding: 1em;
+    padding: 6px;
     border-radius: 2px;
     background-color: $lighter-40;
     background-image: repeating-linear-gradient(45deg,
         transparent,
         transparent 20px,
-        rgba(255,0, 0, .3) 20px,
-        rgba(255,0, 0, .3) 40px,
+        rgba(204, 26, 27, .6) 20px,
+        rgba(204, 26, 27, .6) 40px,
         transparent 40px,
         transparent 60px,
-        rgba(0, 0, 255, .3) 60px,
-        rgba(0, 0, 255, .3) 80px);
+        rgba(88, 79, 170, .6) 60px,
+        rgba(88, 79, 170, .6) 80px);
     @include media-mobile {
         border-radius: 0;
     }
     // opacity: 0.5;
     .order-address {
         border-radius: 2px;
-        background-color: #d0d0d0;
+        background-color: #F0F0F0;
         padding: 1em;
+        box-shadow: 0 0 0 1px $darken-20;
     }
 }
 

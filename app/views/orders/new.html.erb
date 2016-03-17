@@ -1,39 +1,50 @@
+<div class="outer-container">
 <%= form_for @order do |f| %>
-<div class="seat-main">
-    <h3>订单结算</h3>
-    <div class="submit-items-cont">
-        <table class="submit-items">
-            <colgroup>
-                <col span="1" style="width: 5%;" />
-                <col span="1" style="width: 40%;" />
-                <col span="1" style="width: 30%;" />
-                <col span="1" style="width: 15%;" />
-            </colgroup>
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>场次</th>
-                    <th>区域</th>
-                    <th>价格</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @order.seats.each do |seat| %>
-                <tr>
-                    <th>1</th>
-                    <td><%= seat.area.recital.city %>站</td>
-                    <td><%= seat.area.name %></td>
-                    <th>￥<%= seat.area.price %></th>
-                </tr>
-                <% end %>
-            </tbody>
-        </table>
+    <div class="nwui-main submit-main">
+        <div class="nwui-header align-center clearfix">
+            <button class="button nwui-back-btn float-left">返回</button>
+            <button class="button nwui-submit-btn float-right">提交</button>
+            <div class="nwui-header-title">提交订单</div>
+        </div>
+        
+        <div class="submit-items-cont">
+            <table class="submit-items">
+                <colgroup>
+                    <col span="1" style="width: 5%;" />
+                    <col span="1" style="width: 40%;" />
+                    <col span="1" style="width: 30%;" />
+                    <col span="1" style="width: 15%;" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>场次</th>
+                        <th>区域</th>
+                        <th>价格</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @order.seats.each do |seat| %>
+                    <tr>
+                        <th>1</th>
+                        <td><%= seat.area.recital.city %>站</td>
+                        <td><%= seat.area.name %></td>
+                        <th>￥<%= seat.area.price %></th>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+            
+        <div class="submit-lastinfo">
+            
+            <div class="submit-subtotal">
+                应付总金额：<span class="submit-total">￥<%= @order.price %></span>
+            </div>
+        </div>
+        
     </div>
-    
-    <br />
-    
-    <div class="submit-lastinfo">
-        <div class="submit-address">
+    <div class="nwui-continue submit-address">
         <div class="order-address-cont align-left">
             <div class="order-address">
                 <div class="align-center font-bold">收货人信息</div>
@@ -55,27 +66,13 @@
                 </div> -->
             </div>
         </div>
+        <div class="submit-total-badge">
+            <div>总金额</div>
+            <div class="submit-total">￥<%= @order.price %></div>
         </div>
-        <div class="submit-subtotal">
-            应付总金额：<span class="submit-total">￥<%= @order.price %></span>
-        </div>
-   </div>
-</div>
-<div class="seat-opbar">
-    <span class="seat-left-bar">
-    </span>
-    <span>
-        <%= f.submit '提交', class: 'button' %>
-    </span>
-    <span class="seat-right-bar">
-    </span>
-</div>
+    </div>
+    <div class="nwui-continue align-center submit-opbar">
+        <%= f.submit '提交', class: 'button submit-submit-btn' %>
+    </div>
 <% end %>
-
-<% content_for :header_class do %>continuous<% end %>
-<% content_for :breadcumb do %>
-<ul class="nav-bar float-left nav-breadcumb">
-    <li><%= link_to '首页', root_path %></li>
-    <li><%= link_to '订单' %></li>
-</ul>
-<% end %>
+</div>
