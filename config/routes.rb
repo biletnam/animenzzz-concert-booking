@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :orders
 
   resources :recitals, only: [:show] do
-  	resources :areas, only: [:index, :show] do
+  	resources :areas, only: [:index, :show, :create] do
   	  resources :seats, only: [:index]
   	end
   end
