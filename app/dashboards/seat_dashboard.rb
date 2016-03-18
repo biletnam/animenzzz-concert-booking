@@ -9,6 +9,7 @@ class SeatDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     area: Field::BelongsTo,
+    price: Field::BelongsTo,
     orders: Field::HasMany,
     id: Field::Number,
     locate_x: Field::Number,
