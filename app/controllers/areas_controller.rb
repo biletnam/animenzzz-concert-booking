@@ -1,5 +1,7 @@
 class AreasController < ApplicationController
 
+  skip_before_filter :verify_authenticity_token, :only => [:create]
+
   def index
   	@recital = Recital.find params[:recital_id]
   	@areas = @recital.areas
@@ -11,17 +13,17 @@ class AreasController < ApplicationController
   end
 
   def create
-    cd = JSON.parse(params[:data])
+    cd = params[:data]
     cd.each do |floor| 
       floor.each do |areas|
       	areas.each do |area|
-      	  next if area[:type] == 'empty'
+      	  next if area[:type] != 'seat'
       	  seat = Seat.create(locate_x: area[:row], locate_y: area[:num])
-      	  price = Price.where :price => area[:price]
+      	  price = Price.where(:price => area[:price]).first
       	  price.seats << seat
       	  price.save
-      	  a = Area.where :klass => area[:area]
-      	  a << seat 
+      	  a = Area.where(:klass => area[:area]).first
+      	  a.seats << seat 
       	  a.save
       	end 
       end
