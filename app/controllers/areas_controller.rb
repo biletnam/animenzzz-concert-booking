@@ -17,10 +17,10 @@ class AreasController < ApplicationController
       	areas.each do |area|
       	  next if area[:type] == 'empty'
       	  seat = Seat.create(locate_x: area[:row], locate_y: area[:num])
-      	  price = Price.where { price: area[:price] }
+      	  price = Price.where { :price => area[:price] }
       	  price.seats << seat
       	  price.save
-      	  a = Area.where { klass: area[:area] }
+      	  a = Area.where { :klass => area[:area] }
       	  a << seat 
       	  a.save
       	end 
