@@ -11,7 +11,7 @@ class AreasController < ApplicationController
   end
 
   def create
-    cd = JSON.parse(params[:data]
+    cd = JSON.parse(params[:data])
     cd.each do |floor| 
       floor.each do |areas|
       	areas.each do |area|
