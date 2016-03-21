@@ -1,48 +1,43 @@
-<ul class="order-list dark-panel">
-    <% if @orders.each do |order| %>
-        <li class="order">
-            <table class="order-header order-bar-table">
-                <tr>
-                    <td>下单日期</td>
-                    <td rowspan="2"  class="order-bar-info-status"><strong><%= order.get_status %></strong></td>
-                    <td>总金额</td>
-                </tr>
-                <tr>
-                    <td><%= order.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
-                    <td><strong>￥<%= order.price %></strong></td>
-                </tr>
-            </table>
-            <table class="order-item-table">
-                <% order.seats.each do |seat| %>
-                <tr class="order-item">
-                    <td><%= seat.area.recital.city %>站 <%= seat.area.name %></td>
-                    <td>单价 ￥<%= seat.price.price %></td>
-                </tr>
-                <% end %>
-            </table>
-            <table class="order-footer order-bar-table">
-                <tr>
-                    <td>
-                        <span class="order-bar-info-id">
-                            <div>订单编号: l3UmeTpjFw1qxt9l</div>
-                        </span>
-                    </td>
-                    <td>
-                        <%= link_to order_path(order) do %>
-                            <button class="button order-bar-detail-button">查看详情</button>
-                        <% end %>
-                    </td>
-                </tr>
-            </table>
-        </li>
-    <% end.empty? %>
-        <h2>目前没有订单。</h2>
-    <% end %>
-</ul>
-
-<% content_for :breadcumb do %>
-<ul class="nav-bar float-left nav-breadcumb">
-    <li><%= link_to '首页', root_path %></li>
-    <li>订单列表</li>
-</ul>
-<% end %>
+<div class="outer-container">
+    <ul class="order-list light-panel align-center">
+        <% if @orders.each do |order| %>
+            <li class="order">
+                <table class="order-header order-bar-table">
+                    <tr>
+                        <td>下单日期</td>
+                        <td rowspan="2"  class="order-bar-info-status"><strong><%= order.get_status %></strong></td>
+                        <td>总金额</td>
+                    </tr>
+                    <tr>
+                        <td><%= order.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+                        <td><strong>￥<%= order.price %></strong></td>
+                    </tr>
+                </table>
+                <table class="order-item-table">
+                    <% order.seats.each do |seat| %>
+                    <tr class="order-item">
+                        <td><%= seat.area.recital.city %>站 <%= seat.area.name %></td>
+                        <td>单价 ￥<%= seat.price.price %></td>
+                    </tr>
+                    <% end %>
+                </table>
+                <table class="order-footer order-bar-table">
+                    <tr>
+                        <td>
+                            <span class="order-bar-info-id">
+                                <div>订单编号: l3UmeTpjFw1qxt9l</div>
+                            </span>
+                        </td>
+                        <td>
+                            <%= link_to order_path(order) do %>
+                                <button class="button order-bar-detail-button">查看详情</button>
+                            <% end %>
+                        </td>
+                    </tr>
+                </table>
+            </li>
+        <% end.empty? %>
+            <h2>目前没有订单。</h2>
+        <% end %>
+    </ul>
+</div>

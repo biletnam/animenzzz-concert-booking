@@ -1,22 +1,9 @@
-<div>
-	<div class="header-logo">
-		<%= link_to root_path, :class => 'header-logo-img-cont' do %>
-		  <%= image_tag("animenz.png", :class=> 'header-logo-img', :alt => 'Animenz Logo') %>
-		<% end %>
-	</div>
+<div class="topbar">
+    <div class="outer-container">
+        <%= link_to root_path, :class => 'topbar-logo-img-cont' do %>
+            <%= image_tag("animenz.png", :class=> 'topbar-img', :alt => 'Animenz Logo') %>
+        <% end %>
+        <%= render 'layouts/navigation_auth' %>
+    </div>
 </div>
-<div class="nav-bar-cont font-bold clearfix">
-	<% if content_for?(:breadcumb) %>
-		<%= yield :breadcumb %>
-	<% else %>
-		<ul class="nav-bar float-left nav-breadcumb">
-			<li><a href="/">成都场</a></li>
-			<li><a href="/">选择区域</a></li>
-			<li>????</li>
-		</ul>
-	<% end %>
-	<ul class="nav-bar float-right pos-relative nav-bar-profile-menu-cont">
-		<%= render 'layouts/nav_links_for_auth' %>
-	</ul>
-	<%= render 'layouts/messages' %>
-</div>
+<%= render 'layouts/messages' %>

@@ -34,3 +34,6 @@ group :development, :test do
   gem 'pry-rescue'
   gem 'rubocop'
 end
+
+gem 'sprockets', '>=3.0.0.beta'
+gem 'sprockets-es6'

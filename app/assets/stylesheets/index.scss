@@ -1,0 +1,124 @@
+
+@import 'cd';
+@import 'essential';
+
+.with-video-play-btn {
+    &:hover {
+        &:after {
+            opacity: 1;
+        }
+    }
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        border-top: 25px solid transparent;
+        border-bottom: 25px solid transparent;
+        border-left: 40px solid $lighter-60;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        pointer-events: none;
+    }
+}
+
+.section-intro {
+    padding: 1em 0;
+    @include media-mobile {
+        padding-top: 0; }
+    background-color: #444;
+    
+    .index-intro-video-cont, .index-intro-text {
+        width: 50%;
+        float: left;
+        padding: 1em;
+        box-sizing: border-box;
+        
+        @include media-mobile {
+            width: 100%; }
+    }
+    
+    .index-intro-video-cont {
+        @include media-mobile {
+            padding: 0; }
+        .index-intro-video {
+            position: relative;
+            @extend .with-video-play-btn;
+        }
+        img {
+            @include media-mobile {
+                border-radius: 0; }
+            box-shadow: 0 0 3em $darken-50;
+            display: block;
+            border-radius: 3px;
+            width: 100%;
+            
+            &:hover { opacity: 0.8; }
+        }
+    }
+}
+
+.section-videos {
+    background-color: #222;
+    padding: 1em 0;
+}
+
+.index-videos {
+    .index-video-item-cont {
+        width: 25%;
+        float: left;
+        padding: 0.8em;
+        box-sizing: border-box;
+        // @include mq($until: mobile) {
+        //     width: 100%; }
+        @include mq($until: desktop) {
+            width: 33%; }
+        @include mq($until: tablet) {
+            width: 50%; }
+    }
+    .index-video-item {
+        border-radius: 3px;
+        position: relative;
+        box-shadow: 0 0 3em $darken-50;
+        img {
+            width: 100%;
+            border-radius: 3px;
+            display: block;
+        }
+        
+        &:hover {
+            .index-video-title {
+                height: 100%;
+            }
+        }
+        
+        @extend .with-video-play-btn;
+    }
+    
+    .index-video-title {
+        position: absolute;
+        bottom: 0;
+        padding: 0.5em;
+        background: linear-gradient(to bottom, transparent 0, black 100%);
+        width: 100%;
+        height: 25%;
+        transition: height 0.3s ease-in-out;
+        box-sizing: border-box;
+        border-radius: 0 0 3px 3px;
+        pointer-events: none;
+    }
+    
+    .index-video-time {
+        position: absolute;
+        right: 3px;
+        bottom: 3px;
+        font-size: smaller;
+        font-family: monospace;
+        padding: 0.1em 0.2em;
+        color: #ccc;
+        background: $lighter-20;
+        border-radius: 1px;
+    }
+}

@@ -1,0 +1,36 @@
+<ul class="topbar-menu float-right nav-bar-profile-menu-cont">
+<% if user_signed_in? %>
+<li>
+    <span class="nav-bar-profile-btn topbar-item-body hide-mobile">
+        <%= image_tag current_user.avatar.url(:thumb), :class => 'topbar-avatar' %>
+        <%= link_to current_user.name, edit_user_registration_path %>
+        <a href="#" class="nav-bar-profile-show-btn"><i class="fa fa-lg nav-bar-profile-arrow"></i></a>
+    </span>
+    <span class="nav-bar-profile-btn topbar-item-body hide-desktop nav-bar-profile-show-btn">
+        <%= image_tag current_user.avatar.url(:thumb), :class => 'topbar-avatar' %>
+        <span><%= current_user.name %></span>
+        <a href="#" class=""><i class="fa fa-lg nav-bar-profile-arrow"></i></a>
+    </span>
+    <ul class="nav-bar-profile-menu">
+        <% if current_user.try(:admin?) %>
+            <li><%= link_to '管理界面', '/admin' %></li>
+        <% end %>
+        <li><%= link_to '个人信息', edit_user_registration_path %></li>
+        <li><%= link_to '订单列表', orders_path %></li>
+        <li><%= link_to '退出登录', destroy_user_session_path, :method => 'delete' %></li>
+        <li class="hide-desktop">
+            <a href="#" class="align-center nav-bar-profile-show-btn">
+                <i class="fa fa-lg fa-angle-up"></i>
+            </a>
+        </li>
+    </ul>
+</li>
+<% else %>
+<li>
+    <%= link_to '注册', new_user_registration_path, :class => 'topbar-item-body' %>
+</li>
+<li>
+    <%= link_to '登录', new_user_session_path, :class => 'topbar-item-body' %>
+</li>
+<% end %>
+</ul>
