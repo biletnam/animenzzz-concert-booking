@@ -1,5 +1,6 @@
 <div class="outer-container">
     <ul class="order-list light-panel align-center">
+
         <% if @orders.each do |order| %>
             <li class="order">
                 <table class="order-header order-bar-table">
@@ -36,8 +37,10 @@
                     </tr>
                 </table>
             </li>
+
         <% end.empty? %>
             <h2>目前没有订单。</h2>
         <% end %>
+
     </ul>
 </div>
