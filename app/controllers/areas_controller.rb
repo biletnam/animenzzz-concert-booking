@@ -3,7 +3,7 @@ class AreasController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:create]
 
   def index
-  	@recital = Recital.find params[:recital_id]
+  	@recital = Recital.includes(:areas).find(params[:recital_id])
   	# @areas = @recital.areas
   	@recital.areas.each do |area|
   	  area.seats.each do |seat|
