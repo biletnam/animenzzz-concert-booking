@@ -4,7 +4,12 @@ class AreasController < ApplicationController
 
   def index
   	@recital = Recital.find params[:recital_id]
-  	@areas = @recital.areas
+  	# @areas = @recital.areas
+  	@recital.areas.each do |area|
+  	  area.seats.each do |seat|
+  	  	@seats << seat if seat.sold
+  	  end
+  	end
   end
 
   # def show

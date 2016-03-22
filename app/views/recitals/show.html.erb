@@ -54,7 +54,7 @@
     map.enableScrollWheelZoom();  
     var marker=new BMap.Marker(new BMap.Point(<%= @recital.lat %>, <%= @recital.lng %>));  
     map.addOverlay(marker);  
-    var licontent="<b><%= @recital.music_hall %></b><br>";  
+    var licontent="<b><%= @recital.music_hall %></b><br>";
         licontent+="<span><strong>地址：</strong><%= @recital.address + @recital.music_hall %></span><br>";  
         licontent+="<span class=\"input\"><strong></strong><input class=\"outset\" type=\"text\" name=\"origin\" value=\"<%= @recital.city %>站\"/><input class=\"outset-but\" type=\"button\" value=\"公交\" onclick=\"gotobaidu(1)\" /><input class=\"outset-but\" type=\"button\" value=\"驾车\"  onclick=\"gotobaidu(2)\"/><a class=\"gotob\" href=\"url=\"http://api.map.baidu.com/direction?destination=latlng:"+marker.getPosition().lat+","+marker.getPosition().lng+"|name:<%= @recital.music_hall %>"+"®ion=<%= @recital.city %>"+"&output=html\" target=\"_blank\"></a></span>";
  

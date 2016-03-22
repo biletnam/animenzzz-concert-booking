@@ -11,7 +11,9 @@
                         </div>
                     </div>
                     <div class="coverflow-overlay-text">
-                        <button class="recital-detail-btn">查看详情</button>
+                        <%= link_to recital_path recital do %>
+                            <button class="recital-detail-btn">查看详情</button>
+                        <% end %>
                         <div class="recital-info-bottom">
                             <div class="coverflow-recital-title"><%= recital.city %>站 - 
                                 <% if recital.sold_out? %>
