@@ -52,6 +52,14 @@ as well as a link to its edit page.
       <%= f.submit value: '更新海报' %>
     <% end %>
   </dd>
+  <dt class="attribute-label">INDEX IMAGE</dt>
+  <dd class="attribute-data">
+    <%= image_tag page.resource.index_image.url, width: '300' %>
+    <%= form_for [Administrate::NAMESPACE, page.resource] do |f| %>
+      <%= f.file_field :index_image %>
+      <%= f.submit value: '更新首页图' %>
+    <% end %>
+  </dd>
 </dl>
 
 

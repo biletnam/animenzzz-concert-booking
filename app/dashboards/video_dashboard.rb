@@ -14,10 +14,6 @@ class VideoDashboard < Administrate::BaseDashboard
     length: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    screenshot_file_name: Field::String,
-    screenshot_content_type: Field::String,
-    screenshot_file_size: Field::Number,
-    screenshot_updated_at: Field::DateTime,
   }
 
   # COLLECTION_ATTRIBUTES
@@ -43,10 +39,6 @@ class VideoDashboard < Administrate::BaseDashboard
     :name,
     :link,
     :length,
-    :screenshot_file_name,
-    :screenshot_content_type,
-    :screenshot_file_size,
-    :screenshot_updated_at,
   ]
 
   # Overwrite this method to customize how videos are displayed

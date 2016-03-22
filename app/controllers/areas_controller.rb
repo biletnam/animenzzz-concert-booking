@@ -7,10 +7,10 @@ class AreasController < ApplicationController
   	@areas = @recital.areas
   end
 
-  def show
-  	@recital = Recital.find params[:recital_id]
-  	@area = @recital.areas.find(params[:id])
-  end
+  # def show
+  # 	@recital = Recital.find params[:recital_id]
+  # 	@area = @recital.areas.find(params[:id])
+  # end
 
   def create
     cd = params[:data]

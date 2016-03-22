@@ -2,146 +2,45 @@
 <div class="section-recitals">
     <div class="coverflow-cont">
         <div class="coverflow">
+            <% @recitals.each do |recital| %>
             <div class="coverflow-item">
                 <div class="coverflow-content">
                     <div class="coverflow-card">
                         <div class="coverflow-card-image">
-                            <%= image_tag 'chengdu.png' %>
+                            <%= image_tag recital.index_image.url %>
                         </div>
                     </div>
                     <div class="coverflow-overlay-text">
                         <button class="recital-detail-btn">查看详情</button>
                         <div class="recital-info-bottom">
-                            <div class="coverflow-recital-title">成都站 - 已售完</div>
-                            <div>2016 年 2 月 30 日</div>
+                            <div class="coverflow-recital-title"><%= recital.city %>站 - 
+                                <% if recital.sold_out? %>
+                                已售完
+                                <% else %>
+                                在售
+                                <% end %>
+                            </div>
+                            <div><%= recital.start_time.strftime('%Y 年 %m 月 %d 日') unless recital.start_time.nil? %></div>
                         </div>
                     </div>
                     <div class="coverflow-overlay-right recital-info-right">
                         <div class="coverflow-recital-title">
-                            成
-                            <br />
-                            都
+                            <%= recital.split_city %>
                             <br />
                             站
                         </div>
                         <div class="recital-status">
-                            售<br />完
+                            <% if recital.sold_out? %>
+                                售<br />完
+                            <% else %>
+                                在<br />售
+                            <% end %>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="coverflow-item">
-                <div class="coverflow-content">
-                    <div class="coverflow-card">
-                        <div class="coverflow-card-image">
-                            <%= image_tag 'wuhan.png' %>
-                        </div>
-                    </div>
-                    <div class="coverflow-overlay-text">
-                        <button class="recital-detail-btn">查看详情</button>
-                        <div class="recital-info-bottom">
-                            <div class="coverflow-recital-title">武汉站 - 已售完</div>
-                            <div>2016 年 2 月 30 日</div>
-                        </div>
-                    </div>
-                    <div class="coverflow-overlay-right recital-info-right">
-                        <div class="coverflow-recital-title">
-                            武
-                            <br />
-                            汉
-                            <br />
-                            站
-                        </div>
-                        <div class="recital-status">
-                            在<br />售
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="coverflow-item">
-                <div class="coverflow-content">
-                    <div class="coverflow-card">
-                        <div class="coverflow-card-image">
-                            <%= image_tag 'guangzhou.jpg' %>
-                        </div>
-                    </div>
-                    <div class="coverflow-overlay-text">
-                        <button class="recital-detail-btn">查看详情</button>
-                        <div class="recital-info-bottom">
-                            <div class="coverflow-recital-title">广州站 - 已售完</div>
-                            <div>2016 年 2 月 30 日</div>
-                        </div>
-                    </div>
-                    <div class="coverflow-overlay-right recital-info-right">
-                        <div class="coverflow-recital-title">
-                            广
-                            <br />
-                            州
-                            <br />
-                            站
-                        </div>
-                        <div class="recital-status">
-                            在<br />售
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="coverflow-item">
-                <div class="coverflow-content">
-                    <div class="coverflow-card">
-                        <div class="coverflow-card-image">
-                            <%= image_tag 'xiamen.jpg' %>
-                        </div>
-                    </div>
-                    <div class="coverflow-overlay-text">
-                        <button class="recital-detail-btn">查看详情</button>
-                        <div class="recital-info-bottom">
-                            <div class="coverflow-recital-title">厦门站 - 已售完</div>
-                            <div>2016 年 2 月 30 日</div>
-                        </div>
-                    </div>
-                    <div class="coverflow-overlay-right recital-info-right">
-                        <div class="coverflow-recital-title">
-                            厦
-                            <br />
-                            门
-                            <br />
-                            站
-                        </div>
-                        <div class="recital-status">
-                            在<br />售
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="coverflow-item">
-                <div class="coverflow-content">
-                    <div class="coverflow-card">
-                        <div class="coverflow-card-image">
-                            <%= image_tag 'changsha.jpg' %>
-                        </div>
-                    </div>
-                    <div class="coverflow-overlay-text">
-                        <button class="recital-detail-btn">查看详情</button>
-                        <div class="recital-info-bottom">
-                            <div class="coverflow-recital-title">长沙站 - 已售完</div>
-                            <div>2016 年 2 月 30 日</div>
-                        </div>
-                    </div>
-                    <div class="coverflow-overlay-right recital-info-right">
-                        <div class="coverflow-recital-title">
-                            长
-                            <br />
-                            沙
-                            <br />
-                            站
-                        </div>
-                        <div class="recital-status">
-                            在<br />售
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <% end %>
+
         </div>
     </div>
 </div>
