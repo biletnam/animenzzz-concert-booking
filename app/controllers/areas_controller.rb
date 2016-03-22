@@ -5,6 +5,7 @@ class AreasController < ApplicationController
   def index
   	@recital = Recital.includes(:areas).find(params[:recital_id])
   	# @areas = @recital.areas
+  	@seats = []
   	@recital.areas.each do |area|
   	  area.seats.each do |seat|
   	  	@seats << seat if seat.sold
@@ -12,8 +13,8 @@ class AreasController < ApplicationController
   	end
 
   	respond_to do |format|  
-      format.html  
-      format.json { render :json => @seats }    
+      format.html
+      format.json { render :json => @seats }
     end  
   end
 
