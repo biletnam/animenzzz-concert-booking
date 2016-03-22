@@ -1,50 +1,81 @@
- <div class="order-detail-cont">
-    <div class="order-detail">
-        <div class="ribbon">
-            <div class="ribbon-title font-bold">
-                <span class="right-floated font-larger"><%= @order.get_status %></span>
-                <div>
-                    <span class="order-dotted">l3UmeTpjFw1qxt9l</span>
-                </div>
-                <div class="font-smaller">
-                    <span class="order-dotted"><%= @order.created_at.strftime('%Y-%m-%d %H:%M:%S') %></span>
-                </div>
-            </div>
-        </div>
-        <div class="order-address-cont">
-            <div class="order-address">
-                <div class="align-center font-bold">收货人信息</div>
-                <div><strong>姓名：</strong><%= @order.name %></div>
-                <div><strong>物流地址：</strong><%= @order.address %></div>
-                <div><strong>手机号码：</strong><%= @order.phone %></div>
-                <div><strong>电子邮件：</strong><%= current_user.email %></div>
-                <div class="align-center font-bold">物流信息</div>
-                <div><strong>运单号码：</strong><%= @order.trac_num %></div>
-                <div class="align-center"><a href="#">查看跟踪信息</a></div>
-            </div>
-        </div>
-        <hr class="hr-order" />
-        <div class="align-center font-bold">商品清单</div>
-        <hr class="hr-order" />
-        <ul class="order-item-list">
-            <% @order.seats.each do |seat| %>
-            <li class="order-item">
-                <span><%= seat.area.recital.city %>站 <%= seat.area.name %></span>
-                <span>单价 <span class="order-dotted">￥<%= seat.price.price %></span></span>
-            </li>
-            <% end %>
-        </ul>
-        <hr class="hr-order" />
-        <div class="align-center font-bold">总金额</div>
-        <hr class="hr-order" />
-        <div class="align-center font-bold font-larger order-dotted">￥<%= @order.price %></div>
-    </div>
-</div>
+<div class="outer-container">
 
-<% content_for :breadcumb do %>
-<ul class="nav-bar float-left nav-breadcumb">
-    <li><%= link_to '用户信息', edit_user_registration_path %></li>
-    <li><%= link_to '订单列表', orders_path %></li>
-    <li>订单详情</li>
-</ul>
-<% end %>
+	<div class="order-left">
+        <div class="order-left-content">
+            <div class="nwui-main clearfix">
+
+                <div class="ribbon">
+                    <div class="ribbon-title font-bold">
+                        <span class="right-floated font-larger"><%= @order.get_status %></span>
+                        <div>
+                            <span class="order-dotted">l3UmeTpjFw1qxt9l</span>
+                        </div>
+                        <div class="font-smaller">
+                            <span class="order-dotted"><%= @order.created_at.strftime('%Y-%m-%d %H:%M:%S') %></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="padding-1">
+                    <table class="submit-items">
+                        <colgroup>
+                            <col span="1" style="width: 5%;" />
+                            <col span="1" style="width: 40%;" />
+                            <col span="1" style="width: 30%;" />
+                            <col span="1" style="width: 15%;" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>场次</th>
+                                <th>区域</th>
+                                <th>价格</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @order.seats.each do |seat| %>
+                            <tr>
+                                <th>1</th>
+                                <td><%= seat.area.recital.city %>站</td>
+                                <td><%= seat.area.name %></td>
+                                <th>￥<%= seat.price.price %></th>
+                            </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+
+                    <hr class="nwui-hr" />
+
+                    <div class="align-center font-bold font-larger">物流信息</div>
+                    <div class="line-height-2"><strong>快递公司：</strong>东风快递</div>
+                    <div class="line-height-2"><strong>运单号码：</strong><%= @order.trac_num %></div>
+                    <div class="align-center"><a href="#">查看跟踪信息</a></div>
+                </div>
+
+            </div>
+		</div>
+	</div>
+
+	<div class="order-right">
+
+		<div class="order-address-cont">
+			<div class="order-address">
+				<div class="align-center font-bold">收货人信息</div>
+				<div><strong>姓名：</strong><%= @order.name %></div>
+				<div><strong>物流地址：</strong><%= @order.address %></div>
+				<div><strong>手机号码：</strong><%= @order.phone %></div>
+				<div><strong>电子邮件：</strong><%= current_user.email %></div>
+			</div>
+		</div>
+
+		<hr />
+
+		<div class="light-panel">
+			总金额：
+			<div class="align-center font-bold font-x-large order-dotted">￥<%= @order.price %></div>
+		</div>
+
+	</div>
+
+
+</div>

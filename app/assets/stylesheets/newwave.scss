@@ -7,7 +7,7 @@
     border-radius: 4px 4px 0 0;
     background: linear-gradient(135deg, #628782, #445E5B);
     position: relative;
-    
+
 }
 
 .nwui-continue {
@@ -26,7 +26,7 @@
         line-height: 2rem;
         padding: 1rem;
     }
-    
+
     // dribbble.com/shots/497907-Nav-Bar-Blaffin-Arenas-Mobile
     //  Nav Bar - Blaffin Arenas Mobile by Miguel Oliva Márquez - Dribbble
     .nwui-back-btn {
@@ -36,7 +36,7 @@
         padding: 1.3em 2em;
         border-radius: 4px 0 0 0;
     }
-    
+
     .nwui-submit-btn {
         background: transparent;
         color: white;
@@ -48,4 +48,10 @@
         padding: 0.75rem 1.7rem;
         border: 1px solid $lighter-40;
     }
+}
+
+.nwui-hr {
+	border-top: 1px solid $lighter-30;
+	box-shadow: 0 2px 1em black;
+	margin: 0.8em 0;
 }

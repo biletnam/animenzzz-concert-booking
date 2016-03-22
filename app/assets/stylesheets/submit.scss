@@ -110,28 +110,27 @@
 }
 
 .submit-items-cont {
-    padding: 1em;
+    padding: 1em; }
 
-    .submit-items {
-        // background-color: #3C3838;
-        width: 100%;
-        text-align: left;
-        // background:
-        border-collapse: separate;
-        border: 1px solid $lighter-30;
-        border-radius: 3px;
+.submit-items {
+	// background-color: #3C3838;
+	width: 100%;
+	text-align: left;
+	// background:
+	border-collapse: separate;
+	border: 1px solid $lighter-30;
+	border-radius: 3px;
 
-        th, td { border-bottom: 1px solid $lighter-30; }
-        tbody tr:last-child {
-            th, td {
-                border: none;
-            }
-        }
+	th, td { border-bottom: 1px solid $lighter-30; }
+	tbody tr:last-child {
+		th, td {
+			border: none;
+		}
+	}
 
-        tbody > tr:nth-of-type(odd) { background: $darken-2; }
-        tbody > tr:nth-of-type(even) { background: $lighter-2; }
-        td, th { padding: 0.8em 0.5em; }
-    }
+	tbody > tr:nth-of-type(odd) { background: $darken-2; }
+	tbody > tr:nth-of-type(even) { background: $lighter-2; }
+	td, th { padding: 0.8em 0.5em; }
 }
 
 .submit-lastinfo {
