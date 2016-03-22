@@ -93,6 +93,4 @@ rsa_private_key.pem
 rsa_public_key.pem
 
 # Ignore test folder
-/test/*
-app/assets/images/*
-
+/test/* 
