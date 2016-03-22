@@ -21,7 +21,7 @@ a {
     color: #f0f8ff;
     text-decoration: underline;
     outline: none !important;
-    
+
     &:hover {
         color: #a4dded;
         outline: none !important;
@@ -138,7 +138,7 @@ input[type="password"] {
             display: inline-block;
             max-height: 64px;
             max-width: 100%;
-            
+
             transition: opacity 0.1s ease-in-out;
             &:hover {
                 opacity: 0.8;
@@ -161,7 +161,7 @@ input[type="password"] {
         }
         &:after {
             left: 101%;
-            background: linear-gradient(to right, rgba(179, 210, 219, 0.2), transparent 100%);    
+            background: linear-gradient(to right, rgba(179, 210, 219, 0.2), transparent 100%);
         }
     }
 }
@@ -263,6 +263,8 @@ input[type="password"] {
 .pos-relative { position: relative; }
 .overflow-auto { overflow: auto; }
 .no-padding { padding: 0 !important; }
+.padding-1 { padding: 1em; }
+.line-height-2 { line-height: 2; }
 .clearfix {
     &:before, &:after {
         content: " ";

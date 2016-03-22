@@ -7,24 +7,24 @@
     box-shadow: 0 1px 1px $lighter-30 inset;
     position: relative;
     z-index: 2;
-    
+
     @include media-mobile {
         border-top: 2px solid #28B1BF;
     }
-    
+
     .topbar-img {
         height: 3.5rem;
         padding: 1rem;
         display: inline-block;
         transition: opacity 0.1s ease-in-out;
         &:hover { opacity: 0.8; }
-        
+
         @include media-mobile {
             height: 2rem;
             padding: 0.5rem;
         }
     }
-    
+
     ul.topbar-menu {
         margin: 0;
         font-size: 0;
@@ -34,7 +34,7 @@
             display: inline-block;
             font-size: 1rem;
             position: relative;
-            
+
             .topbar-item-body {
                 display: inline-block;
                 padding: 2rem;
@@ -43,25 +43,25 @@
                 font-size: larger;
                 border-radius: 0 0 2px 2px;
                 box-shadow: -1px 0 0 #333;
-                
+
                 &:hover {
                     // background-color: $lighter-20;
                     background: linear-gradient(to bottom, $lighter-20, $lighter-5);
                 }
-                
+
                 @include media-mobile {
                     height: 1rem;
                     padding: 1rem;
                 }
             }
         }
-        
+
         &.nav-bar-profile-menu-active .nav-bar-profile-btn {
             background: linear-gradient(to bottom, $lighter-40, $lighter-30);
             border-radius: 0;
         }
     }
-    
+
     .topbar-avatar {
         border-radius: 50%;
         // height: 1rem;
@@ -74,7 +74,7 @@
         }
         margin-right: 0;
     }
-    
+
     ul.nav-bar-profile-menu {
         list-style: none;
         margin: 0;
@@ -82,7 +82,7 @@
         position: absolute;
         right: 0;
         box-sizing: border-box;
-        
+
         background: linear-gradient(to bottom, #6d6d6d 0, #999 100%);
         color: #aaa;
         box-shadow: 0 1em 3em $darken-50;
@@ -90,18 +90,18 @@
         text-align: center;
         min-width: 100%;
         overflow: hidden;
-        
+
         @include media-mobile {
             border-radius: 0;
             text-align: center;
             border-top: 1px solid #888;
         }
-        
+
         z-index: -1;
         opacity: 0;
         transition: all 0.2s ease-in-out;
         visibility: hidden;
-        
+
         & > li {
             display: block;
             & > * {
@@ -111,7 +111,7 @@
                     min-width: 100vw; }
                 padding: 0.6em 1.2em;
                 box-sizing: border-box;
-                
+
                 &:hover {
                     background: #28B1BF;
                     color: #fff;
@@ -122,5 +122,5 @@
             & > a { text-decoration: none; }
         }
     }
-    
+
 }
