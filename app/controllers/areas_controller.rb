@@ -10,6 +10,11 @@ class AreasController < ApplicationController
   	  	@seats << seat if seat.sold
   	  end
   	end
+
+  	respond_to do |format|  
+      format.html  
+      format.json { render :json => @seats }    
+    end  
   end
 
   # def show
