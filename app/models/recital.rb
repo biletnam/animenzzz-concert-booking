@@ -1,4 +1,7 @@
 class Recital < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :slug_candidates, use: [:slugged, :finders]
+
   has_attached_file :poster, 
   					default_url: 'poster.png',
   					url: '/attachments/:class/:id/:attachment/:filename',
@@ -36,5 +39,9 @@ class Recital < ActiveRecord::Base
 
   def split_city
     self.city.split(//).join('<br />').html_safe
+  end
+
+  def slug_candidates
+    ['concert', self.start_time.strftime('%m-%d')].join('-')
   end
 end

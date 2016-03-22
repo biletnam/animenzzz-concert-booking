@@ -24,6 +24,7 @@ gem 'pundit'
 gem 'pingpp'
 gem 'paperclip', '~> 4.3'
 gem 'pg'
+gem 'friendly_id', '~> 5.0'
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'
