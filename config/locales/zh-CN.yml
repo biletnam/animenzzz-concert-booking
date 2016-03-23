@@ -1,4 +1,10 @@
 zh-CN:
+  wait: '待付款'
+  paid: '已付款'
+  deliveried: '已发货'
+  received: '已签收'
+  overdue: '订单过期'
+
   date:
     abbr_day_names:
     - 日

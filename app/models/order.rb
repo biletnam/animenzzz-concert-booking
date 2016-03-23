@@ -1,12 +1,15 @@
 class Order < ActiveRecord::Base
-  enum status: [:wait, :paid, :deliveried, :received]
+  enum status: [:wait, :paid, :deliveried, :received, :overdue]
 
   belongs_to :user
-  has_many :orderitems, dependent: :destroy
+  has_many :orderitems,
+           inverse_of: :order,
+           dependent: :destroy
   has_many :seats, through: :orderitems
 
 
   before_save :set_default_state, :set_apply_time, :total_price
+  before_destroy :return_seats
 
   def set_default_state
   	self.status ||= :wait
@@ -34,15 +37,18 @@ class Order < ActiveRecord::Base
   end
 
   def already_sold?
-    self.seats.each do |seat|
-      return true if seat.sold
-    end
+    self.seats.each {|s| return true if s.sold}
   end
 
   def return_seats
-    self.seats.each do |seat|
-      seat.sold = false
-      seat.save
+    if self.status == 'wait' then
+      self.seats.each do |seat|
+        seat.sold = false
+        seat.save
+      end
     end
+  end
+
+  def destroy_overdue_order
   end	
 end
