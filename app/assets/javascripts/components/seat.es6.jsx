@@ -15,6 +15,10 @@ class Seat extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
   
+//   shouldComponentUpdate(nextProps, nextState) {
+//       return true;
+//   }
+
   handleClick() {
     if (this.props['callbackChoose']) {
       this.props['callbackChoose'](this.props['coordFloor'],

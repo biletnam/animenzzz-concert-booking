@@ -1,7 +1,9 @@
 var Tabs = (TabSelect, TabContent) => {
   const propTypes = {
-    'tabs': React.PropTypes.arrayOf(React.PropTypes.string)
+    'tabs': React.PropTypes.arrayOf(React.PropTypes.string),
+    'className': React.PropTypes.string
   };
+
   var WrappedComponent = class extends React.Component {
     constructor(props) {
       super(props);
@@ -10,14 +12,18 @@ var Tabs = (TabSelect, TabContent) => {
       };
       this.handleChange = this.handleChange.bind(this);
     }
-    
+
     handleChange(activeTab) {
       this.setState({ activeTab }); }
-    
+
     render() {
       return (
         <div>
-          <TabSelect activeTab={this.state['activeTab']} onChange={this.handleChange} tabs={this.props['tabs']} />
+          <TabSelect className={this.props.className}
+                activeTab={this.state['activeTab']}
+                onChange={this.handleChange}
+                tabs={this.props['tabs']}
+          />
           <TabContent activeTab={this.state['activeTab']}>
             {this.props.children}
           </TabContent>
@@ -25,6 +31,7 @@ var Tabs = (TabSelect, TabContent) => {
       );
     }
   };
+
   WrappedComponent.propTypes = propTypes;
   return WrappedComponent;
 }

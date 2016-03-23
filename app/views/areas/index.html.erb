@@ -4,7 +4,7 @@
             <button class="button nwui-back-btn float-left">返回</button>
             <div class="nwui-header-title">选择区域</div>
         </div>
-        <div class="area-preview-cont">
+        <!--<div class="area-preview-cont">
             <div class="area-preview">
                 <%= image_tag @recital.venue_image %>
             </div>
@@ -21,6 +21,9 @@
                 <% end %>
             <% end %>
             </ul>
-        </div>
+        </div>-->
     </div>
 </div>
+
+<%= react_component('SeatChooser', :target => @recital.id.to_s) %>
+<br />

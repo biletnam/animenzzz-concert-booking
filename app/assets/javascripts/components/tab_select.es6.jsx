@@ -32,7 +32,8 @@ TabSelectItem.propTypes = {
 const propTypes = {
   'tabs': React.PropTypes.arrayOf(React.PropTypes.string),
   'activeTab': React.PropTypes.number,
-  'onChange': React.PropTypes.func
+  'onChange': React.PropTypes.func,
+  'className': React.PropTypes.string
 };
 
 class TabSelect extends React.Component {
@@ -49,8 +50,10 @@ class TabSelect extends React.Component {
   }
   
   render() {
+
+    var className = classNames("rx-tabs clearfix", this.props['className']);
     return (
-      <ul className="rx-tabs clearfix">
+      <ul className={className}>
         {this.props['tabs'].map((tab, index) =>
           <TabSelectItem
             key={index} index={index} title={tab}

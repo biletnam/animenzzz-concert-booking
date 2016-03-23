@@ -21,15 +21,15 @@ class SeatChooser extends React.Component {
         this.setState({ 'data': data });
       });
   }
-  
+
   callbackChoose(floor, x, y, value) {
     var initial = !!this.state['data'][floor][y][x]['chosen'];
     if (value === undefined) {
       value = !initial; }
     value = !!value;
-    
+
     if (value !== initial) {
-    
+
       var chosen = this.state['chosen'];
       if (value) {
         chosen = React.addons.update(chosen, { $push: [[ floor, x, y ]] });
@@ -42,50 +42,39 @@ class SeatChooser extends React.Component {
           return false;
         });
       }
-    
+
       var data = React.addons.update(this.state['data'],
         { [floor]: { [y]: { [x]: { 'chosen': { $set: value } } } } });
+
       this.setState({ data, chosen });
     }
   }
-  
+
   get tooMuch() {
     return this.state['chosen'].length >= 4;
   }
-  
+
   get totalCost() {
     return this.state['chosen'].reduce((prev, curr) =>
       prev + this.state['data'][curr[0]][curr[2]][curr[1]]['price'], 0);
   }
-    
+
   render () {
+    var className = classNames("rx-seatchooser", { "seat-too-much": this.tooMuch });
     return (
-      <div className="rx-seatchooser">
-        <TabsDefault tabs={this.state['data'].map((floor, idx) => `${idx+1} 楼`)}>
-
-          {this.state['data'].map((floor, indexFloor) => 
-            <div key={indexFloor} className="rx-seatchooser-floor-cont">
-              <div className="rx-seatchooser-floor">
-                {floor.map((row, indexY) =>
-                  <div key={indexY} className="seat-row">
-                    {row.map((cell, indexX) => {
-                      const key = (indexX << 8) + indexY;
-                      return (<Seat key={key}
-                              data={cell} coordFloor={indexFloor}
-                              coordX={indexX} coordY={indexY}
-                              callbackChoose={this.callbackChoose}
-                              disabled={this.tooMuch && !cell['chosen']}
-                              />);
-                    })}
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
-
+      <div className={className}>
+        <TabsDefault className="outer-container" tabs={this.state['data'].map((floor, idx) => `${idx+1} 楼`)}>
+            {this.state['data'].map((floor, indexFloor) =>
+                <SeatFloor key={indexFloor} data={floor}
+                    indexFloor={indexFloor}
+                    callbackChoose={this.callbackChoose}
+                />
+            )}
         </TabsDefault>
-        <div>
-          共 {this.state['chosen'].length} 个座位 ￥{this.totalCost}
+        <div className="outer-container light-panel">
+            <div>
+                共 {this.state['chosen'].length} 个座位 ￥{this.totalCost}
+            </div>
         </div>
       </div>
     );
