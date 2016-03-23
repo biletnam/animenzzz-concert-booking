@@ -94,7 +94,7 @@ rsa_public_key.pem
 
 # Ignore test folder
 /test/*
-app/assets/images/*
 
+app/assets/images/*
 public/halldata/*
 vendor/assets/javascripts/*

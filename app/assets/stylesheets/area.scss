@@ -1,65 +1,62 @@
 
-@import 'mqp';
+@import 'essential';
 @import 'cd';
 
-.area-main {
-    display: flex;
+.area-preview-cont {
+    box-sizing: border-box;
+    overflow: auto;
+    box-shadow: 2px 0 1em $darken-30;
     
-    .area-list {
-        @include mq($until: tablet) {
-            order: 1;
-            flex-direction: row;
-            flex-wrap: wrap;
-            padding: 0;
-        }
-        display: flex;
-        flex: 0 0 auto;
-        flex-direction: column;
-        justify-content: center;
-        padding: 1em 1em;
+    width: 70%;
+    float: left;
+    @include media-mobile {
+        width: 100%;
+        float: none;
+        box-shadow: 0 2px 1em $darken-30;
+    }
+    
+    .area-preview img {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+}
+
+.area-list-cont {
+    overflow: auto;
+    box-sizing: border-box;
+    
+    float: right;
+    width: 30%;
+    @include media-mobile {
+        width: 100%;
+        float: none;
+    }
+    
+    ul.area-list {
         list-style: none;
+        padding: 0;
+        margin: 0;
+        
         li {
-            @include mq($from: tablet) {
-                &:first-child { .area-list-item { border-radius: 3px 3px 0 0; } }
-                &:last-child { .area-list-item { border-radius: 0 0 3px 3px; } }
-            }
-        }
-        .area-list-item {
-            display: inline-block;
-            padding: 1.2em 1.8em;
-            border: 1px solid gray;
-            border-radius: 1px;
-            background: $lighter-20;
-            box-shadow: 1px 1px 5px $lighter-10 inset;
-            text-shadow: 1px 0 0 #000;
-            // margin: -1px 0;
-            // @include mq($until: tablet) {
-            //     margin: -1px -1px; }
-            &:hover {
-                background: $lighter-30;
-            }
-        }
-    }
-    
-    .area-preview-cont {
-        .area-preview {
-            max-height: 720px;
-            padding: 3px;
-            img {
-                // max-width: 100%;
-                width: 100%;
-                border: 2px solid black;
-                border-radius: 3px;
-                box-shadow: 0 0 5px $lighter-50 inset, 0 0 0px 3px #FC0,
-                            0 0 0px 1px black, 1px 2px 5px $darken-70;
+            .area-list-item {
+                display: block;
+                padding: 1rem;
                 box-sizing: border-box;
-            }
-            @include mq($until: tablet) {
-                margin: 0;
+                width: 100%;
+                border-bottom: 1px solid $lighter-30;
+                text-decoration: none;
+                
+                .area-title {
+                    font-size: larger;
+                    font-weight: bolder;
+                }
+                
+                &:hover {
+                    background: linear-gradient(-45deg, #28B1BF, #1A767F);
+                    color: white;
+                }
             }
         }
     }
-    
-    @include mq($until: tablet) {
-        flex-direction: column; }
 }

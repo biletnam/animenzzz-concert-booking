@@ -25,6 +25,7 @@ gem 'pingpp'
 gem 'paperclip', '~> 4.3'
 gem 'pg'
 gem 'react-rails', '~> 1.6.0'
+gem 'friendly_id', '~> 5.0'
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'
@@ -35,3 +36,6 @@ group :development, :test do
   gem 'pry-rescue'
   gem 'rubocop'
 end
+
+gem 'sprockets', '>=3.0.0.beta'
+gem 'sprockets-es6'

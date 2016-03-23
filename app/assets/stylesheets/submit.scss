@@ -10,7 +10,7 @@
         min-width: 18em;
         background: transparent;
         border: none;
-        border-bottom: 1px dashed gray;
+        border-bottom: 1px solid gray;
         border-radius: 1px;
         outline: none;
         transition: all 0.2s ease-in-out;
@@ -18,23 +18,22 @@
         box-shadow: none;
         color: #666;
         box-sizing: border-box;
-        
+
         &:focus {
-            border-bottom: 2px solid gray;
+            border-bottom: 1px solid gray;
+            box-shadow: 0 1px 0 gray;
         }
 
-        @include media-mobile {
-            width: 100%;
-        }
+        @include media-mobile { width: 100%; }
     }
-    
+
     label {
         position: absolute;
         top: 0.5em;
         left: 1em;
         transition: all 0.2s ease-in-out;
     }
-    
+
     input:focus ~ label, input:valid ~ label {
         top: -1em;
         left: 0;
@@ -43,70 +42,124 @@
     }
 }
 
-.submit-items-cont {
-    // background-image: repeating-linear-gradient(45deg,
-    //         transparent,
-    //         transparent 4px,
-    //         #444 4px,
-    //         #444 6px);
-    // padding: 0.2em;
-    
-    .submit-items {
-        background-color: #3C3838;
+.submit-main {
+    z-index: 1;
+}
+
+.submit-address {
+    margin: 0 auto;
+    z-index: 5;
+    position: relative;
+    background: #F0F0F0;
+    // box-shadow: 0 3px 3em $darken-40;
+    box-shadow: 0 1px 0.6em $darken-30;
+    border-radius: 4px;
+
+    float: left;
+    min-width: 32em;
+    margin: -4em 2em 0 2em;
+
+    @include media-mobile {
+        float: none;
         width: 100%;
-        text-align: left;
-        
-        thead {
-            background: linear-gradient(to top, $darken-20, transparent);
-            th {
-                border-bottom: 2px solid #555;
-            }
-        }
-        
-        tbody td, tbody th {
-            border-bottom: 1px solid #484848;
-        }
-        
-        tbody > tr:nth-of-type(odd) {
-            background: $darken-5;
-        }
-        tbody > tr:nth-of-type(even) {
-            background: $lighter-5;
-        }
-        
-        td, th {
-            padding: 0.8em 0.5em;
-        }
+        min-width: 0;
+        margin: -1em 0 0 0;
     }
+}
+
+.submit-opbar {
+    overflow: auto;
+    margin-right: 1em;
+    position: relative;
+    padding: 1em;
+}
+
+.submit-submit-btn {
+    box-shadow: none;
+    background: #E3CDBA;
+    border-radius: 1px;
+    padding: 0.6em 2.5em;
+}
+
+.submit-total-badge {
+    width: 7em;
+    height: 7em;
+    background: #00CED1;
+    border: 2px solid $lighter-30;
+    font-family: 'Roboto Condensed';
+    border-radius: 3.5em;
+    box-shadow: 0 1em 3em $darken-40;
+    box-sizing: border-box;
+    text-align: center;
+
+    position: absolute;
+    right: -4.5em;
+    top: 25%;
+    line-height: 2em;
+
+    & > *:first-child {
+        margin-top: 1em; }
+
+    .submit-total {
+        font-size: 2em; }
+
+    @include media-mobile {
+        top: -4.5em;
+        right: 10%;
+    }
+}
+
+.submit-items-cont {
+    padding: 1em; }
+
+.submit-items {
+	// background-color: #3C3838;
+	width: 100%;
+	text-align: left;
+	// background:
+	border-collapse: separate;
+	border: 1px solid $lighter-30;
+	border-radius: 3px;
+
+	th, td { border-bottom: 1px solid $lighter-30; }
+	tbody tr:last-child {
+		th, td {
+			border: none;
+		}
+	}
+
+	tbody > tr:nth-of-type(odd) { background: $darken-2; }
+	tbody > tr:nth-of-type(even) { background: $lighter-2; }
+	td, th { padding: 0.8em 0.5em; }
 }
 
 .submit-lastinfo {
     position: relative;
     display: table;
     width: 100%;
-    
+
     & > * {
         display: table-cell;
     }
-    
-    .submit-address {
-        width: 70%;
-    }
-    
+
+    // .submit-address {
+    //     width: 70%;
+    // }
+
     @include media-mobile {
         display: block;
         & > * { display: block; }
-        .submit-address {
-            width: 100%; }
+        // .submit-address {
+        //     width: 100%; }
     }
-    
-    .submit-subtotal {
-        padding: 1em;
-        vertical-align: middle;
-        .submit-total {
-            font-size: xx-large;
-            font-weight: bold;
-            text-shadow: 1px 1px 1px #222;
-        }
+}
+
+.submit-subtotal {
+    padding: 1em;
+    vertical-align: middle;
+    .submit-total {
+        font-size: xx-large;
+        font-weight: bold;
+        text-shadow: 1px 1px 1px #222;
     }
 }

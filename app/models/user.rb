@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :slug_candidates, use: [:slugged, :finders]
+
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
@@ -11,6 +14,13 @@ class User < ActiveRecord::Base
 
   def set_default_role
     self.role ||= :user
+  end
+
+  def slug_candidates
+    [
+      :name,
+      [:name, /(^.*)+@/.match(self.email)]
+    ]
   end
 
   # Include default devise modules. Others available are:

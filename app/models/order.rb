@@ -5,6 +5,7 @@ class Order < ActiveRecord::Base
   has_many :orderitems, dependent: :destroy
   has_many :seats, through: :orderitems
 
+
   before_save :set_default_state, :set_apply_time, :total_price
 
   def set_default_state

@@ -1,0 +1,57 @@
+
+@import 'essential';
+@import 'cd';
+
+.nwui-main {
+    box-shadow: 0 0.5em 3em $darken-50, 1px 1px 1px $lighter-20 inset;
+    border-radius: 4px 4px 0 0;
+    background: linear-gradient(135deg, #628782, #445E5B);
+    position: relative;
+
+}
+
+.nwui-continue {
+    box-shadow: 0 0.5em 3em #111, 1px 1px 1px $lighter-20 inset;
+    margin: 0 1em;
+    border-radius: 0 0 0 0;
+    background: linear-gradient(135deg, #6B979E, #48666B);
+}
+
+.nwui-header {
+    border-bottom: 1px solid $lighter-40;
+    text-shadow: 0 -1px 0 $darken-40;
+    .nwui-header-title {
+        font-weight: bolder;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        padding: 1rem;
+    }
+
+    // dribbble.com/shots/497907-Nav-Bar-Blaffin-Arenas-Mobile
+    //  Nav Bar - Blaffin Arenas Mobile by Miguel Oliva Márquez - Dribbble
+    .nwui-back-btn {
+        background: $darken-30;
+        box-shadow: -2px -2px 5px $darken-20 inset, 1px 0 0 $lighter-20;
+        color: #A8E8E0;
+        padding: 1.3em 2em;
+        border-radius: 4px 0 0 0;
+    }
+
+    .nwui-submit-btn {
+        background: transparent;
+        color: white;
+        box-shadow: 1px 1px 1px $darken-20 inset;
+        font-weight: bold;
+        margin: 0.5rem 0.6rem;
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+        padding: 0.75rem 1.7rem;
+        border: 1px solid $lighter-40;
+    }
+}
+
+.nwui-hr {
+	border-top: 1px solid $lighter-30;
+	box-shadow: 0 2px 1em black;
+	margin: 0.8em 0;
+}

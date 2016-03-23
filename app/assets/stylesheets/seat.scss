@@ -3,33 +3,34 @@
 @import 'cd';
 @import 'essential';
 
-.seat-main {
-    background-color: #3C3838;
-    padding: 1em;
-    box-shadow: 2px 2px 1em #111, -1px -1px 0 #484848 inset;
-    position: relative;
-    z-index: 1;
-    @include media-mobile {
-        padding: 1em 0;
-    }
-}
+// .seat-main {
+//     background-color: #3C3838;
+//     padding: 1em;
+//     box-shadow: 2px 2px 1em #111, -1px -1px 0 #484848 inset;
+//     position: relative;
+//     z-index: 1;
+//     @include media-mobile {
+//         padding: 1em 0;
+//     }
+// }
 
-.seat-layout-end {
-    border-radius: 0 0 3px 3px;
-    @include media-mobile {
-        border-radius: 0;
-    }
-}
+// .seat-layout-end {
+//     border-radius: 0 0 3px 3px;
+//     @include media-mobile {
+//         border-radius: 0;
+//     }
+// }
 
 .seat-container {
     padding: 1em;
     margin: 1em;
-    background: #282626;
-    border: 2px solid #0a0a0a;
-    $color-border: #8B9089;
-    box-shadow: 0 0 0 2px $color-border, 0 0 1em transparentize($color-border, 0.3),
-                3px 3px 6px #181818 inset;; // 0 0 2px $color-border inset;
-    border-radius: 0.5em;
+    background: linear-gradient(to bottom, $darken-20, $darken-30);
+    // border: 2px solid #0a0a0a;
+    // $color-border: #8B9089;
+    // box-shadow: 0 0 0 2px $color-border, 0 0 1em transparentize($color-border, 0.3),
+                // 3px 3px 6px #181818 inset;; // 0 0 2px $color-border inset;
+    border-radius: 1px;
+    text-align: center;
     // margin: 2px;
     @include mq($until: tablet) {
         border-radius: 1px;

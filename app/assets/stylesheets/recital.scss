@@ -6,6 +6,7 @@
 	max-width: 40%;
 	position: relative;
 	float: left;
+    box-shadow: 0 0 3em black;
 
 	@include media-mobile {
 		max-width: 100%;
@@ -16,9 +17,11 @@
 	&:after {
 		@include pseudo-cover-all;
 
-		box-shadow: -0.5em 0 1em $darken-50 inset, 1px 0 0 $lighter-10, 0 0 2px $lighter-20;
+		// box-shadow: -0.5em 0 1em $darken-50 inset, 1px 0 0 $lighter-10, 0 0 2px $lighter-20;
+        box-shadow: 1px 1px 1px $lighter-20 inset;
 		@include media-mobile {
-			box-shadow: 0 -0.5em 1em black inset, 0 1px 0 $lighter-10, 0 0 2px $lighter-20; }
+			// box-shadow: 0 -0.5em 1em black inset, 0 1px 0 $lighter-10, 0 0 2px $lighter-20;
+        }
 	}
 
 	.recital-poster {
@@ -36,7 +39,7 @@
 	.recital-title {
 		padding: 1em 1em 0.5em 1em;
 		text-align: left;
-		@include media-mobile {
+        @include media-mobile {
 			text-align: center; }
 	}
 	.recital-button-cont {
@@ -60,11 +63,12 @@ hr.hr-recital {
     border: none;
     background: #444;
     height: 2px;
-    background: linear-gradient(to right, $lighter-20 0, transparent 120%);
+    // background: linear-gradient(to right, $lighter-20 0, transparent 120%);
     margin: 0.5em 0;
-    @include media-mobile {
+    box-shadow: none;
+    // @include media-mobile {
     	background: linear-gradient(to right, transparent 0, $lighter-40 50%, transparent 100%);
-    }
+    // }
 }
 
 // button for "买" "买买买" "立即购买" "不买还是人"
@@ -74,13 +78,16 @@ hr.hr-recital {
 	text-decoration: none;
 	box-sizing: border-box;
     color: #f0feff;
-    border-radius: 1px;
-    text-shadow: 0 1px 0 #333;
+    // border-radius: 1px;
+    border-radius: 0;
+    // text-shadow: 0 1px 0 #333;
+    font-weight: bolder;
     background: #ddd;
     padding: .5em 1.4em;
     font-size: 1.5em;
-	background-image: linear-gradient(-180deg, #D9534F 0%, #A82622 100%);
-	box-shadow: 0 -1px 1px $lighter-30;
+    background-color: #CC2314;
+	// background-image: linear-gradient(-180deg, #D9534F 0%, #A82622 100%);
+	// box-shadow: 0 -1px 1px $lighter-30;
 	@include user-select(none);
 }
 
@@ -89,13 +96,26 @@ dl.dl-horizontal {
 	dt {
 		float: left;
 		width: 6em;
-		padding: 0.5em;
+		padding: 0.2em;
 		box-sizing: border-box;
 		line-height: 2em;
+        
+        color: black;
+        background-color: white;
+        margin-bottom: 1em;
 	}
 	dd {
-		padding: 0.5em;
+		padding: 0.2em;
+        margin-bottom: 1em;
 		line-height: 2em;
 		overflow: auto;
 	}
+}
+
+.recital-location-baidu {
+    width: 100%;
+    min-height: 36em;
+    @include media-mobile {
+        min-height: 16em;
+    }
 }
