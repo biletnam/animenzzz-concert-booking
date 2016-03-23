@@ -26,6 +26,7 @@ gem 'paperclip', '~> 4.3'
 gem 'pg'
 gem 'react-rails', '~> 1.6.0'
 gem 'friendly_id', '~> 5.0'
+gem 'whenever'
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'

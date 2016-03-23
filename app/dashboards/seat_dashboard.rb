@@ -29,6 +29,7 @@ class SeatDashboard < Administrate::BaseDashboard
     :orders,
     :id,
     :sold,
+    :price,
   ]
 
   # SHOW_PAGE_ATTRIBUTES
@@ -44,6 +45,7 @@ class SeatDashboard < Administrate::BaseDashboard
     :locate_x,
     :locate_y,
     :sold,
+    :price,
   ]
 
   # Overwrite this method to customize how seats are displayed

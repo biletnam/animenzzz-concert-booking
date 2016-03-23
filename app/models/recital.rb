@@ -42,6 +42,6 @@ class Recital < ActiveRecord::Base
   end
 
   def slug_candidates
-    ['concert', self.start_time.strftime('%m-%d')].join('-')
+    [self.name, self.start_time.strftime('%m-%d')].join('-')
   end
 end
