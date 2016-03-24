@@ -26,9 +26,6 @@ module TicketBooking
     config.assets.precompile += [ 'normalize.css', 'font-awesome.css', 'jquery-2.2.0.js', 'index.js', 'fullslide.js' ]
     config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
 
-    Pingpp.api_key = 'sk_test_1KWPy5KqPGaDyjvvPGjDerv1'
-    Pingpp.private_key_path = 'rsa_private_key.pem'
-
     config.time_zone = 'Beijing'
     config.i18n.default_locale = 'zh-CN'
     config.encoding = 'utf-8'

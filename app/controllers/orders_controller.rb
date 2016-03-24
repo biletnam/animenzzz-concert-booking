@@ -43,7 +43,7 @@ class OrdersController < ApplicationController
       current_user.orders << @order
     end
 
-    send_pingpp @order.id
+    # send_pingpp @order.id
 
   	redirect_to orders_path
   end
@@ -53,27 +53,15 @@ class OrdersController < ApplicationController
   	@order.destroy
   end
 
-  def post_order
-    send_pingpp params[:order].id
+
+  def store_seat_ids
+    # seats = params[:seat_ids]
+    # seat
   end
 
   private
 
   def secure_params
   	params.require(:order).permit(:address, :phone, :name, :seat_ids => [])
-  end
-
-  def send_pingpp(order_id)
-    Pingpp::Charge.create(
-      :subject  => "ticket-booking",
-      :body     => "Some things",
-      :amount   => 100,
-      :order_no => order_id,
-      :channel  => "alipay_pc_direct",
-      :currency => "cny",
-      :client_ip=> '127.0.0.1',
-      :app => {'id' => "app_aH08OSaLmzP89Sin"},
-      :extra => {'success_url' => '127.0.0.1' }
-    )
   end
 end
