@@ -13,6 +13,8 @@ class SeatChooser extends React.Component {
     };
     
     this.callbackChoose = this.callbackChoose.bind(this);
+    this.clearChosen = this.clearChosen.bind(this);
+    this.submitChosen = this.submitChosen.bind(this);
   }
 
   componentDidMount() {
@@ -50,6 +52,38 @@ class SeatChooser extends React.Component {
     }
   }
 
+  clearChosen() {
+      var chosen = this.state['chosen'];
+      var data = this.state['data'];
+
+      chosen.forEach(seat =>
+        data = React.addons.update(data,
+            { [seat[0]]: { [seat[2]]: { [seat[1]]: { 'chosen': { $set: false } } } } })
+      );
+      chosen = [ ];
+
+      this.setState({ data, chosen });
+  }
+
+  submitChosen() {
+      var form = document.createElement('form');
+
+      form.method = 'GET';
+      form.action = '/orders/new';
+
+      this.state['chosen'].forEach(seat => {
+          var data = this.state['data'][seat[0]][seat[2]][seat[1]];
+          var seatValue = `${data['area']},${data['row']},${data['num']}`;
+          var item = document.createElement('input');
+          item.type = 'text';
+          item.value = seatValue;
+          item.name = 'seats[]';
+          form.appendChild(item);
+      });
+
+      form.submit();
+  }
+
   get tooMuch() {
     return this.state['chosen'].length >= 4;
   }
@@ -71,10 +105,12 @@ class SeatChooser extends React.Component {
                 />
             )}
         </TabsDefault>
-        <div className="outer-container light-panel">
+        <div className="outer-container light-panel align-center">
             <div>
                 共 {this.state['chosen'].length} 个座位 ￥{this.totalCost}
             </div>
+            <button className="button" onClick={this.clearChosen}>清空</button>
+            <button className="button" onClick={this.submitChosen}>提交</button>
         </div>
       </div>
     );

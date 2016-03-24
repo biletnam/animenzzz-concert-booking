@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
 
+    print('aaa')
     params[:area][:seat_ids].pop
     session[:ids] = params[:area][:seat_ids]
 
