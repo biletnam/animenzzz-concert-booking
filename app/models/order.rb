@@ -1,4 +1,7 @@
 class Order < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :slug_candidates, use: [:slugged, :finders]
+
   enum status: [:wait, :paid, :deliveried, :received, :overdue]
 
   belongs_to :user
@@ -23,19 +26,6 @@ class Order < ActiveRecord::Base
     self.price ||= self.seats.collect {|p| p.price.price }.sum
   end
 
-  def get_status
-    case self.status
-    when 'wait'
-      '待付款'
-    when 'paid'
-      '已付款'
-    when 'deliveried' 
-      '已寄送'
-    else
-      '已签收'
-    end
-  end
-
   def already_sold?
     self.seats.each {|s| return true if s.sold}
   end
@@ -50,5 +40,9 @@ class Order < ActiveRecord::Base
   end
 
   def destroy_overdue_order
+  end
+
+  def slug_candidates
+    Time.now.strftime('%Y%m%d%w%H%M%S')
   end	
 end

@@ -15,9 +15,9 @@ class Video < ActiveRecord::Base
 
   def slug_candidates
   	begin
-      /(^.*)+\s?\(?/.match(self.name)[1]
+      return /(^.*?)\s?\(/.match(self.name)[1]
     rescue
-      ''
+      return ''
     end
   end
 end
