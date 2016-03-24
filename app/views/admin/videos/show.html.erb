@@ -37,7 +37,7 @@ as well as a link to its edit page.
         ><%= render_field attribute %></dd>
   <% end %>
 
-  <dt class="attribute-label">视频截图</dt>
+  <dt class="attribute-label">SCREENSHOT</dt>
   <dd class="attribute-data">
     <%= image_tag page.resource.screenshot.url(:medium), width: '300' %>
     <%= form_for [namespace, page.resource] do |f| %>
