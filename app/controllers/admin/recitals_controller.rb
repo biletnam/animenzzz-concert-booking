@@ -22,6 +22,14 @@ module Admin
         recital.venue_image = nil
         recital.save
       end
+      if params[:poster] then 
+        recital.poster = nil
+        recital.save
+      end
+      if params[:index_image] then 
+        recital.index_image = nil
+        recital.save 
+      end
       recital.update(recital_params)
       redirect_to admin_recital_path(recital)
     end

@@ -39,9 +39,9 @@ as well as a link to its edit page.
 
   <dt class="attribute-label">视频截图</dt>
   <dd class="attribute-data">
-    <%= image_tag page.resource.screenshot.url, width: '300' %>
+    <%= image_tag page.resource.screenshot.url(:medium), width: '300' %>
     <%= form_for [namespace, page.resource] do |f| %>
-      <%= f.file_field :venue_image %>
+      <%= f.file_field :screenshot %>
       <%= f.submit value: '更新视频截图' %>
     <% end %>
   </dd>

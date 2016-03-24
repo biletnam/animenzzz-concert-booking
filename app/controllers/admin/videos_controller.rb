@@ -15,5 +15,21 @@ module Admin
 
     # See https://administrate-docs.herokuapp.com/customizing_controller_actions
     # for more information
+
+    def update
+      video = Video.find(params[:id])
+      if params[:screenshot] then
+        video.screenshot = nil
+        video.save
+      end
+      video.update(video_params)
+      redirect_to admin_video_path(video)
+    end
+
+    private
+
+    def video_params
+      params.require(:video).permit!
+    end
   end
 end
