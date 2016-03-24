@@ -67,11 +67,9 @@
 
 <div class="section-intro">
     <div class="outer-container clearfix">
-        <div class="index-intro-video-cont">
-            <div class="index-intro-video">
-                <%= link_to '#' do %><%= image_tag @indexVideo.screenshot.url(:large)  %><% end %>
-            </div>
-        </div> 
+        <div class="index-intro-image-cont">
+            <%= image_tag @indexVideo.screenshot.url(:large), :class => 'index-intro-image' %>
+        </div>
         <div class="index-intro-text">
             <section class="intro-paragraph">
                 <p>
@@ -84,6 +82,16 @@
                 </p>
             </section>
         </div>
+    </div>
+</div>
+
+<div class="section-intro-video">
+    <div class="outer-container">
+        <div class="index-intro-video-cont">
+            <div class="index-intro-video">
+                <%= link_to '#' do %><%= image_tag @indexVideo.screenshot.url(:large) %><% end %>
+            </div>
+        </div> 
     </div>
 </div>
 

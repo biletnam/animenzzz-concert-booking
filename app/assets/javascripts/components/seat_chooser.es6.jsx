@@ -87,6 +87,8 @@ class SeatChooser extends React.Component {
       submit.value = "submit";
       form.appendChild(submit);
       
+      //   MUST have on Firefox
+      //    (as well as a submit button)
       document.body.appendChild(form);
 
       form.submit();
