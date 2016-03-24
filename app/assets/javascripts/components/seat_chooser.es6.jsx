@@ -68,6 +68,7 @@ class SeatChooser extends React.Component {
   submitChosen() {
       var form = document.createElement('form');
 
+      form.style['display'] = 'none';
       form.method = 'GET';
       form.action = '/orders/new';
 
@@ -80,6 +81,13 @@ class SeatChooser extends React.Component {
           item.name = 'seats[]';
           form.appendChild(item);
       });
+      
+      var submit = document.createElement('input');
+      submit.type = "submit";
+      submit.value = "submit";
+      form.appendChild(submit);
+      
+      document.body.appendChild(form);
 
       form.submit();
   }
