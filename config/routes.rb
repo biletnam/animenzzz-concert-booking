@@ -22,5 +22,5 @@ Rails.application.routes.draw do
 
   resources :aggregation, only: [:show]
 
-  match "/orders/new" => "orders#new", via: [:post]
+  match "/orders/new" => "orders#store_seat_ids", via: [:post]
 end

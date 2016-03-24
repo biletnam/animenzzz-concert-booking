@@ -56,6 +56,11 @@ class OrdersController < ApplicationController
     send_pingpp params[:order].id
   end
 
+  def store_seat_ids
+    # seats = params[:seat_ids]
+    # seat
+  end
+
   private
 
   def secure_params
