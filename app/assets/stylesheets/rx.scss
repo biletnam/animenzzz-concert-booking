@@ -46,7 +46,9 @@ ul.rx-tabs {
     margin-top: 0;
     margin-bottom: 0;
     
-    border: 1px solid white;
+    background: #445E5B;
+    border-radius: 0 0 3px 3px;
+    box-shadow: 0 1.5em 3em $darken-50, 0 -1px 1px $darken-20 inset;
     
     li {
         float: left;
@@ -54,11 +56,19 @@ ul.rx-tabs {
             padding: 1em 2.5em;
             display: block;
             text-decoration: none;
-            border: 1px solid white;
+            text-shadow: 0 0 1px black;
+            font-weight: bolder;
             
             &.rx-tabs-active {
-                background-color: white;
-                color: black;
+                background: linear-gradient(to bottom, $lighter-30, $lighter-10);
+                box-shadow: 0 0 1px black inset;
+                // background-color: #B0BEC5;
+            }
+        }
+        
+        &:first-child {
+            a {
+                border-radius: 0 0 0 3px;
             }
         }
     }

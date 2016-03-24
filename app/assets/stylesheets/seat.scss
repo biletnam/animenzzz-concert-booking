@@ -136,3 +136,12 @@
             float: none; }
     }
 }
+
+.seat-chooser-title {
+    position: relative;
+    z-index: 0;
+}
+
+#seat-chooser {
+    position: relative;
+}

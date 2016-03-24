@@ -1,4 +1,4 @@
-<div class="outer-container">
+<div class="outer-container seat-chooser-title">
     <div class="nwui-main clearfix">
         <div class="nwui-header align-center clearfix">
             <button class="button nwui-back-btn float-left">返回</button>
@@ -25,5 +25,5 @@
     </div>
 </div>
 
-<%= react_component('SeatChooser', :target => @recital.id.to_s) %>
+<%= react_component('SeatChooser', props = { :target => @recital.id.to_s }, html_options = { :id => 'seat-chooser' }) %>
 <br />
