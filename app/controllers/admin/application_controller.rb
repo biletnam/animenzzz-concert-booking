@@ -9,7 +9,10 @@ module Admin
     before_filter :authenticate_admin
 
     def authenticate_admin
-      # TODO Add authentication logic here.
+      unless current_user and current_user.admin? then
+        flash[:alert] = I18n.t('Not a administrator')
+        redirect_to(request.referrer || root_path)
+      end
     end
 
     # Override this value to specify the number of elements to display at a time
