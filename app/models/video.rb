@@ -11,6 +11,6 @@ class Video < ActiveRecord::Base
   validates_attachment_file_name :screenshot, matches: [/png\Z/, /jpe?g\Z/]
 
   def slug_candidates
-    /(^.*)+\(/.match(self.name)
+    /(^.*)+\s\(/.match(self.name)[1]
   end
 end
