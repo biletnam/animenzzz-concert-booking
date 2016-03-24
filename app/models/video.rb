@@ -1,4 +1,7 @@
 class Video < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :slug_candidates, use: [:slugged, :finders]
+
   has_attached_file :screenshot, 
   					default_url: 'video_areuok.jpg',
   					styles: { large: "600x340>", medium: "300x170>" },
@@ -7,4 +10,7 @@ class Video < ActiveRecord::Base
   validates_attachment_content_type :screenshot, content_type: /\Aimage/
   validates_attachment_file_name :screenshot, matches: [/png\Z/, /jpe?g\Z/]
 
+  def slug_candidates
+    /(^.*)+\(/.match(self.name)
+  end
 end

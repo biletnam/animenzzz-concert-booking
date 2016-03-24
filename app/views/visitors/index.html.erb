@@ -71,7 +71,7 @@
             <div class="index-intro-video">
                 <%= link_to '#' do %><%= image_tag @indexVideo.screenshot.url(:large)  %><% end %>
             </div>
-        </div>
+        </div> 
         <div class="index-intro-text">
 由于Lambda表达式构造URL的速度不佳，我最近对于性能上的细节问题进行了一些探索和尝试。对于很多问题，以前由于不会形成性能瓶颈，因此并没有进行太多关注。还有一些问题可以“推断”出大致的结论，也趁这个机会进行更详细的试验，希望可以得到更为确切的结论和理性的认识。这次我打算做的实验，是关于对象的缓存与创建的性能比较。在某些情况下，我们会将创建好的对象缓存起来，以便今后进行复用。但是不同的缓存方式会有不同的性能，因此……我们现在便来试试看。
 
@@ -83,61 +83,19 @@
 <div class="section-videos">
     <div class="outer-container">
         <div class="index-videos clearfix">
+            <% @videos.each do |video| %>
             <div class="index-video-item-cont">
                 <div class="index-video-item">
-                    <%= link_to '#' do %><%= image_tag 'video_areuok.jpg' %><% end %>
+                    <%= link_to '#' do %><%= image_tag video.screenshot.url(:medium) %><% end %>
                     <div class="index-video-title">
-                        Are you OK?
+                        <%= video.slug %>
                         <div class="index-video-time">
-                            66:66
+                            <%= video.length %>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="index-video-item-cont">
-                <div class="index-video-item">
-                    <%= link_to '#' do %><%= image_tag 'video_areuok.jpg' %><% end %>
-                    <div class="index-video-title">
-                        I'm fine thank you
-                    </div>
-                    <div class="index-video-time">
-                        3:20
-                    </div>
-                </div>
-            </div>
-            <div class="index-video-item-cont">
-                <div class="index-video-item">
-                    <%= link_to '#' do %><%= image_tag 'video_mc.jpg' %><% end %>
-                    <div class="index-video-title">
-                        Indian Mi fans
-                    </div>
-                    <div class="index-video-time">
-                        3:20
-                    </div>
-                </div>
-            </div>
-            <div class="index-video-item-cont">
-                <div class="index-video-item">
-                    <%= link_to '#' do %><%= image_tag 'video_areuok.jpg' %><% end %>
-                    <div class="index-video-title">
-                        China Mi fans
-                    </div>
-                    <div class="index-video-time">
-                        3:20
-                    </div>
-                </div>
-            </div>
-            <div class="index-video-item-cont">
-                <div class="index-video-item">
-                    <%= link_to '#' do %><%= image_tag 'video_areuok.jpg' %><% end %>
-                    <div class="index-video-title">
-                        Everyone a Mi band
-                    </div>
-                    <div class="index-video-time">
-                        3:20
-                    </div>
-                </div>
-            </div>
+            <% end %>
         </div>
     </div>
 </div>
