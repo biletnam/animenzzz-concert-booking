@@ -59,6 +59,7 @@
 					translateScale = 'scale3d(' + scale + ', ' + scale + ', 1)',
 					translateRotate = `rotateY(${-index * 3}deg)`;
                 $(indexElement(elementIndex)).css({
+                	'-webkit-transform': `${transformTranslate} ${translateRotate} ${translateScale}`,
 					'transform': `${transformTranslate} ${translateRotate} ${translateScale}`,
 					'z-index':  (this.numElements - index)
 				}).removeClass('coverflow-item-active');
