@@ -19,11 +19,11 @@ as well as a link to its edit page.
 <% content_for(:title) { page.page_title } %>
 
 <header class="header">
-  <h1 class="header-heading"><%= content_for(:title) %></h1>
-  <div class="header-actions">
+  <h1 class="header__heading"><%= content_for(:title) %></h1>
+  <div class="header__actions">
     <%= link_to(
-      "编辑",
-      [:edit, Administrate::NAMESPACE, page.resource],
+      "Edit",
+      [:edit, namespace, page.resource],
       class: "button",
     ) %>
   </div>
@@ -36,10 +36,11 @@ as well as a link to its edit page.
     <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
         ><%= render_field attribute %></dd>
   <% end %>
+
   <dt class="attribute-label">VENUE IMAGE</dt>
   <dd class="attribute-data">
     <%= image_tag page.resource.venue_image.url, width: '300' %>
-    <%= form_for [Administrate::NAMESPACE, page.resource] do |f| %>
+    <%= form_for [namespace, page.resource] do |f| %>
       <%= f.file_field :venue_image %>
       <%= f.submit value: '更新场馆图' %>
     <% end %>
@@ -47,7 +48,7 @@ as well as a link to its edit page.
   <dt class="attribute-label">POSTER</dt>
   <dd class="attribute-data">
     <%= image_tag page.resource.poster.url, width: '300' %>
-    <%= form_for [Administrate::NAMESPACE, page.resource] do |f| %>
+    <%= form_for [namespace, page.resource] do |f| %>
       <%= f.file_field :poster %>
       <%= f.submit value: '更新海报' %>
     <% end %>
@@ -55,11 +56,9 @@ as well as a link to its edit page.
   <dt class="attribute-label">INDEX IMAGE</dt>
   <dd class="attribute-data">
     <%= image_tag page.resource.index_image.url, width: '300' %>
-    <%= form_for [Administrate::NAMESPACE, page.resource] do |f| %>
+    <%= form_for [namespace, page.resource] do |f| %>
       <%= f.file_field :index_image %>
       <%= f.submit value: '更新首页图' %>
     <% end %>
   </dd>
 </dl>
-
-
