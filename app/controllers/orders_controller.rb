@@ -2,22 +2,28 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-  	@orders = current_user.orders.sort_by {|o| o.created_at }
+    @orders = current_user.orders.sort_by {|o| o.created_at }
   end
 
   def show
-  	@order = current_user.orders.find(params[:id])
+    @order = current_user.orders.find(params[:id])
   end
 
   def new
     @order = Order.new
 
-    print('aaa')
-    params[:area][:seat_ids].pop
-    session[:ids] = params[:area][:seat_ids]
+    seat_ids = []
 
-    seats = Seat.find(session[:ids])
-    @order.seats << seats
+    seat_data = params[:seats]
+    seat_data.each do |data|
+      attrs = data.split(',')
+      area = Area.where(klass: attrs[0]).first
+      seat = area.seats.where(locate_x: attrs[1], locate_y: attrs[2]).first
+      @order.seats << seat
+      seat_ids << seat.id
+    end
+
+    session[:ids] = seat_ids
 
     @order.total_price
   end
@@ -45,23 +51,23 @@ class OrdersController < ApplicationController
 
     # send_pingpp @order.id
 
-  	redirect_to orders_path
+    redirect_to orders_path
   end
 
   def destroy
-  	@order = current_user.orders.find(params[:id])
-  	@order.destroy
+    @order = current_user.orders.find(params[:id])
+    @order.destroy
   end
 
 
-  def store_seat_ids
-    # seats = params[:seat_ids]
-    # seat
-  end
+  # def store_seat_ids
+  #   seats = params[:seat_ids]
+  #   seat
+  # end
 
   private
 
   def secure_params
-  	params.require(:order).permit(:address, :phone, :name, :seat_ids => [])
+    params.require(:order).permit(:address, :phone, :name, :seat_ids => [])
   end
 end
