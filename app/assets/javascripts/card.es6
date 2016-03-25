@@ -56,7 +56,7 @@
             } else {
                 var scale = getScale(index);
 				var offsetTranslate = 20 * ((Math.log(index) / Math.log(2.56)) + 1);
-                var transformTranslate = 'translate3d(' + offsetTranslate + '%, 0, 0)',
+                var transformTranslate = 'translate3d(' + offsetTranslate + '%, 0, ' + `${this.numElements - index}px)`,
 					translateScale = 'scale3d(' + scale + ', ' + scale + ', 1)',
 					translateRotate = `rotateY(${-index * 3}deg)`;
                 $(indexElement(elementIndex)).css({
