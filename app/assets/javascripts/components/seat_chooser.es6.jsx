@@ -17,11 +17,36 @@ class SeatChooser extends React.Component {
     this.submitChosen = this.submitChosen.bind(this);
   }
 
+  // we can only use bruteforce yet
+  //  hopefully it's not a performance bottleneck
+  //  and we may switch to hash table
+  markSeatHold(data, klass, num, row) {
+    for (var floor = 0; floor < data.length; floor++) {
+      for (var x = 0; x < data[floor].length; x++) {
+        for (var y = 0; y < data[floor][x].length; y++) {
+          var seat = data[floor][x][y];
+          if (seat['area'] == klass && seat['num'] == num && seat['row'] == row) {
+            seat['hold'] = true;
+            return seat;
+          }
+        }
+      }
+    }
+  }
+
   componentDidMount() {
-    $.getJSON(`/halldata/${this.props['target']}.json`)
-      .then((data) => {
-        this.setState({ 'data': data });
-      });
+    var data = undefined,
+      hold = undefined;
+    $.when(
+      $.getJSON(`/halldata/${this.props['target']}.json`,
+        ret => data = ret),
+      $.getJSON(`/recitals/${this.props['target']}/areas?format=json`, ret => hold = ret)
+    ).then(() => {
+      hold.forEach((holdSeat) =>
+        this.markSeatHold(data, holdSeat['klass'], holdSeat['num'], holdSeat['row'])
+      );
+      this.setState({ data });
+    });
   }
 
   callbackChoose(floor, x, y, value) {

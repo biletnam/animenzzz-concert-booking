@@ -32,7 +32,7 @@ class SeatRow extends React.Component {
                         data={cell} coordFloor={this.props['indexFloor']}
                         coordX={indexX} coordY={indexY}
                         callbackChoose={this.callbackChoose}
-                        disabled={false}
+                        disabled={cell['hold']}
                     />
                     );
                 })}
