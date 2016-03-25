@@ -29,6 +29,7 @@
                                 <th>#</th>
                                 <th>场次</th>
                                 <th>区域</th>
+                                <th>位置</th>
                                 <th>价格</th>
                             </tr>
                         </thead>
@@ -38,6 +39,7 @@
                                 <th>1</th>
                                 <td><%= seat.area.recital.city %>站</td>
                                 <td><%= seat.area.name %></td>
+                                <td><%= seat.get_position %></td>
                                 <th>￥<%= seat.price.price %></th>
                             </tr>
                             <% end %>
