@@ -49,17 +49,17 @@
         this.dataArray.forEach((elementIndex, index) => {
             if (!index) {
                 $(indexElement(elementIndex)).css({
+                    '-webkit-transform': 'none',
 					'transform': 'none',
 					'z-index': this.numElements
 				}).addClass('coverflow-item-active');;
             } else {
                 var scale = getScale(index);
-				var offsetTranslate = index * 20;
-                var transformTranslate = 'translate3d(' + offsetTranslate + '%, 0, ' + -index * 20 + 'px)',
+				var offsetTranslate = 20 * ((Math.log(index) / Math.log(2.56)) + 1);
+                var transformTranslate = 'translate3d(' + offsetTranslate + '%, 0, 0)',
 					translateScale = 'scale3d(' + scale + ', ' + scale + ', 1)',
 					translateRotate = `rotateY(${-index * 3}deg)`;
                 $(indexElement(elementIndex)).css({
-                	'-webkit-transform': `${transformTranslate} ${translateRotate} ${translateScale}`,
 					'transform': `${transformTranslate} ${translateRotate} ${translateScale}`,
 					'z-index':  (this.numElements - index)
 				}).removeClass('coverflow-item-active');
