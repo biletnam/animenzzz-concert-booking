@@ -19,6 +19,12 @@ class OrdersController < ApplicationController
       attrs = data.split(',')
       area = Area.where(klass: attrs[0]).first
       seat = area.seats.where(locate_x: attrs[1], locate_y: attrs[2]).first
+
+      if seat.sold then
+        flash[:alert] = I18n.t('Sorry, some seat has already sold')
+        redirect_to root_path
+      end
+      
       @order.seats << seat
       seat_ids << seat.id
     end
@@ -32,8 +38,10 @@ class OrdersController < ApplicationController
     @order = Order.new(secure_params)
     seats = Seat.find(session[:ids])
 
-    # if @order.already_sold? then
-    # end
+    if @order.already_sold? then
+      flash[:alert] = I18n.t('Sorry, some seat has already sold')
+      redirect_to root_path
+    end
 
     Seat.transaction do
       seats.each do |seat|

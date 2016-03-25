@@ -6,6 +6,7 @@ zh-CN:
   overdue: '订单过期'
 
   'Not a administrator': '当前用户非管理员用户'
+  'Sorry, some seat has already sold': '该座位已被售出，请选择其他座位'
 
   date:
     abbr_day_names:
