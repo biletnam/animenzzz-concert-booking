@@ -38,13 +38,13 @@ class OrdersController < ApplicationController
     @order = Order.new(secure_params)
     seats = Seat.find(session[:ids])
 
-    if @order.already_sold? then
-      flash[:alert] = I18n.t('Sorry, some seat has already sold')
-      redirect_to root_path
-    end
-
     Seat.transaction do
       seats.each do |seat|
+        if seat.sold then
+          flash[:alert] = I18n.t('Sorry, some seat has already sold')
+          redirect_to root_path
+          return
+        end
         seat.lock!
         seat.set_sold
         seat.save
