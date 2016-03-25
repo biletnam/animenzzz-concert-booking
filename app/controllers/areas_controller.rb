@@ -6,9 +6,16 @@ class AreasController < ApplicationController
   	@recital = Recital.includes(:areas).find(params[:recital_id])
   	# @areas = @recital.areas
   	@seats = []
+    seat_data = {}
   	@recital.areas.each do |area|
   	  area.seats.each do |seat|
-  	  	@seats << seat if seat.sold
+  	  	if seat.sold then
+          seat_data[:sold] = seat.sold 
+          seat_data[:klass] = seat.area.klass 
+          seat_data[:row] = seat.locate_x 
+          seat_data[:num] = seat.locate_y
+          @seats << seat_data
+        end
   	  end
   	end
 
