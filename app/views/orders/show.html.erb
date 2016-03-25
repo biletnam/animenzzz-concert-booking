@@ -8,7 +8,7 @@
                     <div class="ribbon-title font-bold">
                         <span class="right-floated font-larger"><%= I18n.t(@order.status) %></span>
                         <div>
-                            <span class="order-dotted">l3UmeTpjFw1qxt9l</span>
+                            <span class="order-dotted"><%= @order.trac_num %></span>
                         </div>
                         <div class="font-smaller">
                             <span class="order-dotted"><%= @order.created_at.strftime('%Y-%m-%d %H:%M:%S') %></span>
@@ -49,7 +49,7 @@
                     <hr class="nwui-hr" />
 
                     <div class="align-center font-bold font-larger">物流信息</div>
-                    <div class="line-height-2"><strong>快递公司：</strong>东风快递</div>
+                    <div class="line-height-2"><strong>快递公司：</strong><%= @order.express %></div>
                     <div class="line-height-2"><strong>运单号码：</strong><%= @order.trac_num %></div>
                     <div class="align-center"><a href="#">查看跟踪信息</a></div>
                 </div>

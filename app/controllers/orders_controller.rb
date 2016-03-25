@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
 
       if seat.sold then
         flash[:alert] = I18n.t('Sorry, some seat has already sold')
-        redirect_to root_path
+        redirect_to root_path and return
       end
       
       @order.seats << seat
@@ -42,8 +42,7 @@ class OrdersController < ApplicationController
       seats.each do |seat|
         if seat.sold then
           flash[:alert] = I18n.t('Sorry, some seat has already sold')
-          redirect_to root_path
-          return
+          redirect_to root_path and return
         end
         seat.lock!
         seat.set_sold
