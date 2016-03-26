@@ -14,11 +14,11 @@
             <dt class="font-bold align-right">演出日期</dt>
             <dd class="align-left"><%= @recital.start_time.strftime('%Y年%m月%d日') unless @recital.start_time.nil? %></dd>
 
-            <dt class="font-bold align-right">开场时间</dt>
+            <dt class="font-bold align-right">演出时间</dt>
             <dd class="align-left"><%= @recital.start_time.strftime('%H:%M') %></dd>
 
-            <dt class="font-bold align-right">场馆地点</dt>
-            <dd class="align-left"><%= @recital.address + ' ' + @recital.music_hall %></dd>
+            <dt class="font-bold align-right">演出地点</dt>
+            <dd class="align-left"><%= @recital.music_hall + ' (' + @recital.address + ')' %></dd>
             
         </dl>
         <!--<hr class="hr-recital" />-->
