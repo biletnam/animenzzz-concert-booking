@@ -4,7 +4,9 @@
     <div class="nwui-main submit-main">
 
         <div class="nwui-header align-center clearfix">
-            <button class="button nwui-back-btn float-left">返回</button>
+            <%= link_to :back do %>
+                <button class="button nwui-back-btn float-left">返回</button>
+            <% end %>
             <button class="button nwui-submit-btn float-right">提交</button>
             <div class="nwui-header-title">提交订单</div>
         </div>

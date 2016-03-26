@@ -15,6 +15,12 @@ class OrdersController < ApplicationController
     seat_ids = []
 
     seat_data = params[:seats]
+
+    if seat_data == nil then
+      flash[:alert] = I18n.t('Please choose at leat one seat then continue')
+      redirect_to :back and return
+    end
+
     seat_data.each do |data|
       attrs = data.split(',')
       area = Area.where(klass: attrs[0]).first

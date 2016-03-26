@@ -80,7 +80,10 @@ ul.order-list {
             & .order-item {
                 & + .order-item {
                     border-top: 1px dotted #999; }
-                td { padding: 1em; }
+                td { 
+                    padding: 1em; 
+                    width: 50%
+                }
             }
         }
 

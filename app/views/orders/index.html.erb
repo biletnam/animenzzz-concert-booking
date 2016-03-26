@@ -17,7 +17,7 @@
                 <table class="order-item-table">
                     <% order.seats.each do |seat| %>
                     <tr class="order-item">
-                        <td><%= seat.area.recital.city %>站 <%= seat.area.name %></td>
+                        <td><%= seat.area.recital.city %>站 <%= seat.area.name + seat.get_position %></td>
                         <td>单价 ￥<%= seat.price.price %></td>
                     </tr>
                     <% end %>
@@ -26,7 +26,7 @@
                     <tr>
                         <td>
                             <span class="order-bar-info-id">
-                                <div>订单编号: l3UmeTpjFw1qxt9l</div>
+                                <div>订单编号: <%= order.slug %></div>
                             </span>
                         </td>
                         <td>
