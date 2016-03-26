@@ -17,9 +17,9 @@
                         <div class="recital-info-bottom">
                             <div class="coverflow-recital-title"><%= recital.city %>站 - 
                                 <% if recital.sold_out? %>
-                                已售完
+                                已预订完
                                 <% else %>
-                                在售
+                                正在预订中
                                 <% end %>
                             </div>
                             <div><%= recital.start_time.strftime('%Y 年 %m 月 %d 日') unless recital.start_time.nil? %></div>
@@ -33,9 +33,9 @@
                         </div>
                         <div class="recital-status">
                             <% if recital.sold_out? %>
-                                售<br />完
+                                已<br />预<br />订<br />完
                             <% else %>
-                                在<br />售
+                                正<br />在<br />预<br />订
                             <% end %>
                         </div>
                     </div>
