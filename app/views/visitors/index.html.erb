@@ -30,6 +30,9 @@
                             <%= recital.split_city %>
                             <div>站</div>
                         </div>
+                        <div class="coverflow-recital-date">
+                            <%= recital.start_time.strftime('%-m 月 %-d 日') unless recital.start_time.nil? %>
+                        </div>
                         <div class="recital-status">
                             <% if recital.sold_out? %>
                                 已<br />预<br />订<br />完
