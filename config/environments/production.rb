@@ -73,13 +73,12 @@ Rails.application.configure do
 
   config.action_mailer.smtp_settings = {
     address: "smtp.exmail.qq.com",
-    port: 465,
+    port: 25,
     domain: 'qq.com',
     authentication: "plain",
     enable_starttls_auto: true,
     user_name: 'admin@yuxianglishun.cn',
     password: 'Yuyang123.mail'
-    ssl: true
   }
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => Rails.application.secrets.domain_name }
