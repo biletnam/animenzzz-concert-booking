@@ -79,6 +79,10 @@
     font-size: x-large;
     font-weight: bolder;
     text-shadow: 1px 0 1px black;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
     .recital-info-bottom & {
         @include media-mobile {
             font-size: 1.5em; }
@@ -92,6 +96,10 @@
     // margin-bottom: 2rem;
     white-space: nowrap;
     font-size: large;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
 }
 
 .recital-info-right {
