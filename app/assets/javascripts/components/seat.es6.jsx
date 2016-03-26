@@ -32,16 +32,21 @@ class Seat extends React.Component {
         return (<span className="seat-placeholder" />);
       case 'stage':
         return (<span className="seat-placeholder-stage" />);
+      case 'seat':
+        return (
+            <span className={classNames('seat', this.props['data']['classname'])}>
+                <input type="checkbox"
+                disabled={this.props['disabled']}
+                checked={!!(this.props['data']['chosen'])}
+                />
+                <label className="seat-label" onClick={this.handleClick} />
+            </span>
+        );
+      default:
+        console.error('Data Type does not match!', this.props);
+        return (<span></span>);
     }
-    return (
-      <span className={classNames('seat', this.props['data']['classname'])}>
-        <input type="checkbox"
-          disabled={this.props['disabled']}
-          checked={!!(this.props['data']['chosen'])}
-        />
-        <label className="seat-label" onClick={this.handleClick} />
-      </span>
-    );
+    
   }
 }
 
