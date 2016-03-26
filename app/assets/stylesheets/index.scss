@@ -63,6 +63,11 @@
     }
 }
 
+.section-recitals {
+    position: relative;
+    z-index: 0;
+}
+
 .index-intro-video-cont {
     padding: 3em;
     @include media-mobile {
