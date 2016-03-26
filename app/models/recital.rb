@@ -38,7 +38,9 @@ class Recital < ActiveRecord::Base
   end
 
   def split_city
-    self.city.split(//).join('<br />').html_safe
+    str = ''
+    self.city.split(//).each {|c| str += ('<div>' + c + '</div>') }
+    str.html_safe
   end
 
   def slug_candidates

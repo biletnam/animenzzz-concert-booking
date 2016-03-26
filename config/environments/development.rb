@@ -28,13 +28,20 @@ Rails.application.configure do
   config.assets.debug = true
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: Rails.application.secrets.domain_name,
+    # address: "smtp.gmail.com",
+    # port: 587,
+    # domain: Rails.application.secrets.domain_name,
+    # authentication: "plain",
+    # enable_starttls_auto: true,
+    # user_name: Rails.application.secrets.email_provider_username,
+    # password: Rails.application.secrets.email_provider_password
+    address: "smtp.exmail.qq.com",
+    port: 25,
+    domain: 'yuxianglishun.cn',
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: Rails.application.secrets.email_provider_username,
-    password: Rails.application.secrets.email_provider_password
+    user_name: 'admin@yuxianglishun.cn',
+    password: 'Yuyang123.mail'
   }
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
