@@ -49,19 +49,20 @@
         this.dataArray.forEach((elementIndex, index) => {
             if (!index) {
                 $(indexElement(elementIndex)).css({
-                    'webkitTransform': `translate3d(0, 0, ${(this.numElements+1) * 4}px)`,
-					'transform': `translate3d(0, 0, ${(this.numElements+1) * 4}px)`,
+                    'webkitTransform': `translate3d(0, 0, ${(this.numElements+1) * 2}px)`,
+					'transform': `translate3d(0, 0, ${(this.numElements+1) * 2}px)`,
 					'z-index': this.numElements
 				}).addClass('coverflow-item-active');;
             } else {
                 var scale = getScale(index);
 				var offsetTranslate = 20 * ((Math.log(index) / Math.log(2.56)) + 1);
-                var transformTranslate = `translate3d(${offsetTranslate}%, 0, ${(this.numElements - index) * 4}px)`,
+                var transformTranslate = `translate3d(${offsetTranslate}%, 0, ${(this.numElements - index) * 2}px)`,
 					translateScale = 'scale3d(' + scale + ', ' + scale + ', 1)',
-					translateRotate = `rotateY(${-index * 3}deg)`;
+					translateRotate = `rotateY(${-index * 4}deg)`,
+                    transformPerspective = `perspective(600px)`;
                 $(indexElement(elementIndex)).css({
-                    'webkitTransform': `${transformTranslate} ${translateRotate} ${translateScale}`,
-					'transform': `${transformTranslate} ${translateRotate} ${translateScale}`,
+                    'webkitTransform': `${transformPerspective} ${transformTranslate} ${translateRotate} ${translateScale}`,
+					'transform': `${transformPerspective} ${transformTranslate} ${translateRotate} ${translateScale}`,
 					'z-index':  (this.numElements - index)
 				}).removeClass('coverflow-item-active');
             }
