@@ -22,13 +22,16 @@
                                 正在预订中
                                 <% end %>
                             </div>
-                            <div><%= (recital.start_time.strftime('%Y 年 %m 月 %d 日') unless recital.start_time.nil?) + ' - ' + recital.music_hall%></div>
+                            <div class="font-larger"><%= (recital.start_time.strftime('%Y 年 %m 月 %d 日') unless recital.start_time.nil?) + ' - ' + recital.music_hall%></div>
                         </div>
                     </div>
                     <div class="coverflow-overlay-right recital-info-right">
                         <div class="coverflow-recital-title">
                             <%= recital.split_city %>
                             <div>站</div>
+                        </div>
+                        <div class="coverflow-recital-date">
+                            <%= recital.start_time.strftime('%-m 月 %-d 日') unless recital.start_time.nil? %>
                         </div>
                         <div class="recital-status">
                             <% if recital.sold_out? %>
