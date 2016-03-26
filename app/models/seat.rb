@@ -17,11 +17,8 @@ class Seat < ActiveRecord::Base
     if self.locate_x == 0 then
       position = self.locate_y.to_s + '号'
     else
-      position = self.locate_x.to_s + '排' + locate_y.to_s + '列'
+      position = self.locate_x.to_s + '排' + locate_y.to_s + '号'
     end
-
-    if self.area.floor then 
-      return self.area.floor.to_s + '楼' + position
-    end
+    position
   end
 end

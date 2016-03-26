@@ -15,6 +15,12 @@ class OrdersController < ApplicationController
     seat_ids = []
 
     seat_data = params[:seats]
+
+    if seat_data == nil then
+      flash[:alert] = I18n.t('Please choose at leat one seat then continue')
+      redirect_to :back and return
+    end
+
     seat_data.each do |data|
       attrs = data.split(',')
       area = Area.where(klass: attrs[0]).first
@@ -22,7 +28,7 @@ class OrdersController < ApplicationController
 
       if seat.sold then
         flash[:alert] = I18n.t('Sorry, some seat has already sold')
-        redirect_to root_path
+        redirect_to root_path and return
       end
       
       @order.seats << seat
@@ -42,8 +48,7 @@ class OrdersController < ApplicationController
       seats.each do |seat|
         if seat.sold then
           flash[:alert] = I18n.t('Sorry, some seat has already sold')
-          redirect_to root_path
-          return
+          redirect_to root_path and return
         end
         seat.lock!
         seat.set_sold

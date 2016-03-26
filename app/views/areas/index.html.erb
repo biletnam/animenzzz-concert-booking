@@ -1,7 +1,9 @@
 <div class="outer-container seat-chooser-title">
     <div class="nwui-main clearfix">
         <div class="nwui-header align-center clearfix">
-            <button class="button nwui-back-btn float-left">返回</button>
+            <%= link_to recital_path @recital do %>
+              <button class="button nwui-back-btn float-left">返回</button>
+            <% end %>
             <div class="nwui-header-title">选择区域</div>
         </div>
         <!--<div class="area-preview-cont">
