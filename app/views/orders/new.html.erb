@@ -86,3 +86,50 @@
     </div>
 <% end %>
 </div>
+
+<% content_for :script do %>
+<script>
+(function () {
+    var InfoStatus = {
+        OK: 0,
+        ERROR: 1,
+        NOT_COMPLETED: 2
+    };
+    
+    function checkInfo(inputs) {
+        var ret = inputs.every(function (id) {
+            return ($('#' + id).val().length) !== 0;
+        });
+        if (!ret) {
+            return InfoStatus.NOT_COMPLETED;
+        }
+        return InfoStatus.OK;
+    }
+    
+    function mutateInfo(infoStatus) {
+        switch (infoStatus) {
+            case InfoStatus.OK:
+                $('.submit-submit-btn').attr('class', 'button submit-submit-btn submit-submit-btn-ok');
+                break;
+            default:
+                $('.submit-submit-btn').attr('class', 'button submit-submit-btn');
+                break;
+        }
+    }
+    
+    function checkAndMutateInfo(inputs) {
+        return mutateInfo(checkInfo(inputs)); }
+        
+    var inputs = [
+        'submit-input-name',
+        'submit-input-addr',
+        'submit-input-phone'
+    ];
+        
+    inputs.forEach(function (id) {
+        $('#'+id).on('keyup', checkAndMutateInfo.bind(null, inputs))
+                .on('change', checkAndMutateInfo.bind(null, inputs));
+    });
+})();
+</script>
+<% end %>
