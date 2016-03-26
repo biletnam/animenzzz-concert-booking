@@ -40,7 +40,7 @@ Rails.application.configure do
     domain: 'yuxianglishun.cn',
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: 'admin@yuxianglishun.cn',
+    user_name: 'no-reply@yuxianglishun.cn',
     password: 'Yuyang123.mail'
   }
   # ActionMailer Config
