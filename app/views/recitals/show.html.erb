@@ -7,12 +7,12 @@
     
     <div class="recital-detail-cont overflow-auto">
         <div class="recital-title font-bolder font-x-large">
-            <%= @recital.city %>场
+            <%= @recital.city %>站
         </div>
         <!--<hr class="hr-recital" />-->
         <dl class="dl-horizontal">
             <dt class="font-bold align-right">演出日期</dt>
-            <dd class="align-left"><%= @recital.start_time.strftime('%m月%d日晚') unless @recital.start_time.nil? %></dd>
+            <dd class="align-left"><%= @recital.start_time.strftime('%Y年%m月%d日') unless @recital.start_time.nil? %></dd>
 
             <dt class="font-bold align-right">开场时间</dt>
             <dd class="align-left"><%= @recital.start_time.strftime('%H:%M') %></dd>
