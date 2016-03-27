@@ -36,6 +36,11 @@ class OrderDashboard < Administrate::BaseDashboard
     :seats,
     :trac_num,
     :id,
+    :name,
+    :address,
+    :phone,
+    :price,
+    :created_at,
   ]
 
   # SHOW_PAGE_ATTRIBUTES
