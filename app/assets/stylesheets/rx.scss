@@ -91,6 +91,15 @@ ul.rx-seatchosen-list {
     }
 }
 
+.rx-seatchooser-legends {
+    color: #ccc;
+    & > span.rx-seatchooser-legend {
+        display: inline-block;
+        padding: 0 0.5em;
+        & > * { vertical-align: middle; }
+    }
+}
+
 .rx-seatchooser-floor-cont {
 
     // margin: 0.5em;

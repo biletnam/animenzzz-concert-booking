@@ -142,13 +142,13 @@ class SeatChooser extends React.Component {
       this.setState({ activeTab }); }
       
   onPageScrollForMobile() {
-    const seatChosenList = ReactDOM.findDOMNode(this.refs['seatChosenList']); 
-    const seatChooserInfo = ReactDOM.findDOMNode(this.refs['seatChooserInfo']); 
+    const seatChosenList = ReactDOM.findDOMNode(this.refs['seatChosenList']),
+          seatChooserInfo = ReactDOM.findDOMNode(this.refs['seatChooserInfo']);
     
     // stackoverflow.com/questions/10059888/detect-when-scroll-reaches-the-bottom-of-the-page-without-jquery
     //  javascript - Detect when Scroll reaches the BOTTOM of the page [ without jQuery ] - Stack Overflow
-    if (seatChosenList.getBoundingClientRect().bottom > window.innerHeight) {
     // if (window.pageYOffset + window.innerHeight < seatChosenList.offsetTop + seatChosenList.clientHeight) {
+    if (seatChosenList.getBoundingClientRect().bottom > window.innerHeight) {
       seatChooserInfo.classList.add('rx-mobile-fixed');
     } else {
       seatChooserInfo.classList.remove('rx-mobile-fixed');
@@ -163,6 +163,11 @@ class SeatChooser extends React.Component {
                   activeTab={this.state['activeTab']}
                   onChange={this.handleTabChange}
                   tabs={this.state['data'].map((floor, idx) => `${idx+1} 楼`)}
+        />
+        <br />
+        <SeatLegends
+          className="outer-container align-center"
+          prices={[[680, 580, 480], [380, 280, 180]]}
         />
         <div className="rx-seatchooser-wrap">
           <div className={className}>
