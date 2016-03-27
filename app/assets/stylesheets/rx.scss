@@ -19,6 +19,8 @@
     width: 100%;
     padding: 1em;
     box-sizing: border-box;
+    // stackoverflow.com/questions/5932018/fluid-table-with-td-nowrap-text-overflow
+    //  css - Fluid table with td nowrap & text-overflow? - Stack Overflow
     table-layout: fixed;
     .rx-seatchooser-main {
         display: table-cell;
@@ -54,14 +56,16 @@
             box-shadow: none;
             
             .rx-seatchooser-info {
-                position: fixed;
-                bottom: 0;
-                background-color: #546E7A;
-                width: 100%;
-                box-shadow: 0 0 1em $darken-60, 0 0 1px $lighter-20 inset;
-                
-                & > * {
-                    display: inline-block;
+                &.rx-mobile-fixed {
+                    position: fixed;
+                    bottom: 0;
+                    background-color: #546E7A;
+                    width: 100%;
+                    box-shadow: 0 0 1em $darken-60, 0 0 1px $lighter-20 inset;
+                    
+                    & > * {
+                        display: inline-block;
+                    }
                 }
             }
         }

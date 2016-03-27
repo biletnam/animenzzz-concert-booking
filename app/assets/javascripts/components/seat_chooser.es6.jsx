@@ -16,7 +16,9 @@ class SeatChooser extends React.Component {
     this.callbackChoose = this.callbackChoose.bind(this);
     this.clearChosen = this.clearChosen.bind(this);
     this.submitChosen = this.submitChosen.bind(this);
+    
     this.handleTabChange = this.handleTabChange.bind(this);
+    this.onPageScrollForMobile = this.onPageScrollForMobile.bind(this);
   }
 
   // we can only use bruteforce yet
@@ -49,6 +51,12 @@ class SeatChooser extends React.Component {
       );
       this.setState({ data });
     });
+    
+    document.addEventListener('scroll', this.onPageScrollForMobile);
+  }
+  
+  componentWillUnmount() {
+    document.removeEventListener('scroll', this.onPageScrollForMobile);
   }
 
   callbackChoose(floor, x, y, value) {
@@ -132,6 +140,19 @@ class SeatChooser extends React.Component {
   
   handleTabChange(activeTab) {
       this.setState({ activeTab }); }
+      
+  onPageScrollForMobile() {
+    const seatChosenList = ReactDOM.findDOMNode(this.refs['seatChosenList']); 
+    const seatChooserInfo = ReactDOM.findDOMNode(this.refs['seatChooserInfo']); 
+    
+    // stackoverflow.com/questions/10059888/detect-when-scroll-reaches-the-bottom-of-the-page-without-jquery
+    //  javascript - Detect when Scroll reaches the BOTTOM of the page [ without jQuery ] - Stack Overflow
+    if (window.pageYOffset + window.innerHeight < seatChosenList.offsetTop) {
+      seatChooserInfo.classList.add('rx-mobile-fixed');
+    } else {
+      seatChooserInfo.classList.remove('rx-mobile-fixed');
+    }
+  }
 
   render () {
     var className = classNames("rx-seatchooser-main", { "seat-too-much": this.tooMuch });
@@ -154,8 +175,8 @@ class SeatChooser extends React.Component {
             </TabContent>
           </div>
           <div className="rx-seatchooser-second">
-              <SeatChosenList data={this.state['data']} chosen={this.state['chosen']} />
-              <div className="rx-seatchooser-info align-center">
+              <SeatChosenList ref="seatChosenList" data={this.state['data']} chosen={this.state['chosen']} />
+              <div ref="seatChooserInfo" className="rx-seatchooser-info rx-mobile-fixed align-center">
                 <div>共 {this.state['chosen'].length} 个座位</div>
                 <div><strong>{this.totalCost}</strong> 元</div>
                 <div>

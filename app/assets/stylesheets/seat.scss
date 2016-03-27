@@ -87,6 +87,7 @@
         right: -100%;
         pointer-events: none;
         box-shadow: 2px 2px 6px $darken-50;
+        opacity: 0.8;
     }
     
     &:hover > .seat-tooltip {
