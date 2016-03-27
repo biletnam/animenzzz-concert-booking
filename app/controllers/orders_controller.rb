@@ -28,11 +28,16 @@ class OrdersController < ApplicationController
 
       if seat.sold then
         flash[:alert] = I18n.t('Sorry, some seat has already sold')
-        redirect_to root_path and return
+        redirect_to :back and return
       end
       
       @order.seats << seat
       seat_ids << seat.id
+    end
+
+    if @order.seats.size > 4
+      flash[:alert] = I18n.t('Seats number more than 4!')
+      redirect_to :back and return
     end
 
     session[:ids] = seat_ids
@@ -62,6 +67,7 @@ class OrdersController < ApplicationController
       end 
 
       current_user.orders << @order
+      send_message
     end
 
     # send_pingpp @order.id
@@ -84,5 +90,51 @@ class OrdersController < ApplicationController
 
   def secure_params
     params.require(:order).permit(:address, :phone, :name, :seat_ids => [])
+  end
+
+  def send_message
+    post_url = 'http://gw.api.taobao.com/router/rest'
+    options = {
+      app_key: '23333071',
+      format: 'json',
+      method: 'alibaba.aliqin.fc.sms.num.send',
+      timestamp: @order.created_at, 
+      sign_method: 'md5',
+      v: '2.0',
+      rec_num: @order.phone,
+      sms_type: 'normal',
+      sms_free_sign_name: '大鱼测试',
+      sms_param: '{"code":"123","product":"Test"}',
+      sms_template_code: 'SMS_6770530'
+    }
+
+    options = sort_options(options)
+    md5_str = encrypt(options)
+    post_request(post_url, options.merge(sign: md5_str))
+  end
+
+  def sort_options(**arg)
+    arg.sort_by{|k,v| k}.to_h
+  end
+
+  def encrypt(**arg)
+    app_secret = '726e9ae8fdfa3a45b8c930d229fc497e'
+    _arg = arg.map{|k,v| "#{k}#{v}"}
+    md5("#{app_secret}#{_arg.join("")}#{app_secret}").upcase
+  end
+
+  def md5(arg)
+    Digest::MD5.hexdigest(arg)
+  end
+
+  def post_request(uri, options)
+    response = ""
+    url = URI.parse(uri)
+    Net::HTTP.start(url.host, url.port) do |http|
+      req = Net::HTTP::Post.new(url.path)
+      req.set_form_data(options)
+      response = http.request(req).body
+    end
+    JSON(response)
   end
 end
