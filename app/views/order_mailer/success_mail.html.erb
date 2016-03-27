@@ -1,0 +1,8 @@
+<p>您好 <%= @user.name %>！</p>
+<p>您已经成功预订如下座位：</p>
+<% @order.seats.each do |seat| %>
+	<li>
+		<%= seat.area.recital.city + '站' + seat.area.name + seat.get_position %>
+	</li>
+<% end %>
+<p>感谢您的预订，正式付款日期我们将在之后通知您，带来不便敬请谅解！</p>

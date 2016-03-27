@@ -40,8 +40,8 @@ Rails.application.configure do
     domain: 'yuxianglishun.cn',
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: Rails.application.secrets.automatic_email_account,
-    password: Rails.application.secrets.automatic_email_passwd
+    user_name: 'no-reply@yuxianglishun.cn',
+    password: 'Yuyang123.mail'
   }
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
