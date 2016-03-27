@@ -67,7 +67,7 @@ class OrdersController < ApplicationController
       end 
 
       current_user.orders << @order
-      send_message
+      # send_message
     end
 
     # send_pingpp @order.id
