@@ -98,7 +98,7 @@ class OrdersController < ApplicationController
       app_key: '23333071',
       format: 'json',
       method: 'alibaba.aliqin.fc.sms.num.send',
-      timestamp: @order.created_at, 
+      timestamp: @order.created_at.strftime("%Y-%m-%d %H:%M:%S"), 
       sign_method: 'md5',
       v: '2.0',
       rec_num: @order.phone,

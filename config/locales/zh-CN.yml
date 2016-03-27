@@ -8,6 +8,7 @@ zh-CN:
   'Not a administrator': '当前用户非管理员用户'
   'Sorry, some seat has already sold': '该座位已被售出，请选择其他座位'
   'Please choose at leat one seat then continue': '请至少选择一个座位再继续'
+  'Seats number more than 4!': '选取的座位数量超过4个，请重新选择！'
 
   date:
     abbr_day_names:
