@@ -9,12 +9,14 @@ class SeatChooser extends React.Component {
     super(props);
     this.state = {
       'data': [ ],
-      'chosen': [ ]
+      'chosen': [ ],
+      'activeTab': 0
     };
     
     this.callbackChoose = this.callbackChoose.bind(this);
     this.clearChosen = this.clearChosen.bind(this);
     this.submitChosen = this.submitChosen.bind(this);
+    this.handleTabChange = this.handleTabChange.bind(this);
   }
 
   // we can only use bruteforce yet
@@ -127,25 +129,44 @@ class SeatChooser extends React.Component {
     return this.state['chosen'].reduce((prev, curr) =>
       prev + this.state['data'][curr[0]][curr[2]][curr[1]]['price'], 0);
   }
+  
+  handleTabChange(activeTab) {
+      this.setState({ activeTab }); }
 
   render () {
-    var className = classNames("rx-seatchooser", { "seat-too-much": this.tooMuch });
+    var className = classNames("rx-seatchooser-main", { "seat-too-much": this.tooMuch });
     return (
-      <div className={className}>
-        <TabsDefault className="outer-container" tabs={this.state['data'].map((floor, idx) => `${idx+1} 楼`)}>
-            {this.state['data'].map((floor, indexFloor) =>
-                <SeatFloor key={indexFloor} data={floor}
-                    indexFloor={indexFloor}
-                    callbackChoose={this.callbackChoose}
-                />
-            )}
-        </TabsDefault>
-        <div className="outer-container light-panel align-center">
-            <div>
-                共 {this.state['chosen'].length} 个座位 ￥{this.totalCost}
-            </div>
-            <button className="button" onClick={this.clearChosen}>清空</button>
-            <button className="button" onClick={this.submitChosen}>提交</button>
+      <div className="rx-seatchooser clearfix">
+        <TabSelect className="outer-container"
+                  activeTab={this.state['activeTab']}
+                  onChange={this.handleTabChange}
+                  tabs={this.state['data'].map((floor, idx) => `${idx+1} 楼`)}
+        />
+        <div className="rx-seatchooser-wrap">
+          <div className={className}>
+            <TabContent activeTab={this.state['activeTab']}>
+              {this.state['data'].map((floor, indexFloor) =>
+                  <SeatFloor key={indexFloor} data={floor}
+                      indexFloor={indexFloor}
+                      callbackChoose={this.callbackChoose}
+                  />
+              )}
+            </TabContent>
+          </div>
+          <div className="rx-seatchooser-second">
+          <div>
+              <SeatChosenList data={this.state['data']} chosen={this.state['chosen']} />
+              <br />
+              <div className="align-center">
+                <div>共 {this.state['chosen'].length} 个座位</div>
+                <div><strong>{this.totalCost}</strong> 元</div>
+                <br />
+                <button className="button" onClick={this.clearChosen}>清空</button>
+                <span> </span>
+                <button className="button" onClick={this.submitChosen}>提交</button>
+              </div>
+          </div>
+          </div>
         </div>
       </div>
     );
