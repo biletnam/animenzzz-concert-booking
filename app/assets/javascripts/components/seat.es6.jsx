@@ -40,6 +40,10 @@ class Seat extends React.Component {
                 checked={!!(this.props['data']['chosen'])}
                 />
                 <label className="seat-label" onClick={this.handleClick} />
+                <div className="seat-tooltip align-left">
+                    <div>座位：{this.props['data']['row']} 排 {this.props['data']['num']} 号</div>
+                    <div>价格：{this.props['data']['price']} 元</div>
+                </div>
             </span>
         );
       default:
