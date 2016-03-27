@@ -32,6 +32,39 @@
         box-shadow: 1px 0 2px $darken-40 inset;
         border-radius: 0 0.5em 0.5em 0;
         // background: white;
+        
+        .rx-seatchooser-info > * {
+            padding: 0.5em;
+        }
+    }
+}
+
+@include media-mobile {
+    .rx-seatchooser-wrap {
+        display: block;
+        padding: 0;
+        .rx-seatchooser-main {
+            display: block;
+        }
+        .rx-seatchooser-second {
+            display: block;
+            width: 100%;
+            border-radius: 0;
+            padding-bottom: 0.5em;
+            box-shadow: none;
+            
+            .rx-seatchooser-info {
+                position: fixed;
+                bottom: 0;
+                background-color: #546E7A;
+                width: 100%;
+                box-shadow: 0 0 1em $darken-60, 0 0 1px $lighter-20 inset;
+                
+                & > * {
+                    display: inline-block;
+                }
+            }
+        }
     }
 }
 
@@ -47,6 +80,9 @@ ul.rx-seatchosen-list {
         
         &:first-child {
             border-radius: 0 0.5em 0 0;
+            @include media-mobile {
+                border-radius: 0;
+            }
         }
     }
 }

@@ -154,18 +154,16 @@ class SeatChooser extends React.Component {
             </TabContent>
           </div>
           <div className="rx-seatchooser-second">
-          <div>
               <SeatChosenList data={this.state['data']} chosen={this.state['chosen']} />
-              <br />
-              <div className="align-center">
+              <div className="rx-seatchooser-info align-center">
                 <div>共 {this.state['chosen'].length} 个座位</div>
                 <div><strong>{this.totalCost}</strong> 元</div>
-                <br />
-                <button className="button" onClick={this.clearChosen}>清空</button>
-                <span> </span>
-                <button className="button" onClick={this.submitChosen}>提交</button>
+                <div>
+                    <button className="button" onClick={this.clearChosen}>清空</button>
+                    <span> </span>
+                    <button className="button" onClick={this.submitChosen}>提交</button>
+                </div>
               </div>
-          </div>
           </div>
         </div>
       </div>
