@@ -147,7 +147,8 @@ class SeatChooser extends React.Component {
     
     // stackoverflow.com/questions/10059888/detect-when-scroll-reaches-the-bottom-of-the-page-without-jquery
     //  javascript - Detect when Scroll reaches the BOTTOM of the page [ without jQuery ] - Stack Overflow
-    if (window.pageYOffset + window.innerHeight < seatChosenList.offsetTop) {
+    if (seatChosenList.getBoundingClientRect().bottom > window.innerHeight) {
+    // if (window.pageYOffset + window.innerHeight < seatChosenList.offsetTop + seatChosenList.clientHeight) {
       seatChooserInfo.classList.add('rx-mobile-fixed');
     } else {
       seatChooserInfo.classList.remove('rx-mobile-fixed');
