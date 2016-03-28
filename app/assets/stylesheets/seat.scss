@@ -50,10 +50,11 @@
             opacity: 0.5;
             cursor: not-allowed;
             pointer-events: none;
+            background-color: #546E7A;
         }
         &:checked + label, &.seat-checked + label {
-            background-color: #FFCDD2;
-            box-shadow: 0 0 1em $lighter-50, 0 0 0 1px #26A69A;
+            background-color: #fff;
+            box-shadow: 0 0 1em $lighter-50, 0 0 0 1px #000;
         }
         
     }
@@ -88,10 +89,22 @@
         pointer-events: none;
         box-shadow: 2px 2px 6px $darken-50;
         opacity: 0.8;
+        z-index: 1;
     }
-    
+
     &:hover > .seat-tooltip {
         display: block;
+    }
+    
+    // tooltip position of first row
+    .seat-row:first-child > &:hover > .seat-tooltip {
+        top: 100%;
+        bottom: auto;
+    }
+
+    // do not display tooltip for sold seats
+    &:hover > input[type="checkbox"][disabled] + label + .seat-tooltip {
+        display: none;
     }
 }
 
