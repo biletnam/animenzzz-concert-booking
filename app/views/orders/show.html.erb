@@ -89,6 +89,10 @@
 		</div>
 
         <%= link_to orders_path do %><button class="button back-button">返回</button><% end %>
+        <!-- <a href="javascript:;" id="link-delete-order">删除订单</a> -->
+        <a href="javascript:;" id="link-delete-order" data-action="<%= order_path %>" data-redirect="<%= orders_path %>">
+            <button class="button button-error" type="button">删除订单</button>
+        </a>
 
 	</div>
 

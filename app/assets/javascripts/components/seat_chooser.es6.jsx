@@ -176,7 +176,7 @@ class SeatChooser extends React.Component {
         <br />
         <SeatLegends
           className="outer-container align-center"
-          prices={[[680, 580, 480], [380, 280, 180]]}
+          prices={[[680, 580, 480], [380, 280, 180, ['seat-class-disabled', '已售座位'] ]]}
         />
         <div className="rx-seatchooser-wrap">
           <div className={className}>

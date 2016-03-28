@@ -42,7 +42,13 @@
                             <div>站</div>
                         </div>
                         <div class="coverflow-recital-date">
-                            <%= recital.start_time.strftime('%-m 月 %-d 日') unless recital.start_time.nil? %>
+                            <% if recital.start_time %>
+                                <div><%= recital.start_time.month %></div>
+                                <div>月</div>
+                                <div><%= recital.start_time.day %></div>
+                                <div>日</div>
+                            <% end %>
+                            <!--<%= recital.start_time.strftime('%-m 月 %-d 日') unless recital.start_time.nil? %>-->
                         </div>
                         <div class="recital-status">
                             <% if recital.sold_out? %>
@@ -115,7 +121,7 @@
         <div class="index-intro-video-cont">
             <div class="index-intro-video">
                 <%= link_to 'javascript:;', :class => 'video-modal', :data => { :avid => @indexVideo.avId } do %>
-                    <%= image_tag @indexVideo.screenshot.url(:large) %>
+                    <%= image_tag "http://7xoq8f.com1.z0.glb.clouddn.com/" + @indexVideo.screenshot.url(:large) %>
                 <% end %>
             </div>
         </div> 
@@ -130,7 +136,7 @@
             <div class="index-video-item-cont">
                 <div class="index-video-item">
                     <%= link_to 'javascript:;', :class => 'video-modal', :data => { :avid => video.avId } do %>
-                        <%= image_tag video.screenshot.url(:medium) %>
+                        <%= image_tag "http://7xoq8f.com1.z0.glb.clouddn.com/" + video.screenshot.url(:medium) %>
                     <% end %>
                     <div class="index-video-title">
                         <%= video.slug_candidates %>
