@@ -42,16 +42,27 @@
     display: inline-block;
     position: relative;
     -webkit-user-select: none;
+    
+    @mixin seat-class-disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+        background-color: #546E7A;
+    }
+    
+    &.seat-class-disabled {
+        input[type="checkbox"], .seat-checkbox {
+            & + label {
+                @include seat_class_disabled; }
+        }
+    }
+    
     input[type="checkbox"], .seat-checkbox {
         // visibility: hidden;
         display: none;
         
         &[disabled] + label, &.seat-disabled + label {
-            opacity: 0.5;
-            cursor: not-allowed;
-            pointer-events: none;
-            background-color: #546E7A;
-        }
+            @include seat_class_disabled; }
         &:checked + label, &.seat-checked + label {
             background-color: #fff;
             box-shadow: 0 0 1em $lighter-50, 0 0 0 1px #000;
