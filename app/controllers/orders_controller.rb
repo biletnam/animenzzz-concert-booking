@@ -63,16 +63,22 @@ class OrdersController < ApplicationController
       @order.seats << seats
 
       if @order.save
-        OrderMailer.success_mail(current_user, @order).deliver_later
+        # OrderMailer.success_mail(current_user, @order).deliver_later
       end 
 
       current_user.orders << @order
-      # send_message
+      send_message(@order)
     end
 
     # send_pingpp @order.id
 
     redirect_to orders_path
+  end
+
+  def update
+    @order = current_user.orders.find(params[:id])
+    @order.update(secure_params)
+    @order.save!
   end
 
   def destroy
@@ -93,20 +99,23 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:address, :phone, :name, :seat_ids => [])
   end
 
-  def send_message
+  def send_message(order)
     post_url = 'http://gw.api.taobao.com/router/rest'
+    position = []
+    order.seats.each {|s| position << s.area.recital.city + '站' + s.area.name + s.get_position}
+    position = position.join("\，")
     options = {
       app_key: '23333071',
       format: 'json',
       method: 'alibaba.aliqin.fc.sms.num.send',
-      timestamp: @order.created_at.strftime("%Y-%m-%d %H:%M:%S"), 
+      timestamp: order.created_at.strftime("%Y-%m-%d %H:%M:%S"), 
       sign_method: 'md5',
       v: '2.0',
-      rec_num: @order.phone,
+      rec_num: order.phone,
       sms_type: 'normal',
-      sms_free_sign_name: '大鱼测试',
-      sms_param: '{"code":"123","product":"Test"}',
-      sms_template_code: 'SMS_6770530'
+      sms_free_sign_name: 'A叔暑期演奏会',
+      sms_param: "{'name':\"#{order.name}\",'position':\"#{position}\"}",
+      sms_template_code: 'SMS_6730758'
     }
 
     options = sort_options(options)
