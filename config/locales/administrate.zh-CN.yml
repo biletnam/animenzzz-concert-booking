@@ -70,6 +70,11 @@ zh-CN:
         created_at: "创建时间"
         updated_at: "更新时间"
 
+      picture:
+        name: "照片名"
+        created_at: "创建时间"
+        updated_at: "更新时间"
+
     models:
       user: "用户"
       order: "订单"
@@ -78,6 +83,7 @@ zh-CN:
       seat: "座位"
       price: "价位"
       video: "视频"
+      picture: "照片"
 
   administrate:
     actions:

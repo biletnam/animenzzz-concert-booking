@@ -1,8 +1,8 @@
 
 <div class="section-recitals">
-    <div class="section-title">
+<!--     <div class="section-title">
         购票
-    </div>
+    </div> -->
     <div class="coverflow-cont">
         <div class="coverflow">
             <% @recitals.each do |recital| %>
@@ -20,9 +20,17 @@
                         <div class="recital-info-bottom">
                             <div class="coverflow-recital-title"><%= recital.city %>站 - 
                                 <% if recital.sold_out? %>
-                                已预订完
+                                  <% if recital.city != '成都' %>
+                                    已预订完
+                                  <% else %>
+                                    已售完
+                                  <% end %>
                                 <% else %>
-                                正在预订中
+                                  <% if recital.city != '成都' %>
+                                    正在预订中
+                                  <% else %>
+                                    正在售票中
+                                  <% end %>
                                 <% end %>
                             </div>
                             <div class="font-larger"><%= (recital.start_time.strftime('%Y 年 %m 月 %d 日') unless recital.start_time.nil?) + ' - ' + recital.music_hall%></div>
@@ -38,9 +46,17 @@
                         </div>
                         <div class="recital-status">
                             <% if recital.sold_out? %>
-                                已<br />预<br />订<br />完
+                              <% if recital.city != '成都' %>
+                                    已<br />预<br />订<br />完
+                              <% else %>
+                                    已<br />售<br />完
+                              <% end %>
                             <% else %>
-                                正<br />在<br />预<br />订
+                              <% if recital.city != '成都' %>
+                                    正<br />在<br />预<br />订
+                              <% else %>
+                                    正<br />在<br />售<br />票
+                              <% end %>
                             <% end %>
                         </div>
                     </div>
@@ -94,7 +110,7 @@
 </div>
 
 <div class="section-intro-video">
-    <div class="section-title">宣传视频</div>
+    <div class="section-title">Animenz 视频</div>
     <div class="outer-container">
         <div class="index-intro-video-cont">
             <div class="index-intro-video">
@@ -107,7 +123,7 @@
 </div>
 
 <div class="section-videos">
-    <div class="section-title">Animenz 视频</div>
+    <!-- <div class="section-title">Animenz 视频</div> -->
     <div class="outer-container">
         <div class="index-videos clearfix">
             <% @videos.each do |video| %>

@@ -17,6 +17,7 @@ class DashboardManifest
     :seats,
     :prices,
     :videos,
+    :pictures,
   ]
 
   # `ROOT_DASHBOARD`
