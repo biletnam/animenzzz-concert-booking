@@ -94,28 +94,28 @@
 </div>
 
 <div class="section-intro-video">
-    <div class="section-title">
-        宣传视频
-    </div>
+    <div class="section-title">宣传视频</div>
     <div class="outer-container">
         <div class="index-intro-video-cont">
             <div class="index-intro-video">
-                <%= link_to '#' do %><%= image_tag @indexVideo.screenshot.url(:large) %><% end %>
+                <%= link_to '#', :class => 'video-modal', :data => { :avid => @indexVideo.avId } do %>
+                    <%= image_tag @indexVideo.screenshot.url(:large) %>
+                <% end %>
             </div>
         </div> 
     </div>
 </div>
 
 <div class="section-videos">
-    <div class="section-title">
-        Animenz 视频
-    </div>
+    <div class="section-title">Animenz 视频</div>
     <div class="outer-container">
         <div class="index-videos clearfix">
             <% @videos.each do |video| %>
             <div class="index-video-item-cont">
                 <div class="index-video-item">
-                    <%= link_to '#' do %><%= image_tag video.screenshot.url(:medium) %><% end %>
+                    <%= link_to '#', :class => 'video-modal', :data => { :avid => video.avId } do %>
+                        <%= image_tag video.screenshot.url(:medium) %>
+                    <% end %>
                     <div class="index-video-title">
                         <%= video.slug_candidates %>
                         <div class="index-video-time">
@@ -132,5 +132,55 @@
 <% content_for(:script) do %>
 <script>
     $('.coverflow').cardFlow();
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        function createElementWithClassName(tagName, className) {
+            tagName = tagName || 'div';
+            className = className || '';
+            var ret = document.createElement(tagName);
+            ret.className = className;
+            return ret;
+        }
+
+        $('.video-modal').on('click', function (e) {
+
+            var width = 569, height = 440;
+            var avId = e.currentTarget.dataset.avid;
+
+            var overlay = createElementWithClassName('div', 'index-video-modal-overlay');
+
+            var closeButton = createElementWithClassName('div', 'index-video-modal-close');
+            closeButton.addEventListener('click', function closeModal (e) {
+                document.body.style.overflow = 'auto';
+                document.body.removeChild(overlay);
+            });
+
+            closeButton.appendChild(createElementWithClassName('i', 'fa fa-2x fa-close'));
+            overlay.appendChild(closeButton);
+
+            var modalElement = createElementWithClassName('div', 'index-video-modal');
+            $.extend(modalElement.style, {
+                'width': width + 'px',
+                'height': height + 'px',
+                'margin-left': -width / 2 + 'px',
+                'margin-top': -height / 2 + 'px'
+            })
+            overlay.appendChild(modalElement);
+
+            modalElement.insertAdjacentHTML('beforeend',
+                '<object width="' + width + 'px" height="' + height +
+                'px" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="src" value="http://static.hdslb.com/miniloader.swf?aid=' +
+                avId + '&page=1" /><embed width="' + width + 'px" height="' + height +
+                'px" type="application/x-shockwave-flash" src="http://static.hdslb.com/miniloader.swf?aid=' +
+                avId + '&page=1" /></object>'
+            );
+
+            document.body.appendChild(overlay);
+            document.body.style.overflow = 'hidden';
+        });
+    });
 </script>
 <% end %>

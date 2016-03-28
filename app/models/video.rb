@@ -20,4 +20,13 @@ class Video < ActiveRecord::Base
       return ''
     end
   end
+
+  # we just temporarily 'reuse' the link
+  def avId
+    begin
+      /\/video\/av(\d+)/.match(self.link)[1]
+    rescue
+      ''
+    end
+  end
 end

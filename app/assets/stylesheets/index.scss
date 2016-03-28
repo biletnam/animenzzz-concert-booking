@@ -160,3 +160,32 @@
         border-radius: 1px;
     }
 }
+
+.index-video-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom, $darken-60, $darken-70);
+    z-index: 999;
+
+    // stackoverflow.com/questions/9280258/prevent-body-scrolling-but-allow-overlay-scrolling
+    //  css - Prevent body scrolling but ALLOW overlay scrolling - Stack Overflow
+    overflow-y: scroll;
+
+    .index-video-modal-close {
+        color: white;
+        cursor: pointer;
+        position: absolute;
+        right: 5%;
+        top: 5%;
+    }
+
+    .index-video-modal {
+        box-shadow: 2px 2px 2em black;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+    }
+}
