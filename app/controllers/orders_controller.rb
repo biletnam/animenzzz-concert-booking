@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
       seat_ids << seat.id
     end
 
-    if @order.seats.size > 4
+    if @order.seats.size > 4 and !current_user.admin?
       flash[:alert] = I18n.t('Seats number more than 4!')
       redirect_to :back and return
     end
@@ -77,6 +77,7 @@ class OrdersController < ApplicationController
 
   def destroy
     @order = current_user.orders.find(params[:id])
+    @order.return_seats
     @order.destroy
   end
 

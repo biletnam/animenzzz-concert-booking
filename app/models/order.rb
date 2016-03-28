@@ -11,7 +11,7 @@ class Order < ActiveRecord::Base
   has_many :seats, through: :orderitems
 
 
-  before_save :set_default_state, :set_apply_time, :total_price
+  before_save :set_default_state, :total_price, :set_apply_time
   before_destroy :return_seats
 
   def set_default_state
@@ -19,7 +19,7 @@ class Order < ActiveRecord::Base
   end
 
   def set_apply_time
-  	self.apply_time = Time.now + 30.minutes
+  	self.apply_time = Time.now + 3.days
   end
 
   def total_price
@@ -39,7 +39,16 @@ class Order < ActiveRecord::Base
     end
   end
 
-  def destroy_overdue_order
+  def Order.set_overdue_order
+    Order.all.each do |order|
+      if order.seats.first.area.recital.city == '成都'
+        if Time.now > order.apply_time and order.status == 'wait'
+          order.return_seats
+          order.status = :overdue
+          order.save!
+        end
+      end
+    end
   end
 
   def slug_candidates

@@ -9,7 +9,6 @@ class OrderDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     user: Field::BelongsTo,
-    #orderitems: Field::HasMany,
     seats: Field::HasMany,
     id: Field::Number,
     pay_time: Field::DateTime,
@@ -32,7 +31,6 @@ class OrderDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :user,
-    #:orderitems,
     :seats,
     :trac_num,
     :id,
@@ -40,6 +38,7 @@ class OrderDashboard < Administrate::BaseDashboard
     :address,
     :phone,
     :price,
+    :status,
     :created_at,
   ]
 
@@ -52,7 +51,6 @@ class OrderDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :user,
-    #:orderitems,
     :seats,
     :trac_num,
     :pay_time,
