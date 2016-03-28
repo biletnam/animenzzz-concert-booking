@@ -18,3 +18,8 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+
+every :day, :at => '0:00am' do
+  runner "Order.set_overdue_order"
+end 
+  
