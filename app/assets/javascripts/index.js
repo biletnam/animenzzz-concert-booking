@@ -14,3 +14,16 @@ $(function () {
 			$(e.currentTarget).parent('.top-msg').fadeOut('slow'); });
 	}
 });
+
+$(function () {
+    $('#link-delete-order').on('click', function (e) {
+        if (window.confirm('确定要取消该订单么？')) {
+            $.ajax({
+                type: 'DELETE',
+                url: e.currentTarget.getAttribute('data-action')
+            }).always(function () {
+                window.location.href = e.currentTarget.getAttribute('data-redirect');
+            });
+        }
+    });
+});
