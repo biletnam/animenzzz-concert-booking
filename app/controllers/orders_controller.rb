@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
       seat_ids << seat.id
     end
 
-    if @order.seats.size > 4
+    if @order.seats.size > 4 and !current_user.admin?
       flash[:alert] = I18n.t('Seats number more than 4!')
       redirect_to :back and return
     end
