@@ -27,5 +27,5 @@
     </div>
 </div>
 
-<%= react_component('SeatChooser', props = { :target => @recital.id.to_s }, html_options = { :id => 'seat-chooser' }) %>
+<%= react_component('SeatChooser', props = { :target => @recital.id.to_s, :maxSeatCount => current_user.try(:admin?) ? -1 : 4 }, html_options = { :id => 'seat-chooser' }) %>
 <br />
