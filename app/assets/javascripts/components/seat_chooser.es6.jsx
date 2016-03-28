@@ -1,6 +1,11 @@
 
 const propTypes = {
-    target: React.PropTypes.string
+    target: React.PropTypes.string,
+    maxSeatCount: React.PropTypes.number
+};
+
+const defaultProps = {
+    maxSeatCount: 4
 };
 
 class SeatChooser extends React.Component {
@@ -130,7 +135,11 @@ class SeatChooser extends React.Component {
   }
 
   get tooMuch() {
-    return this.state['chosen'].length >= 4;
+    const s = this.props['maxSeatCount'];
+    if (typeof s !== 'number' || s < 0) {
+      return false;
+    }
+    return this.state['chosen'].length >= this.props['maxSeatCount'];
   }
 
   get totalCost() {
@@ -199,3 +208,4 @@ class SeatChooser extends React.Component {
 }
 
 SeatChooser.propTypes = propTypes;
+SeatChooser.defaultProps = defaultProps;
