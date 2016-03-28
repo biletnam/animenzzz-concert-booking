@@ -3,6 +3,8 @@ class Video < ActiveRecord::Base
   friendly_id :slug_candidates, use: [:slugged, :finders]
 
   validates :name,	uniqueness: true
+  validates :name,  presence:   true
+
 
 
   has_attached_file :screenshot, 
