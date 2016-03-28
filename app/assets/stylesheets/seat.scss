@@ -93,6 +93,10 @@
     &:hover > .seat-tooltip {
         display: block;
     }
+
+    &:hover > input[type="checkbox"][disabled] + label + .seat-tooltip {
+        display: none;
+    }
 }
 
 .seat.seat-p680 label {
