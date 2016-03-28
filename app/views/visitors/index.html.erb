@@ -42,7 +42,13 @@
                             <div>站</div>
                         </div>
                         <div class="coverflow-recital-date">
-                            <%= recital.start_time.strftime('%-m 月 %-d 日') unless recital.start_time.nil? %>
+                            <% if recital.start_time %>
+                                <div><%= recital.start_time.month %></div>
+                                <div>月</div>
+                                <div><%= recital.start_time.day %></div>
+                                <div>日</div>
+                            <% end %>
+                            <!--<%= recital.start_time.strftime('%-m 月 %-d 日') unless recital.start_time.nil? %>-->
                         </div>
                         <div class="recital-status">
                             <% if recital.sold_out? %>

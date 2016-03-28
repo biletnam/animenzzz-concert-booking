@@ -93,18 +93,21 @@
 }
 
 .coverflow-recital-date {
-    position: absolute;
-    white-space: nowrap;
-    padding: 0 0 3em 1em;
+    // position: absolute;
+    // white-space: nowrap;
+    // padding: 0 0 3em 1em;
+    // transform: rotate3d(0, 0, 1, 90deg) translate3d(0, 50%, 0);
+    // @include mq($until: desktop) {
+    //     padding-bottom: 1.5em;
+    // }
+
     @include mq($until: desktop) {
-        font-size: 0.8em;
-        padding-bottom: 1.5em;
-    }
+        font-size: 0.8em; }
     @include media-mobile {
-        display: none;
-    }
-    transform: rotate3d(0, 0, 1, 90deg) translate3d(0, 50%, 0);
+        display: none; }
     opacity: 0.8;
+
+    text-align: center;
 }
 
 .recital-status {
