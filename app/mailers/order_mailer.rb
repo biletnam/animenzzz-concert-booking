@@ -1,5 +1,5 @@
 class OrderMailer < ApplicationMailer
-  default from: "yuxianglishun.cn<no-reply@yuxianglishun.cn>"
+  default from: "Animenz 2016 Live<no-reply@notice.yuxianglishun.cn>"
 
   def success_mail(user, order)
   	@user = user
