@@ -27,3 +27,43 @@ $(function () {
         }
     });
 });
+
+function createElementWithClassName(tagName, className) {
+    tagName = tagName || 'div';
+    className = className || '';
+    var ret = document.createElement(tagName);
+    ret.className = className;
+    return ret;
+}
+
+function createModal(width, height, classname) {
+    classname = classname || '';
+
+    var overlay = createElementWithClassName('div', 'modal-overlay');
+
+    var closeButton = createElementWithClassName('div', 'modal-overlay-close');
+    closeButton.addEventListener('click', function closeModal (e) {
+        document.body.style.overflow = 'auto';
+        document.body.removeChild(overlay);
+    });
+
+    closeButton.appendChild(createElementWithClassName('i', 'fa fa-2x fa-close'));
+    overlay.appendChild(closeButton);
+
+    classname = classname ? ('modal ' + classname) : 'modal';
+    var modalElement = createElementWithClassName('div', classname);
+    if (width > 0 && height > 0) {
+        $.extend(modalElement.style, {
+            'width': width + 'px',
+            'height': height + 'px',
+            'margin-left': -width / 2 + 'px',
+            'margin-top': -height / 2 + 'px'
+        });
+    }
+    overlay.appendChild(modalElement);
+
+    document.body.appendChild(overlay);
+    document.body.style.overflow = 'hidden';
+
+    return modalElement;
+}

@@ -1,5 +1,5 @@
 <div class="outer-container">
-<%= form_for @order do |f| %>
+<%= form_for @order, :html => { :id => 'order-form' } do |f| %>
 
     <div class="nwui-main submit-main">
 
@@ -82,9 +82,33 @@
         </div>
     </div>
     <div class="nwui-continue align-center submit-opbar">
-        <%= f.submit '提交', class: 'button submit-submit-btn', id: 'submit-submit-btn' %>
+        <%= f.submit '提交', class: 'hidden' %>
+        <button type="button" id="submit-submit-btn" class="button submit-submit-btn">提交</button>
     </div>
 <% end %>
+</div>
+
+<div class="modal-overlay hidden" id="modal-share-overlay">
+    <div class="modal modal-fluid modal-share">
+        <h2>分享到 ...</h2>
+        <div class="modal-share-apps">
+            <a class="modal-share-app" id="modal-share-qzone" target="_blank">
+                <div><i class="fa fa-3x fa-qq"></i></div>
+                <div>QQ 空间</div>
+            </a>
+            <!--<a class="modal-share-app" id="modal-share-wechat">
+                <div><i class="fa fa-3x fa-wechat"></i></div>
+                <div>朋友圈</div>
+            </a>-->
+            <a class="modal-share-app" id="modal-share-weibo" target="_blank">
+                <div><i class="fa fa-3x fa-weibo"></i></div>
+                <div>微博</div>
+            </a>
+        </div>
+        <div><a href="/orders"><button id="modal-share-submit" class="button submit-submit-btn">直接跳过</button></a></div>
+        <br />
+        <div class="modal-share-hint">分享后截图给客服可包邮哦~</div>
+    </div>
 </div>
 
 <% content_for :script do %>
@@ -101,12 +125,91 @@ function submitValidation(e) {
     var phone = document.getElementById('submit-input-phone').value;
     if (!validatePhoneNumber(phone)) {
         alert('电话号码格式有问题，请检查并重试！');
+        e.stopImmediatePropagation();
         e.preventDefault();
         return false;
     }
 }
 
 document.getElementById('submit-submit-btn').addEventListener('click', submitValidation);
+</script>
+
+<script>
+
+function submitFormAjax(form) {
+    return $.ajax({
+        url: form.action,
+        type: form.method,
+        data: $(form).serialize()
+    });
+}
+
+document.getElementById('submit-submit-btn').addEventListener('click', function clickSubmit (e) {
+    e.currentTarget.disabled = true;
+    submitFormAjax(document.getElementById('order-form'))
+        .then(function formSubmitted() {
+            document.getElementById('modal-share-overlay').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        })
+        .fail(function formSubmitFailed() {
+            alert('提交发生错误，请稍后重试！');
+            e.currentTarget.disabled = false;
+        });
+});
+</script>
+
+<!-- share links -->
+<script>
+
+function shareWeiboGetLink(url, title, picture) {
+    var f = 'http://v.t.sina.com.cn/share/share.php?appkey=';
+    var p = [
+        '&url=',
+        encodeURIComponent(url),
+        '&title=',
+        encodeURIComponent(title),
+        '&source=', '',
+        // encodeURIComponent(r),
+        '&sourceUrl=', '',
+        // encodeURIComponent(l),
+        '&content=utf-8',
+        '&pic=',
+        encodeURIComponent(picture)
+    ].join('');
+    return [f, p].join('');
+}
+
+(function () {
+    var shareQzoneArgs = {
+        url: 'http://yuxianglishun.cn<%= recital_path(@order.seats[0].area.recital) %>',
+        showcount: '1',
+        desc: '我购买了<%= @order.seats[0].area.recital.city %> A 叔演奏会的票，快来买票陪我看演奏会吧！', /* what you say by default */
+        summary: '', /* description below the link */
+        title: 'Animenz 演奏会西南区 - <%= @order.seats[0].area.recital.city %>站', /* Title of the link */
+        site: 'Animenz 演奏会西南区', /* source */
+        pics: 'http://image.yuxianglishun.cn<%= @order.seats[0].area.recital.index_image.url %>',
+        style: '201', width: 113, height: 39
+    };
+    var s = [ ];
+    for (var i in shareQzoneArgs) {
+        s.push(i + '=' + encodeURIComponent(shareQzoneArgs[i] || ''));
+    }
+    var hrefQzone = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?' + s.join('&');
+    
+    var shareButtonQzone = document.getElementById('modal-share-qzone');
+    shareButtonQzone.href = hrefQzone;
+    shareButtonQzone.addEventListener('click', function () {
+        document.getElementById('modal-share-submit').click(); });
+    
+    var hrefWeibo = shareWeiboGetLink(shareQzoneArgs['url'], shareQzoneArgs['desc'], shareQzoneArgs['pics']);
+    var shareButtonWeibo = document.getElementById('modal-share-weibo');
+    shareButtonWeibo.href = hrefWeibo;
+    shareButtonWeibo.addEventListener('click', function () {
+        document.getElementById('modal-share-submit').click(); });
+})();
+</script>
+
+<script>
 </script>
 
 <script>

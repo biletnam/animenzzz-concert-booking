@@ -1,0 +1,77 @@
+
+@import 'cd';
+@import 'essential';
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom, $darken-60, $darken-70);
+    z-index: 999;
+
+    // stackoverflow.com/questions/9280258/prevent-body-scrolling-but-allow-overlay-scrolling
+    //  css - Prevent body scrolling but ALLOW overlay scrolling - Stack Overflow
+    overflow-y: scroll;
+
+    .modal-overlay-close {
+        color: white;
+        cursor: pointer;
+        position: absolute;
+        right: 5%;
+        top: 5%;
+    }
+
+    .modal {
+        box-shadow: 2px 2px 2em black;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+    }
+}
+
+.modal-fluid {
+    transform: translate3d(-50%, -50%, 0);
+}
+
+.modal-share {
+    background-color: #eee;
+    border-radius: 2px;
+    padding: 1em;
+    color: #444;
+    text-align: center;
+    
+    .modal-share-apps {
+        font-size: larger;
+        & > * {
+            display: inline-block;
+            @include media-mobile {
+                display: block;
+            }
+            
+            &.modal-share-app {
+                padding: 0.5em;
+            }
+            
+            text-decoration: none;
+            &#modal-share-qzone {
+                color: #546E7A;
+            }
+            &#modal-share-wechat {
+                color: #00897B;
+            }
+            &#modal-share-weibo {
+                color: #D81B60;
+            }
+        }
+        margin-bottom: 1em;
+    }
+    .modal-share-hint {
+        white-space: nowrap;
+        color: #aaa;
+    }
+    .submit-submit-btn {
+        width: 100%;
+    }
+}

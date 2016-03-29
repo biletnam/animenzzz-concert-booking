@@ -158,42 +158,6 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-
-        function createElementWithClassName(tagName, className) {
-            tagName = tagName || 'div';
-            className = className || '';
-            var ret = document.createElement(tagName);
-            ret.className = className;
-            return ret;
-        }
-
-        function createModal(width, height, avId) {
-            var overlay = createElementWithClassName('div', 'index-video-modal-overlay');
-
-            var closeButton = createElementWithClassName('div', 'index-video-modal-close');
-            closeButton.addEventListener('click', function closeModal (e) {
-                document.body.style.overflow = 'auto';
-                document.body.removeChild(overlay);
-            });
-
-            closeButton.appendChild(createElementWithClassName('i', 'fa fa-2x fa-close'));
-            overlay.appendChild(closeButton);
-
-            var modalElement = createElementWithClassName('div', 'index-video-modal');
-            $.extend(modalElement.style, {
-                'width': width + 'px',
-                'height': height + 'px',
-                'margin-left': -width / 2 + 'px',
-                'margin-top': -height / 2 + 'px'
-            })
-            overlay.appendChild(modalElement);
-
-            document.body.appendChild(overlay);
-            document.body.style.overflow = 'hidden';
-
-            return modalElement;
-        }
-
         $('.video-modal').on('click', function (e) {
             var width = 569, height = 440;
             var avId = e.currentTarget.getAttribute('data-avid');
