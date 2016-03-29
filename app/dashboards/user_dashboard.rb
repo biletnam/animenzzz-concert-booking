@@ -11,6 +11,7 @@ class UserDashboard < Administrate::BaseDashboard
     orders: Field::HasMany,
     id: Field::Number,
     email: Field::String,
+    role: Field::String,
     encrypted_password: Field::String,
     reset_password_token: Field::String,
     reset_password_sent_at: Field::DateTime,
@@ -34,6 +35,7 @@ class UserDashboard < Administrate::BaseDashboard
     :orders,
     :id,
     :email,
+    :role,
     :encrypted_password,
   ]
 
