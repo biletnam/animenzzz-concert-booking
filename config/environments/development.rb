@@ -35,13 +35,13 @@ Rails.application.configure do
     # enable_starttls_auto: true,
     # user_name: Rails.application.secrets.email_provider_username,
     # password: Rails.application.secrets.email_provider_password
-    address: "smtp.exmail.qq.com",
+    address: "smtpdm.aliyun.com",
     port: 25,
-    domain: 'yuxianglishun.cn',
+    domain: 'notice.yuxianglishun.cn',
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: 'no-reply@yuxianglishun.cn',
-    password: 'Yuyang123.mail'
+    user_name: 'no-reply@notice.yuxianglishun.cn',
+    password: 'notice123mail'
   }
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }

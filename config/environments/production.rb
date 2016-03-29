@@ -73,13 +73,13 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.exmail.qq.com",
+    address: "smtpdm.aliyun.com",
     port: 25,
-    domain: 'yuxianglishun.com',
+    domain: 'notice.yuxianglishun.cn',
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: 'no-reply@yuxianglishun.cn',
-    password: 'Yuyang123.mail'
+    user_name: 'no-reply@notice.yuxianglishun.cn',
+    password: 'notice123mail'
   }
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => Rails.application.secrets.domain_name }

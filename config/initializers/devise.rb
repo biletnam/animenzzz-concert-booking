@@ -13,7 +13,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
 
-  config.mailer_sender = 'yuxianglishun.cn<no-reply@yuxianglishun.cn>'
+  config.mailer_sender = 'yuxianglishun.cn<no-reply@notice.yuxianglishun.cn>'
 
   # Configure the class responsible to send e-mails.
   config.mailer = 'Devise::Mailer'

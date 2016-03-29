@@ -63,7 +63,7 @@ class OrdersController < ApplicationController
       @order.seats << seats
 
       if @order.save
-        # OrderMailer.success_mail(current_user, @order).deliver_later
+        OrderMailer.success_mail(current_user, @order).deliver_later
       end 
 
       current_user.orders << @order

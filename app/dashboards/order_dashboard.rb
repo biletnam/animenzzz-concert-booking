@@ -60,6 +60,7 @@ class OrderDashboard < Administrate::BaseDashboard
     :address,
     :name,
     :phone,
+    :status,
   ]
 
   # Overwrite this method to customize how orders are displayed
