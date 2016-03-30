@@ -16,7 +16,7 @@ $(function () {
 });
 
 $(function () {
-    $('#link-delete-order').on('click', function (e) {
+    $('#link-delete-order, .link-delete-order').on('click', function (e) {
         if (window.confirm('确定要取消该订单么？')) {
             $.ajax({
                 type: 'DELETE',
