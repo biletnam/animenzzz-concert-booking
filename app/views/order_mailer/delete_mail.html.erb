@@ -1,0 +1,8 @@
+<p>您好 <%= @user.name %>！</p>
+<p>您已经取消预订如下座位：</p>
+<% @order.seats.each do |seat| %>
+	<li>
+		<%= seat.area.recital.city + '站' + seat.area.name + seat.get_position %>
+	</li>
+<% end %>
+<p>删除的座位已被系统回收，如若非您所谓，请立刻与管理员联系，感谢您对本网站的支持</p>

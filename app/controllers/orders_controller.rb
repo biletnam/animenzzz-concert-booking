@@ -84,6 +84,7 @@ class OrdersController < ApplicationController
   def destroy
     @order = current_user.orders.find(params[:id])
     @order.return_seats
+    OrderMailer.delete_mail(current_user, @order).deliver_now 
     @order.destroy
   end
 
