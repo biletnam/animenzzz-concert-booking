@@ -183,7 +183,8 @@ function shareWeiboGetLink(url, title, picture) {
     var shareQzoneArgs = {
         url: 'http://yuxianglishun.cn<%= recital_path(@order.seats[0].area.recital) %>',
         showcount: '1',
-        desc: '我购买了<%= @order.seats[0].area.recital.city %> A 叔演奏会的票，快来买票陪我看演奏会吧！', /* what you say by default */
+        
+        desc: '我购买了 A 叔动漫钢琴演奏会中国巡演<%= @order.seats[0].area.recital.city %>站的票，快来买票陪我看演奏会吧！', /* what you say by default */
         summary: '', /* description below the link */
         title: 'Animenz 演奏会西南区 - <%= @order.seats[0].area.recital.city %>站', /* Title of the link */
         site: 'Animenz 演奏会西南区', /* source */
