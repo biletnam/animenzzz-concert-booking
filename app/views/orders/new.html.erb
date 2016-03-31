@@ -180,8 +180,24 @@ function shareWeiboGetLink(url, title, picture) {
 }
 
 (function () {
+    var recitalsShorten = {
+        /*
+        1: 'http://url.cn/2CIDENv',
+        2: 'http://url.cn/2JwNU9I',
+        3: 'http://url.cn/2AdqATI',
+        4: 'http://url.cn/2Ae6tGc',
+        5: 'http://url.cn/2FcEqU9'
+        */
+    };
+    
+    var url = 'http://yuxianglishun.cn<%= recital_path(@order.seats[0].area.recital) %>';
+    var recitalId = <%= @order.seats[0].area.recital.id %>;
+    if (recitalsShorten[recitalId]) {
+        url = recitalsShorten[recitalId];
+    }
+    
     var shareQzoneArgs = {
-        url: 'http://yuxianglishun.cn<%= recital_path(@order.seats[0].area.recital) %>',
+        url: url,
         showcount: '1',
         
         desc: '我购买了 A 叔动漫钢琴演奏会中国巡演<%= @order.seats[0].area.recital.city %>站的票，快来买票陪我看演奏会吧！', /* what you say by default */
