@@ -35,10 +35,19 @@
 	}
 }
 
+.recital-back-button {
+    display: inline-block;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    background: $lighter-10;
+    border-radius: 0 3px 3px 0;
+    @include media-mobile {
+        border-radius: 0 0 3px 0; }
+}
+
 .recital-detail-cont {
 	.recital-title {
-		padding: 1em 1em 0.5em 1em;
-		text-align: left;
+		padding: 1rem 1rem 0.5rem 1rem;
         @include media-mobile {
 			text-align: center; }
 	}
