@@ -144,9 +144,38 @@ function submitFormAjax(form) {
     });
 }
 
+function checkValidityForForm(form) {
+    if (!form.checkValidity()) {
+        var invalidInputs = form.querySelectorAll(':invalid');
+        var msg = [ '提交时发生错误：\n' ];
+        Array.prototype.forEach.call(invalidInputs, function (input) {
+            var label = form.querySelector('label[for="' + input.id + '"]');
+            msg.push(label.innerText + ' - ' + input.validationMessage);
+        });
+        alert(msg.join('\n'));
+        return false;
+    }
+    return true;
+}
+
 document.getElementById('submit-submit-btn').addEventListener('click', function clickSubmit (e) {
+    // memory leak?
+    var orderForm = document.getElementById('order-form');
+
+    if (!checkValidityForForm(orderForm)) {
+        return;
+    }
+    if (!document.getElementById('submit-input-addr').value.trim().length) {
+        alert('请填写物流地址！');
+        return;
+    }
+    if (!document.getElementById('submit-input-name').value.trim().length) {
+        alert('请填写姓名！');
+        return;
+    }
+
     e.currentTarget.disabled = true;
-    submitFormAjax(document.getElementById('order-form'))
+    submitFormAjax(orderForm)
         .then(function formSubmitted() {
             document.getElementById('modal-share-overlay').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
