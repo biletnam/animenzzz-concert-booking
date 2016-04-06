@@ -67,3 +67,23 @@ function createModal(width, height, classname) {
 
     return modalElement;
 }
+
+// PHONE NUMBER
+function validatePhoneNumber(phone) {
+    // var r = /\d{11}/;
+    // www.jianshu.com/p/e8477fdccbe9
+    var r = /^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[0687])-?\d{4}-?\d{4}$/;
+    return r.test(phone);
+}
+
+function phoneValidation(e) {
+    var phoneInput = document.getElementById('submit-input-phone');
+    var phone = phoneInput.value;
+    if (!validatePhoneNumber(phone)) {
+        alert('电话号码格式有问题，请检查并重试！');
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        phoneInput.focus();
+        return false;
+    }
+}

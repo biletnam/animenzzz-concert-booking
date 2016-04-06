@@ -73,11 +73,39 @@
 
 		<div class="order-address-cont">
 			<div class="order-address">
-				<div class="align-center font-bold">收货人信息</div>
-				<div><strong>姓名：</strong><%= @order.name %></div>
-				<div><strong>物流地址：</strong><%= @order.address %></div>
-				<div><strong>手机号码：</strong><%= @order.phone %></div>
-				<div><strong>电子邮件：</strong><%= current_user.email %></div>
+                <div class="order-address-show">
+                    <div class="align-center font-bold">收货人信息</div>
+                    <div><strong>姓名：</strong><%= @order.name %></div>
+                    <div><strong>物流地址：</strong><%= @order.address %></div>
+                    <div><strong>手机号码：</strong><%= @order.phone %></div>
+                    <div><strong>电子邮件：</strong><%= current_user.email %></div>
+                    <div class="width-full padding-05 border-box">
+                        <button class="button button-order-addr order-address-btn-toggle-edit">编辑订单</button>
+                    </div>
+                </div>
+
+                <%= form_for @order, :html => { :class => 'order-address-edit clearfix hidden' } do |f| %>
+                     <div class="addr-input-group">
+                        <%= f.text_field :name, { :id => 'submit-input-name', :required => true } %>
+                        <%= f.label '姓名', for: 'submit-input-name' %>
+                    </div>
+                    <div class="addr-input-group">
+                        <%= f.text_field :address, {:id => 'submit-input-addr', :required => true } %>
+                        <%= f.label '物流地址', for: 'submit-input-addr' %>
+                    </div>
+                    <div class="addr-input-group">
+                        <%= f.text_field :phone, { :id => 'submit-input-phone', :required => true } %>
+                        <%= f.label '手机号码', for: 'submit-input-phone' %>
+                    </div>
+                    <div>
+                        <div class="width-half padding-05 border-box float-left">
+                            <button type="button" class="button button-order-addr order-address-btn-toggle-edit">取消</button>
+                        </div>
+                        <div class="width-half padding-05 border-box float-left">
+                            <%= f.submit '提交更改', class: 'button button-order-addr' %>
+                        </div>
+                    </div>
+                <% end %>
 			</div>
 		</div>
 
@@ -98,3 +126,20 @@
 
 
 </div>
+
+<% content_for :script do %>
+<script>
+$(function () {
+    var fragmentShow = $('.order-address-show'),
+        fragmentHide = $('.order-address-edit');
+
+    $('.order-address-btn-toggle-edit').on('click',
+        function () {
+            [ fragmentShow, fragmentHide ].map(function (e) { e.toggle(); });
+        });
+
+    $('.order-address-edit').on('submit',
+        phoneValidation);
+});
+</script>
+<% end %>

@@ -78,6 +78,7 @@ class OrdersController < ApplicationController
   def update
     @order = current_user.orders.find(params[:id])
     @order.update(secure_params)
+	render :action => 'show'
   end
 
   def destroy
