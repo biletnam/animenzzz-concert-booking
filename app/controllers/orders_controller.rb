@@ -78,7 +78,6 @@ class OrdersController < ApplicationController
   def update
     @order = current_user.orders.find(params[:id])
     @order.update(secure_params)
-    @order.save!
   end
 
   def destroy
@@ -97,7 +96,7 @@ class OrdersController < ApplicationController
   private
 
   def secure_params
-    params.require(:order).permit(:address, :phone, :name, :seat_ids => [])
+    params.require(:order).permit(:address, :phone, :name)
   end
 
   def send_message(order)
