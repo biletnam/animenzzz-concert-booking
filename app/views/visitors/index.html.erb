@@ -121,7 +121,7 @@
         <div class="index-intro-video-cont">
             <div class="index-intro-video">
                 <%= link_to 'javascript:;', :class => 'video-modal', :data => { :avid => @indexVideo.avId } do %>
-                    <%= image_tag "http://7xoq8f.com1.z0.glb.clouddn.com/" + @indexVideo.screenshot.url(:large) %>
+                    <%= image_tag @indexVideo.screenshot.url(:large) %>
                 <% end %>
             </div>
         </div> 
@@ -136,7 +136,7 @@
             <div class="index-video-item-cont">
                 <div class="index-video-item">
                     <%= link_to 'javascript:;', :class => 'video-modal', :data => { :avid => video.avId } do %>
-                        <%= image_tag "http://7xoq8f.com1.z0.glb.clouddn.com/" + video.screenshot.url(:medium) %>
+                        <%= image_tag video.screenshot.url(:medium) %>
                     <% end %>
                     <div class="index-video-title">
                         <%= video.slug_candidates %>
