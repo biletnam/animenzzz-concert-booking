@@ -36,4 +36,12 @@ as well as a link to its edit page.
     <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
         ><%= render_field attribute %></dd>
   <% end %>
+
+  <dt class="attribute-label">座位位置</dt>
+  <% page.resource.seats.each do |seat| %>
+  <dt class="attribute-label">&nbsp;</dt>
+  <dd class="attributes-data">
+    <%= seat.area.recital.city + '站' + seat.area.name + seat.get_position %>
+  </dd>
+  <% end %>
 </dl>
