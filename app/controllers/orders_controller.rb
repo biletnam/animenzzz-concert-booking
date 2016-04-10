@@ -67,7 +67,12 @@ class OrdersController < ApplicationController
       end 
 
       current_user.orders << @order
-      send_message(@order)
+
+      if @order.seats.first.area.recital.city == '成都'
+        send_message(@order, 'SMS_7226139')
+      else
+        send_message(@order, 'SMS_7236211')
+      end
     end
 
     # send_pingpp @order.id
@@ -100,7 +105,7 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:address, :phone, :name)
   end
 
-  def send_message(order)
+  def send_message(order, template)
     post_url = 'http://gw.api.taobao.com/router/rest'
     position = []
     order.seats.each {|s| position << s.area.recital.city + '站' + s.area.name + s.get_position}
@@ -116,7 +121,7 @@ class OrdersController < ApplicationController
       sms_type: 'normal',
       sms_free_sign_name: 'A叔暑期演奏会',
       sms_param: "{'name':\"#{order.name}\",'position':\"#{position}\"}",
-      sms_template_code: 'SMS_6730758'
+      sms_template_code: template
     }
 
     options = sort_options(options)
