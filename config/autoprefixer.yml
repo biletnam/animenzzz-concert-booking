@@ -1,0 +1,5 @@
+browsers:
+  - "last 2 versions"
+  - "Android >= 4.3"
+  - "iOS >= 6.0"
+  - "IE >= 9"

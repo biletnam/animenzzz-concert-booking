@@ -44,10 +44,10 @@
     -webkit-user-select: none;
     
     @mixin seat-class-disabled {
-        opacity: 0.5;
+        // opacity: 0.5;
         cursor: not-allowed;
         pointer-events: none;
-        background-color: #546E7A;
+        background-color: #37474F;
     }
     
     &.seat-class-disabled {
@@ -83,7 +83,9 @@
         // border: 1px solid gray;
         // box-shadow: 0 0 2px white inset, 1px 1px 0.5em black;
         margin: 0.2em 0.2em;
-        transition: all 0.2s ease-in-out;
+        @include media-desktop {
+            transition: all 0.2s ease-in-out;
+        }
         box-sizing: border-box;
     }
     

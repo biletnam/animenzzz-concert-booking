@@ -261,6 +261,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-session_store
   administrate
+  autoprefixer-rails
   better_errors
   bootstrap-sass
   byebug
