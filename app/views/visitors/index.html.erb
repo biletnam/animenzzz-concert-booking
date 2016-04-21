@@ -14,25 +14,28 @@
                         </div>
                     </div>
                     <div class="coverflow-overlay-text">
-                        <%= link_to recital_path recital do %>
-                            <button class="recital-detail-btn">查看详情</button>
+                        <% if recital.city != '成都' %>
+                            <%= link_to recital_path recital do %>
+                                <button class="recital-detail-btn">查看详情</button>
+                            <% end %>
                         <% end %>
                         <div class="recital-info-bottom">
-                            <div class="coverflow-recital-title"><%= recital.city %>站 - 
-                                <% if recital.sold_out? %>
-                                  <% if recital.city != '成都' %>
-                                    已预订完
-                                  <% else %>
-                                    已售完
-                                  <% end %>
-                                <% else %>
-                                  <% if recital.city != '成都' %>
-                                    正在预订中
-                                  <% else %>
-                                    正在售票中
-                                  <% end %>
-                                <% end %>
-                            </div>
+                            <% if recital.city != '成都' %>
+                                <div class="coverflow-recital-title"><%= recital.city %>站 - 
+                                    <% if recital.sold_out? %>
+                                        已预订完
+                                    <% else %>
+                                        正在预订中
+                                    <% end %>
+                                </div>
+                            <% else %>
+                                <div class="coverflow-recital-title"><%= recital.city %>站</div>
+                                <div class="hide-mobile">
+                                    <%= render 'visitors/chengdu_content' %>
+                                </div>
+                                <button class="recital-detail-btn hide-desktop">查看详情</button>
+                                <br />
+                            <% end %>
                             <div class="font-larger"><%= (recital.start_time.strftime('%Y 年 %m 月 %d 日') unless recital.start_time.nil?) + ' - ' + recital.music_hall%></div>
                         </div>
                     </div>
