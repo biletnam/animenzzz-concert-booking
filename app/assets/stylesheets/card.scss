@@ -55,6 +55,17 @@
     }
 }
 
+.coverflow-item .vote-card-image {
+    height: 100%;
+    img {
+        mac-width: 100%;
+        -webkit-filter: blur(5px); /* Chrome, Opera */
+        -moz-filter: blur(3px);
+        -ms-filter: blur(3px);    
+            filter: blur(3px);
+    }
+}
+
 .coverflow-overlay-text {
     position: absolute;
     width: 100%;
@@ -139,7 +150,8 @@
     }
 }
 
-.recital-info-bottom {
+.recital-info-bottom,
+.vote-info-bottom {
     transition: all 1s ease-in-out;
     opacity: 0;
     visibility: hidden;
@@ -149,11 +161,13 @@
     }
 }
 
+
 .coverflow-card {
     // height: 32em;
 }
 
-button.recital-detail-btn {
+button.recital-detail-btn,
+button.vote-detail-btn {
     color: white;
     background: linear-gradient(to bottom, $darken-30, $darken-60);
     border: 2px solid $lighter-80;
@@ -169,4 +183,20 @@ button.recital-detail-btn {
         border: 2px solid $lighter-40;
         color: #aaa;
     }
+}
+
+button.vote-detail-btn {
+    margin-bottom: 5em;
+}
+
+.vote-descr-text .vote-activity-name {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #eacaa0;
+}
+
+.vote-descr-text {
+    font-size: 25px;
+    font-weight: bolder;
+    margin-bottom: 2.5em;
 }
