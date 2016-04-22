@@ -42,6 +42,10 @@
     color: #444;
     text-align: center;
     
+    *:link {
+        color: #777;
+    }
+
     .modal-share-apps {
         font-size: larger;
         & > * {

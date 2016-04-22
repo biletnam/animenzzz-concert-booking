@@ -87,3 +87,16 @@ function phoneValidation(e) {
         return false;
     }
 }
+
+$(function () {
+    $("[data-toggle='modal']").on('click', function (e) {
+        var target = $($(this).data('target'));
+        if (target.hasClass('hidden')) {
+            $(target).removeClass('hidden');
+            $('body').css('overflow', 'hidden');
+        } else {
+            $(target).addClass('hidden');
+            $('body').css('overflow', 'auto');
+        }
+    });
+});

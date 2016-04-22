@@ -33,7 +33,9 @@
                                 <div class="hide-mobile">
                                     <%= render 'visitors/chengdu_content' %>
                                 </div>
-                                <button class="recital-detail-btn hide-desktop">查看详情</button>
+                                <button class="recital-detail-btn hide-desktop" data-toggle="modal" data-target="#modal-chengdu-overlay">
+                                    查看详情
+                                </button>
                                 <br />
                             <% end %>
                             <div class="font-larger"><%= (recital.start_time.strftime('%Y 年 %m 月 %d 日') unless recital.start_time.nil?) + ' - ' + recital.music_hall%></div>
@@ -150,6 +152,18 @@
                 </div>
             </div>
             <% end %>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay hidden" id="modal-chengdu-overlay">
+    <div class="modal modal-fluid modal-share">
+        <h2>成都站</h2>
+        <%= render 'visitors/chengdu_content' %>
+        <div>
+            <button class="button submit-submit-btn submit-submit-btn-ok" data-toggle="modal" data-target="#modal-chengdu-overlay">
+                关闭
+            </button>
         </div>
     </div>
 </div>
