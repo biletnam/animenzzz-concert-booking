@@ -5,7 +5,9 @@
     </div> -->
     <div class="coverflow-cont">
         <div class="coverflow">
-            <%= render 'visitors/vote_sheet' %>
+            <% if false %>
+                <%= render 'visitors/vote_sheet' %>
+            <% end %>
             <% @recitals.each do |recital| %>
             <div class="coverflow-item">
                 <div class="coverflow-content">
