@@ -40,13 +40,22 @@ class Order < ActiveRecord::Base
   end
 
   def Order.set_overdue_order
-    Order.all.each do |order|
-      if order.seats.first.area.recital.city == '成都'
-        if Time.now > order.apply_time and order.status == 'wait'
-          order.return_seats
-          order.status = :overdue
-          order.save!
-        end
+    # Order.all.each do |order|
+    #   if order.seats.first.area.recital.city == '成都'
+    #     if Time.now > order.apply_time and order.status == 'wait'
+    #       order.return_seats
+    #       order.status = :overdue
+    #       order.save!
+    #     end
+    #   end
+    # end
+
+    orders = Order.joins(seats: [area: [:recital]]).where(recitals: {city: "武汉"})
+    orders.each do |order|
+      if Time.now > order.apply_time and order.status == 'wait'
+        order.return_seats
+        order.status = :overdue 
+        order.save!
       end
     end
   end
