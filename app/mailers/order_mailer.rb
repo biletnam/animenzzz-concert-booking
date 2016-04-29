@@ -12,4 +12,9 @@ class OrderMailer < ApplicationMailer
   	@order = order 
   	mail(to: @user.email, subject: '删除订单！')
   end
+
+  def pay_time_mail(user)
+  	@user = user
+  	mail(to: @user.email, subject: '付款通知')
+  end
 end
