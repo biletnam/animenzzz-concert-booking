@@ -19,7 +19,9 @@ class Order < ActiveRecord::Base
   end
 
   def set_apply_time
-  	self.apply_time = Time.now + 3.days
+    if self.seats.first.area.recital.city != '成都'
+  	  self.apply_time = Time.now + 3.days
+    end
   end
 
   def total_price
