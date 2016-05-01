@@ -129,6 +129,29 @@ class OrdersController < ApplicationController
     post_request(post_url, options.merge(sign: md5_str))
   end
 
+  def send_pay_time_message(order)
+    post_url = 'http://gw.api.taobao.com/router/rest'
+    position = []
+    order.seats.each {|s| position << s.area.recital.city + '站' + s.area.name + s.get_position}
+    position = position.join("\，")
+    options = {
+      app_key: '23333071',
+      format: 'json',
+      method: 'alibaba.aliqin.fc.sms.num.send',
+      timestamp: Time.now.strftime("%Y-%m-%d %H:%M:%S"), 
+      sign_method: 'md5',
+      v: '2.0',
+      rec_num: order.phone,
+      sms_type: 'normal',
+      sms_free_sign_name: 'A叔暑期演奏会',
+      sms_template_code: "SMS_8565105"
+    }
+
+    options = sort_options(options)
+    md5_str = encrypt(options)
+    post_request(post_url, options.merge(sign: md5_str))
+  end
+
   def sort_options(**arg)
     arg.sort_by{|k,v| k}.to_h
   end
