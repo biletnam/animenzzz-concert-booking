@@ -21,6 +21,8 @@ class Order < ActiveRecord::Base
   def set_apply_time
     if self.seats.first.area.recital.city != '武汉'
   	  self.apply_time = Time.now + 3.days
+    else
+      self.apply_time = "2016.5.4 23:00:00"
     end
   end
 
