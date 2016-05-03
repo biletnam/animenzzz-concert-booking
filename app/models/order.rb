@@ -11,19 +11,11 @@ class Order < ActiveRecord::Base
   has_many :seats, through: :orderitems
 
 
-  before_save :set_default_state, :total_price, :set_apply_time
+  before_save :set_default_state, :total_price
   before_destroy :return_seats
 
   def set_default_state
   	self.status ||= :wait
-  end
-
-  def set_apply_time
-    if self.seats.first.area.recital.city != '武汉'
-  	  self.apply_time = Time.now + 3.days
-    else
-      self.apply_time = "2016.5.4 23:00:00"
-    end
   end
 
   def total_price

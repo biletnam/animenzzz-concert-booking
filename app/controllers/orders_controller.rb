@@ -62,6 +62,12 @@ class OrdersController < ApplicationController
 
       @order.seats << seats
 
+      if @order.seats.first.area.recital.city != '武汉'
+        @order.apply_time = Time.now + 3.days
+      else
+        @order.apply_time = "2016.5.7 23:00:00"
+      end
+
       if @order.save
         OrderMailer.success_mail(current_user, @order).deliver_later
       end 
