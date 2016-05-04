@@ -16,6 +16,15 @@ module Admin
     # See https://administrate-docs.herokuapp.com/customizing_controller_actions
     # for more information
 
+    def show
+      @orders = Order.joins(seats: [area: [:recital]]).where(recitals: {city: requested_resource.city})
+
+      render locals: {
+        page: Administrate::Page::Show.new(dashboard, requested_resource),
+      }
+
+    end
+
     def update
       recital = Recital.find(params[:id])
       if params[:venue_image] then
