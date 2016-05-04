@@ -17,7 +17,7 @@ module Admin
     # for more information
 
     def show
-      @orders = Order.joins(seats: [area: [:recital]]).where(recitals: {city: requested_resource.city})
+      @orders = Order.joins(seats: [area: [:recital]]).where(recitals: {city: requested_resource.city}).select("orders.name, phone, orders.address, orders.slug, price, orders.created_at, status").distinct
 
       render locals: {
         page: Administrate::Page::Show.new(dashboard, requested_resource),
