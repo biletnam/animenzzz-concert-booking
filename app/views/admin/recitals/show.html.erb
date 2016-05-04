@@ -70,6 +70,7 @@ as well as a link to its edit page.
       <th>电话</th>
       <th>地址</th>
       <th>价格</th>
+      <th>订单号</th>
       <th>创建时间</th>
       <th>状态</th>
       <th></th>
@@ -82,6 +83,7 @@ as well as a link to its edit page.
         <td><%= order.phone %></td>
         <td><%= order.address %></td>
         <td><%= order.price %></td>
+        <td><%= order.slug %></td>
         <td><%= order.created_at.strftime("%Y-%m-%d") %></td>
         <td><%= order.status %></td>
         <td><%= link_to '编辑', "/admin/orders/#{order.slug}/edit" %></td>
