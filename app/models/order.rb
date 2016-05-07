@@ -46,14 +46,14 @@ class Order < ActiveRecord::Base
     #   end
     # end
 
-    orders = Order.joins(seats: [area: [:recital]]).where(recitals: {city: "武汉"})
-    orders.each do |order|
-      if Time.now > order.apply_time and order.status == 'wait'
-        order.return_seats
-        order.status = :overdue 
-        order.save!
-      end
-    end
+    # orders = Order.joins(seats: [area: [:recital]]).where(recitals: {city: "武汉"})
+    # orders.each do |order|
+    #   if Time.now > order.apply_time and order.status == 'wait'
+    #     order.return_seats
+    #     order.status = :overdue 
+    #     order.save!
+    #   end
+    # end
   end
 
   def slug_candidates
