@@ -21,4 +21,7 @@ Rails.application.routes.draw do
   end
 
   resources :aggregation, only: [:show]
+
+  get 'files/:filename' => 'file#download' 
+
 end
