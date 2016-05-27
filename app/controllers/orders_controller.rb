@@ -10,10 +10,10 @@ class OrdersController < ApplicationController
   end
 
   def new
-    # if not current_user.admin?
-    #   flash[:alert] = '正在调试，稍后开放，敬请谅解'
-    #   redirect_to root_path
-    # end
+    if not current_user.admin?
+      flash[:alert] = '正在调试，稍后开放，敬请谅解'
+      redirect_to root_path
+    end
     @order = Order.new
 
     seat_ids = []
