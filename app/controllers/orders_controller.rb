@@ -10,6 +10,10 @@ class OrdersController < ApplicationController
   end
 
   def new
+    if not current_user.admin?
+      flash[:alert] = '正在调试，稍后开放，敬请谅解'
+      redirect_to root_path
+    end
     @order = Order.new
 
     seat_ids = []
@@ -148,7 +152,8 @@ class OrdersController < ApplicationController
       rec_num: order.phone,
       sms_type: 'normal',
       sms_free_sign_name: 'A叔暑期演奏会',
-      sms_template_code: "SMS_8525437"
+      sms_param: "{'city':\"广州\",'date':\"6月6日\"}",
+      sms_template_code: "SMS_10220222"
     }
 
     options = sort_options(options)
