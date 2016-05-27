@@ -59,7 +59,7 @@
     <article class="intent line-height-2">
         <section>
             <h3 class="info-header">
-            Animenz动漫钢琴音乐会武汉站付款通知： 付款时间5月1日至5月7日，主办方指定汇款账户：
+            Animenz动漫钢琴音乐会<%= @recital.city %>站付款通知：<%= @recital.city %>站目前已接受付款，请在下单当天内通过如下方式付款，主办方指定汇款账户：
             </h3>
         </section>
         <section class="pay-methods">
@@ -71,7 +71,30 @@
         </section>
         <section class="info-footer">
             <h3 class="important-message">付款成功后请将订票预留姓名+订票预留电话+订票座位+付款信息截图统一发送至邮箱584730793@qq.com</h3>
-            武汉音乐会纸票将在5月底统一快递发货，届时将有快递订单号发送至您的订票预留手机号，<a href="www.yuxianglishun.cn">www.yuxianglishun.cn</a>网站将继续接受武汉站预订，详询请咨询15519026686（杨小姐）
+            <%= @recital.city %>音乐会纸票将在5月底统一快递发货，届时将有快递订单号发送至您的订票预留手机号，<a href="www.yuxianglishun.cn">www.yuxianglishun.cn</a>网站将继续接受<%= @recital.city %>站预订，详询请咨询15519026686（杨小姐）
+        </section>
+    </article>
+</div>
+<% elsif @recital.id == 2 %>
+<br/>
+<div class="outer-container light-panel">
+    <h2 class="align-center">付款通知</h2>
+    <article class="intent line-height-2">
+        <section>
+            <h3 class="info-header">
+            Animenz动漫钢琴音乐会<%= @recital.city %>站付款通知：<%= @recital.city %>站目前已接受付款，请在6月5日24:00前通过如下方式付款，主办方指定汇款账户：
+            </h3>
+        </section>
+        <section class="pay-methods">
+            <ul>
+                <li>工商银行：6212262402015869551，户名：杨倩，开户行：工商银行贵阳纪念塔支行</li>
+                <li>建设银行：6217007100022904754，户名：杨倩，开户行：建行贵阳乌当支行</li>
+                <li>支付宝账号：15519026686</li>
+            </ul>
+        </section>
+        <section class="info-footer">
+            <h3 class="important-message">付款成功后请将订票预留姓名+订票预留电话+订票座位+付款信息截图统一发送至邮箱584730793@qq.com</h3>
+            <%= @recital.city %>音乐会纸票将在5月底统一快递发货，届时将有快递订单号发送至您的订票预留手机号，<a href="www.yuxianglishun.cn">www.yuxianglishun.cn</a>网站将继续接受<%= @recital.city %>站预订，详询请咨询15519026686（杨小姐）
         </section>
     </article>
 </div>
