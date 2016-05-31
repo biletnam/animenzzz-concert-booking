@@ -36,11 +36,12 @@ class AreasController < ApplicationController
       floor.each do |areas|
       	areas.each do |area|
       	  next if area[:type] != 'seat'
+          a = Area.where(:klass => area[:area]).first
+          next if a.name != 'C区' or a.name != 'D区' or a.name != 'K区'
       	  seat = Seat.create(locate_x: area[:row], locate_y: area[:num])
       	  price = Price.where(:price => area[:price]).first
       	  price.seats << seat
       	  price.save
-      	  a = Area.where(:klass => area[:area]).first
       	  a.seats << seat 
       	  a.save
       	end 
