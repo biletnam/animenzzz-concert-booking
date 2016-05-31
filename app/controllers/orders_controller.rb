@@ -72,13 +72,15 @@ class OrdersController < ApplicationController
         @order.apply_time = "2016.5.7 23:00:00"
       end
 
-      if @order.save
-        OrderMailer.success_mail(current_user, @order).deliver_later
+      if @order.save 
+        if @order.seats.first.area.recital.city == '广州' or @order.seats.first.area.recital.city == '武汉'
+          OrderMailer.success_mail(current_user, @order).deliver_later
+        end
       end 
 
       current_user.orders << @order
 
-      if @order.seats.first.area.recital.city == '成都'
+      if @order.seats.first.area.recital.city == '成都' or @order.seats.first.area.recital.city == '广州' or @order.seats.first.area.recital.city == '武汉'
         send_message(@order, 'SMS_7226139')
       else
         send_message(@order, 'SMS_7236211')
