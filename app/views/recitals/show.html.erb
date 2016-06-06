@@ -31,8 +31,8 @@
 <!--             <a href="#" class="btn-buy-buy-buy align-center">
                 立即购买
             </a> -->
-            <% if @recital.sold_out? %>
-                <%= link_to '已售完', recital_areas_path(@recital), class: 'btn-buy-buy-buy align-center' %>
+            <% if @recital.sold_out? or @recital.id is 5 %>
+                <%= link_to '已售完', '#', class: 'btn-buy-buy-buy align-center' %>
             <% else %>
                 <%= link_to '查看座位图', recital_areas_path(@recital), :class => 'btn-buy-buy-buy align-center' %>
             <% end %>
