@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   	end
   end
 
-  resources :aggregation, only: [:show]
+  resources :aggregation, only: [:show, :index]
 
   get 'files/:filename' => 'file#download' 
 
