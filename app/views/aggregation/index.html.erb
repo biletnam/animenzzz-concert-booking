@@ -11,11 +11,11 @@
 	<tbody>
 		<% @orders.each do |order| %>
 		<tr>
-			<td>order.name</td>
-			<td>order.address</td>
-			<td>order.phone</td>
-			<td>order.seats.collect {|s| "#{s.area.name}#{s.locate_x}排#{locate_y}号 #{s.price.price}元"}.join(" ")</td>
-			<td>order.price</td>
+			<td><%= order.name %></td>
+			<td><%= order.address %></td>
+			<td><%= order.phone %></td>
+			<td><%= order.seats.collect {|s| "#{s.area.name}#{s.locate_x}排#{s.locate_y}号 #{s.price.price}元"}.join(" ")%></td>
+			<td><%= order.price %></td>
 		</tr>
 		<% end %>
 	</tbody>
