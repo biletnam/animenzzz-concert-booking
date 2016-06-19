@@ -17,4 +17,9 @@ class OrderMailer < ApplicationMailer
   	@user = user
   	mail(to: @user.email, subject: '付款通知')
   end
+
+  def delivery_delay_mail(user)
+    @user = user
+    mail(to: @user.email, subject: '延迟通知')
+  end
 end
