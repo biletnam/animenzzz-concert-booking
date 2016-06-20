@@ -48,7 +48,7 @@
         <li>客服 陈小姐 QQ - 1963378915</li>
     </ul>
 </div>
-<% elsif @recital.id == 5 %>
+<% elsif false %>
 <br/>
 <div class="outer-container light-panel">
     <h2 class="align-center">付款通知</h2>
@@ -71,14 +71,14 @@
         </section>
     </article>
 </div>
-<% elsif @recital.id == 2 %>
+<% elsif @recital.id == 2 or @recital.id == 5 %>
 <br/>
 <div class="outer-container light-panel">
     <h2 class="align-center">付款通知</h2>
     <article class="intent line-height-2">
         <section>
             <h3 class="info-header">
-            Animenz动漫钢琴音乐会<%= @recital.city %>站付款通知：<%= @recital.city %>站目前已接受付款，请在6月5日24:00前通过如下方式付款，主办方指定汇款账户：
+            Animenz动漫钢琴音乐会<%= @recital.city %>站付款方式，因暂未能开通在线支付，给您带来的不便敬请谅解，<%= @recital.city %>站指定汇款账户：
             </h3>
         </section>
         <section class="pay-methods">
@@ -90,7 +90,7 @@
         </section>
         <section class="info-footer">
             <h3 class="important-message">付款成功后请将音乐会城市+订票预留姓名+订票预留电话+订票座位+付款信息截图统一发送至邮箱584730793@qq.com</h3>
-            <%= @recital.city %>音乐会纸票将在之后不久统一快递发货，届时将有快递订单号发送至您的订票预留手机号，<a href="www.yuxianglishun.cn">www.yuxianglishun.cn</a>网站将继续接受<%= @recital.city %>站预订，详询请咨询15519026686（杨小姐）
+            收到付款邮件三天内给您快递票纸，同时将快递订单号发至您的邮箱方便您查询，演出详询：0851-86802933（9:00-18:00），15519026686杨小姐
         </section>
     </article>
 </div>
