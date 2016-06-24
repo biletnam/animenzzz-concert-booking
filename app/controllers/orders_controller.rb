@@ -154,8 +154,8 @@ class OrdersController < ApplicationController
       rec_num: order.phone,
       sms_type: 'normal',
       sms_free_sign_name: 'A叔暑期演奏会',
-      sms_param: "{'city':\"广州\",'date':\"6月6日\"}",
-      sms_template_code: "SMS_10220222"
+      sms_param: "{'city':\"#{order.seats.first.area.recital.city}\",'date':\"7月3日\"}",
+      sms_template_code: "SMS_11040646"
     }
 
     options = sort_options(options)

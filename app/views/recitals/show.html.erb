@@ -95,6 +95,28 @@
         </section>
     </article>
 </div>
+<% elsif @recital.id == 3 or @recital.id == 4 %>
+<br/>
+<div class="outer-container light-panel">
+    <h2 class="align-center">付款通知</h2>
+    <article class="intent line-height-2">
+        <section>
+            <h3 class="info-header">
+            预订了<%= @recital.city %>站Animenz动漫钢琴音乐会门票的用户可以进行付款了！付款时间：6月25日至7月3日，主办方指定汇款账户：
+            </h3>
+        </section>
+        <section class="pay-methods">
+            <ul>
+                <li>支付宝账号：463201301@qq.com  户名：李嘉斌</li>
+                <li>建设银行：账号：6217007100013334797  户名：李嘉斌  开户行：贵阳市京瑞支行综合柜</li>
+            </ul>
+        </section>
+        <section class="info-footer">
+            <h3 class="important-message">☆重要提示：请仔细核对账户信息后再汇款！！并且不要向主办方指定以外的账户汇款！！成功转账后请将【1.订票站次（<%= @recital.city %>）+2.座位号+3.订票预留姓名+4.订票预留电话+5.付款信息截图】发至邮箱382068944@qq.com</h3>
+            <%= @recital.city %>站音乐会票纸将在7月初统一快递发货，届时将有快递订单号发至您的订票预留手机号，www.yuxianglishun.cn 网站将继续接受<%= @recital.city %>站购票, 详询请咨询QQ：463201301 电话13984155725（李先生）
+        </section>
+    </article>
+</div>
 <% end %>
 
 <br />
