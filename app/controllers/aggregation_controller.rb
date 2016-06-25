@@ -8,7 +8,7 @@ class AggregationController < ApplicationController
   	if params[:city] != '' and params[:row] != '' and params[:col] != ''
   	  @orders = Order.joins(seats: [area: [:recital]]).where(recitals: {city: params[:city]}, areas: {name: params[:area]}, seats: {locate_x: params[:row], locate_y: params[:col]})
   	elsif params[:city] != ''
-  	  @orders = Order.joins(seats: [area: [:recital]]).where(recitals: {city: params[:city]})
+  	  @orders = Order.joins(seats: [area: [:recital]]).where(recitals: {city: params[:city]}).distinct.order('status')
   	end
   end
 end

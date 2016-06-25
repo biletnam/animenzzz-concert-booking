@@ -154,7 +154,7 @@ class OrdersController < ApplicationController
       rec_num: order.phone,
       sms_type: 'normal',
       sms_free_sign_name: 'A叔暑期演奏会',
-      sms_param: "{'city':\"#{order.seats.first.area.recital.city}\",'date':\"7月3日\"}",
+      sms_param: "{'city':\"#{order.seats.first.area.recital.city}\",'date':\"7月3日\",'phone':\"13984155725\"}",
       sms_template_code: "SMS_11040646"
     }
 
