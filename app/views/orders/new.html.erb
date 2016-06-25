@@ -88,6 +88,24 @@
 <% end %>
 </div>
 
+<% if @order.seats.first.area.recital.id == 2 or @order.seats.first.area.recital.id == 5 %>
+<div class="outer-container light-panel order-mention">
+    <h2 class="align-center">付款注意事项</h2>
+    <h3 class="indent line-height-2">请在当日内付款，逾期票将退会票池，谢谢配合, 官方付款账号:</h3>
+    <section class="pay-methods">
+            <ul>
+                <li>工商银行：6212262402015869551，户名：杨倩，开户行：工商银行贵阳纪念塔支行</li>
+                <li>建设银行：6217007100022904754，户名：杨倩，开户行：建行贵阳乌当支行</li>
+                <li>支付宝账号：15519026686</li>
+            </ul>
+        </section>
+        <section class="info-footer">
+            <h3 class="important-message">付款成功后请将音乐会城市+订票预留姓名+订票预留电话+订票座位+付款信息截图统一发送至邮箱584730793@qq.com</h3>
+            收到付款邮件三天内给您快递票纸，同时将快递订单号发至您的邮箱方便您查询，演出详询：0851-86802933（9:00-18:00），15519026686杨小姐
+    </section>
+</div>
+<% end %>
+
 <div class="modal-overlay hidden" id="modal-share-overlay">
     <div class="modal modal-fluid modal-share">
         <h2>分享到 ...</h2>
