@@ -1,10 +1,10 @@
  <div class="outer-container">
  <div class="clearfix no-padding">
- 
+
     <div class="recital-poster-cont">
         <%= image_tag @recital.poster.url, :class => 'recital-poster' %>
     </div>
-    
+
     <div class="recital-detail-cont overflow-auto">
         <div class="clearfix">
             <a class="recital-back-button float-left" href="/">
@@ -24,15 +24,19 @@
 
             <dt class="font-bold align-right">演出地点</dt>
             <dd class="align-left"><%= @recital.music_hall + ' (' + @recital.address + ')' %></dd>
-            
+
         </dl>
         <!--<hr class="hr-recital" />-->
         <div class="recital-button-cont">
 <!--             <a href="#" class="btn-buy-buy-buy align-center">
                 立即购买
             </a> -->
-            
+
+			<% if @recital.id == 3 %>
+				<a href="#" class="btn-buy-buy-buy align-center">调试中</a>
+			<% else %>
 			<%= link_to '查看座位图', recital_areas_path(@recital), :class => 'btn-buy-buy-buy align-center' %>
+			<% end %>
         </div>
     </div>
 </div>
@@ -124,51 +128,51 @@
 <div class="outer-container">
     <div class="recital-description dark-panel">
 <!--     <img src="http://api.map.baidu.com/staticimage/v2?ak=dkkklKNbixhyjNldgXPfyaDi"> -->
-        <div class="recital-location-baidu" id="container"></div>  
+        <div class="recital-location-baidu" id="container"></div>
     </div>
 </div>
 
 
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>   
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
 
-<script type="text/javascript"> 
-    var map = new BMap.Map("container");  
-    map.centerAndZoom(new BMap.Point(<%= @recital.lat %>, <%= @recital.lng %>), 13);  
-    map.enableScrollWheelZoom();  
-    var marker=new BMap.Marker(new BMap.Point(<%= @recital.lat %>, <%= @recital.lng %>));  
-    map.addOverlay(marker);  
+<script type="text/javascript">
+    var map = new BMap.Map("container");
+    map.centerAndZoom(new BMap.Point(<%= @recital.lat %>, <%= @recital.lng %>), 13);
+    map.enableScrollWheelZoom();
+    var marker=new BMap.Marker(new BMap.Point(<%= @recital.lat %>, <%= @recital.lng %>));
+    map.addOverlay(marker);
     var licontent="<b><%= @recital.music_hall %></b><br>";
-        licontent+="<span><strong>地址：</strong><%= @recital.address + @recital.music_hall %></span><br>";  
+        licontent+="<span><strong>地址：</strong><%= @recital.address + @recital.music_hall %></span><br>";
         licontent+="<span class=\"input\"><strong></strong><input class=\"outset\" type=\"text\" name=\"origin\" value=\"<%= @recital.city %>站\"/><input class=\"outset-but\" type=\"button\" value=\"公交\" onclick=\"gotobaidu(1)\" /><input class=\"outset-but\" type=\"button\" value=\"驾车\"  onclick=\"gotobaidu(2)\"/><a class=\"gotob\" href=\"url=\"http://api.map.baidu.com/direction?destination=latlng:"+marker.getPosition().lat+","+marker.getPosition().lng+"|name:<%= @recital.music_hall %>"+"®ion=<%= @recital.city %>"+"&output=html\" target=\"_blank\"></a></span>";
- 
+
     var hiddeninput="<input type=\"hidden\" value=\""+'<%= @recital.city %>'+"\" name=\"region\" /><input type=\"hidden\" value=\"html\" name=\"output\" /><input type=\"hidden\" value=\"driving\" name=\"mode\" /><input type=\"hidden\" value=\"latlng:"+marker.getPosition().lat+","+marker.getPosition().lng+"|name:<%= @recital.music_hall %>"+"\" name=\"destination\" />";
- 
+
     var content1 ="<form id=\"gotobaiduform\" action=\"http://api.map.baidu.com/direction\" target=\"_blank\" method=\"get\">" + licontent +hiddeninput+"</form>";
-   
-    var opts1 = { width: 300 };  
-       
-    var  infoWindow = new BMap.InfoWindow(content1, opts1);  
-    marker.openInfoWindow(infoWindow);  
+
+    var opts1 = { width: 300 };
+
+    var  infoWindow = new BMap.InfoWindow(content1, opts1);
+    marker.openInfoWindow(infoWindow);
     marker.addEventListener('click',function(){
         marker.openInfoWindow(infoWindow);
-    });  
-     
-    function gotobaidu(type)  
-    {  
-        if($.trim($("input[name=origin]").val())=="")  
-        {  
-            alert("请输入起点！");  
-            return;  
-        }else{  
-            if(type==1)  
-            {  
-                $("input[name=mode]").val("transit");  
-                $("#gotobaiduform")[0].submit();  
-            }else if(type==2)  
-            {      
-                $("input[name=mode]").val("driving");          
-                $("#gotobaiduform")[0].submit();  
-            }  
-        }  
-    }    
+    });
+
+    function gotobaidu(type)
+    {
+        if($.trim($("input[name=origin]").val())=="")
+        {
+            alert("请输入起点！");
+            return;
+        }else{
+            if(type==1)
+            {
+                $("input[name=mode]").val("transit");
+                $("#gotobaiduform")[0].submit();
+            }else if(type==2)
+            {
+                $("input[name=mode]").val("driving");
+                $("#gotobaiduform")[0].submit();
+            }
+        }
+    }
 </script>
