@@ -27,9 +27,9 @@
                             <% if recital.city != '成都' %>
                                 <div class="coverflow-recital-title"><%= recital.city %>站 - 
                                     <% if recital.sold_out? %>
-                                        已预订完
+                                        已售卖完
                                     <% else %>
-                                        正在预订中
+                                        正在售卖中
                                     <% end %>
                                 </div>
                             <% else %>
@@ -61,13 +61,13 @@
                         </div>
                         <div class="recital-status">
                             <% if recital.sold_out? %>
-                              <% if recital.city != '成都' %>
+                              <% if false %>
                                     已<br />预<br />订<br />完
                               <% else %>
                                     已<br />售<br />完
                               <% end %>
                             <% else %>
-                              <% if recital.city != '成都' %>
+                              <% if false %>
                                     正<br />在<br />预<br />订
                               <% else %>
                                     正<br />在<br />售<br />票
