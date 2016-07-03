@@ -32,11 +32,7 @@
                 立即购买
             </a> -->
 
-			<% if @recital.id == 3 %>
-				<a href="#" class="btn-buy-buy-buy align-center">调试中</a>
-			<% else %>
 			<%= link_to '查看座位图', recital_areas_path(@recital), :class => 'btn-buy-buy-buy align-center' %>
-			<% end %>
         </div>
     </div>
 </div>
