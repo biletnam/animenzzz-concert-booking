@@ -19,13 +19,13 @@
                         </div>
                     </div>
                     <div class="coverflow-overlay-text">
-                        <% if recital.city != '成都' %>
+                        <% if recital.city != '成都' and recital.city != '广州' %>
                             <%= link_to recital_path recital do %>
                                 <button class="recital-detail-btn">查看详情</button>
                             <% end %>
                         <% end %>
                         <div class="recital-info-bottom">
-                            <% if recital.city != '成都' %>
+                            <% if recital.city != '成都' and recital.city != '广州' %>
                                 <div class="coverflow-recital-title"><%= recital.city %>站 - 
                                     <% if recital.sold_out? %>
                                         已售卖完
@@ -33,10 +33,19 @@
                                         正在售卖中
                                     <% end %>
                                 </div>
-                            <% else %>
+                            <% elsif recital.city == '成都' %>
                                 <div class="coverflow-recital-title"><%= recital.city %>站</div>
                                 <div class="hide-mobile">
                                     <%= render 'visitors/chengdu_content' %>
+                                </div>
+                                <button class="recital-detail-btn hide-desktop" data-toggle="modal" data-target="#modal-chengdu-overlay">
+                                    查看详情
+                                </button>
+                                <br />
+                            <% elsif recital.city == '广州' %>
+                                <div class="coverflow-recital-title"><%= recital.city %>站</div>
+                                <div class="hide-mobile">
+                                    <%= render 'visitors/guangzhou_content' %>
                                 </div>
                                 <button class="recital-detail-btn hide-desktop" data-toggle="modal" data-target="#modal-chengdu-overlay">
                                     查看详情
