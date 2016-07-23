@@ -83,7 +83,7 @@ class OrdersController < ApplicationController
       if @order.seats.first.area.recital.city == '成都' or @order.seats.first.area.recital.city == '广州' or @order.seats.first.area.recital.city == '武汉'
         send_message(@order, 'SMS_7226139')
       else
-        send_message(@order, 'SMS_7236211')
+        send_message(@order, 'SMS_12600001')
       end
     end
 
