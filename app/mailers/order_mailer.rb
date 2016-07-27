@@ -22,4 +22,9 @@ class OrderMailer < ApplicationMailer
     @user = user
     mail(to: @user.email, subject: '延迟通知')
   end
+
+  def guangzhou_sell(user)
+    @user = user
+    mail(to: @user.email, subject: '广州签售会')
+  end
 end
