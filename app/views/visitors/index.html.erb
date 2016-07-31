@@ -31,6 +31,8 @@
                                 <div class="coverflow-recital-title"><%= recital.city %>站 - 
                                     <% if recital.sold_out? %>
                                         已售卖完
+                                    <% elsif recital.city == '厦门' %>
+                                        停止网售
                                     <% else %>
                                         正在售卖中
                                     <% end %>
@@ -79,8 +81,8 @@
                                     已<br />售<br />完
                               <% end %>
                             <% else %>
-                              <% if false %>
-                                    正<br />在<br />预<br />订
+                              <% if recital.city == '厦门' and !recital.sold_out? %>
+                                    停<br />止<br />网<br />售
                               <% else %>
                                     正<br />在<br />售<br />票
                               <% end %>
