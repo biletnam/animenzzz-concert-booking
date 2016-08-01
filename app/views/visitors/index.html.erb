@@ -21,18 +21,16 @@
                         </div>
                     </div>
                     <div class="coverflow-overlay-text">
-                        <% if recital.city != '成都' and recital.city != '广州' %>
+                        <% if recital.city != '成都' and recital.city != '广州' and recital.city != '厦门' %>
                             <%= link_to recital_path recital do %>
                                 <button class="recital-detail-btn">查看详情</button>
                             <% end %>
                         <% end %>
                         <div class="recital-info-bottom">
-                            <% if recital.city != '成都' and recital.city != '广州' %>
+                            <% if recital.city != '成都' and recital.city != '广州' and recital.city != '厦门' %>
                                 <div class="coverflow-recital-title"><%= recital.city %>站 - 
                                     <% if recital.sold_out? %>
                                         已售卖完
-                                    <% elsif recital.city == '厦门' %>
-                                        停止网售
                                     <% else %>
                                         正在售卖中
                                     <% end %>
@@ -42,18 +40,18 @@
                                 <div class="hide-mobile">
                                     <%= render 'visitors/chengdu_content' %>
                                 </div>
-                                <button class="recital-detail-btn hide-desktop" data-toggle="modal" data-target="#modal-chengdu-overlay">
-                                    查看详情
-                                </button>
                                 <br />
                             <% elsif recital.city == '广州' %>
                                 <div class="coverflow-recital-title"><%= recital.city %>站</div>
                                 <div class="hide-mobile">
                                     <%= render 'visitors/guangzhou_content' %>
                                 </div>
-                                <button class="recital-detail-btn hide-desktop" data-toggle="modal" data-target="#modal-chengdu-overlay">
-                                    查看详情
-                                </button>
+                                <br />
+                            <% elsif recital.city == '厦门' %>
+                                <div class="coverflow-recital-title"><%= recital.city %>站</div>
+                                <div class="hide-mobile">
+                                    <%= render 'visitors/xiamen_content' %>
+                                </div>
                                 <br />
                             <% end %>
                             <div class="font-larger"><%= (recital.start_time.strftime('%Y 年 %m 月 %d 日') unless recital.start_time.nil?) + ' - ' + recital.music_hall%></div>
@@ -81,7 +79,7 @@
                                     已<br />售<br />完
                               <% end %>
                             <% else %>
-                              <% if recital.city == '厦门' and !recital.sold_out? %>
+                              <% if false %>
                                     停<br />止<br />网<br />售
                               <% else %>
                                     正<br />在<br />售<br />票
