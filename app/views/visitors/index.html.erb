@@ -21,13 +21,13 @@
                         </div>
                     </div>
                     <div class="coverflow-overlay-text">
-                        <% if recital.city != '成都' and recital.city != '广州' and recital.city != '厦门' %>
+                        <% if recital.city == '武汉' %>
                             <%= link_to recital_path recital do %>
                                 <button class="recital-detail-btn">查看详情</button>
                             <% end %>
                         <% end %>
                         <div class="recital-info-bottom">
-                            <% if recital.city != '成都' and recital.city != '广州' and recital.city != '厦门' %>
+                            <% if recital.city == '武汉' %>
                                 <div class="coverflow-recital-title"><%= recital.city %>站 - 
                                     <% if recital.sold_out? %>
                                         已售卖完
@@ -51,6 +51,12 @@
                                 <div class="coverflow-recital-title"><%= recital.city %>站</div>
                                 <div class="hide-mobile">
                                     <%= render 'visitors/xiamen_content' %>
+                                </div>
+                                <br />
+                            <% elsif recital.city == '长沙' %>
+                                <div class="coverflow-recital-title"><%= recital.city %>站</div>
+                                <div class="hide-mobile">
+                                    <%= render 'visitors/changsha_content' %>
                                 </div>
                                 <br />
                             <% end %>
