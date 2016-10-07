@@ -123,7 +123,6 @@ class OrdersController < ApplicationController
     order.seats.each {|s| position << s.area.recital.city + '站' + s.area.name + s.get_position}
     position = position.join("\，")
     options = {
-      app_key: '23333071',
       format: 'json',
       method: 'alibaba.aliqin.fc.sms.num.send',
       timestamp: order.created_at.strftime("%Y-%m-%d %H:%M:%S"), 
@@ -145,7 +144,6 @@ class OrdersController < ApplicationController
     post_url = 'http://gw.api.taobao.com/router/rest'
 
     options = {
-      app_key: '23333071',
       format: 'json',
       method: 'alibaba.aliqin.fc.sms.num.send',
       timestamp: Time.now.strftime("%Y-%m-%d %H:%M:%S"), 
